@@ -1,0 +1,56 @@
+<mvc:View xmlns:tnt="sap.tnt" controllerName="nextrackwms.nextrackwms.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <tnt:ToolPage id="mainpage" >
+    <tnt:header>  <tnt:ToolHeader
+                class="headerclass"
+                height="40px"
+            >
+                <Button
+                    id="sideNavigationToggleButton"
+                    icon="sap-icon://menu2"
+                    type="Transparent"
+                    press=".onMenuButtonPress"
+                />
+                <Title text="NEXTRACK WMS"></Title>
+            </tnt:ToolHeader></tnt:header>
+            <tnt:sideContent>
+            <tnt:SideNavigation
+                id="sidecontent"
+                expanded="true"
+                itemSelect="onItemSelect"
+                class="mySmallSideNav"
+            >
+                <tnt:NavigationList
+                    items="{NexTrackModel>/navigation}"
+                >
+                    <tnt:NavigationListItem
+                        text="{NexTrackModel>text}"
+                        icon="{NexTrackModel>icon}"
+                        key="{NexTrackModel>key}"
+                        press=".onQuickActionPress"
+                        expanded="{NexTrackModel>expanded}"
+                        items="{
+                path: 'NexTrackModel>children'
+            }"
+                    >
+                        <tnt:NavigationListItem
+                            text="{NexTrackModel>text}"
+                            icon="{NexTrackModel>icon}"
+                            key="{NexTrackModel>key}"
+                            press=".onQuickActionPress"
+                        />
+                    </tnt:NavigationListItem>
+                </tnt:NavigationList>
+            </tnt:SideNavigation>
+        </tnt:sideContent>
+        <tnt:mainContents>
+        <NavContainer id="maincontainer">
+        <pages>
+        <Page id="idCategoryMasterPage" title="Category Master"></Page>
+        <Page id="idAssetCreationPage" title="Asset Creation"></Page>
+        </pages>
+        </NavContainer>
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>
