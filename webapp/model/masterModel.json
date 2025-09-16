@@ -1,0 +1,53 @@
+{
+    "categoryMaster":{
+    "title": "Category Master",
+    "formFields": [
+        { "label": "Category Code", "path": "CategoryCode", "type": "Input", "editable": true },
+        { "label": "Category Description", "path": "CategoryDescription", "type": "Input", "editable": true },
+        { "label": "Category Type", "path": "CategoryType", "type": "Select", "items": ["Item", "Service"] }
+    ],
+     "tableColumns": [
+        { "header": "Category Code",        "path": "CategoryCode" },
+        { "header": "Category Description", "path": "CategoryDescription" },
+        { "header": "Category Type",        "path": "CategoryType" },
+        { "header": "Category Life",        "path": "CategoryLife" },
+        { "header": "CC Act Old Rate",      "path": "CCActOldRate" },
+        { "header": "IT Act Rate",          "path": "ITActRate" },
+        { "header": "Category Method",      "path": "CategoryMethod" }
+    ],
+    "tableRows": [
+            { "CategoryCode": "CT1758005230312", "CategoryDescription": "Processed Spices & Herbs", "CategoryType": "Item" },
+            { "CategoryCode": "CT1758005219630", "CategoryDescription": "Spice Blend",      "CategoryType": "Item" }
+        ]
+},
+"subCategoryMaster":{
+    "title": "Sub-Category Master",
+    "formFields": [
+        { "label": "Category Code", "path": "CategoryCode", "type": "Select", "items": ["CATOFF003", "CATPRE001", "CATHOM002"] },
+        { "label": "Category Description", "path": "CategoryDescription", "type": "Input", "editable": false },
+        { "label": "Sub-Category Code", "path": "SubCategoryCode", "type": "Input", "editable": false },
+        { "label": "Description", "path": "Description", "type": "Input", "editable": true }
+    ],
+    "tableColumns": [
+        { "header": "Category Code", "path": "CategoryCode" },
+        { "header": "Category Disc", "path": "CategoryDescription" },
+        { "header": "Sub-Category Code", "path": "SubCategoryCode" },
+        { "header": "Description", "path": "Description" }
+    ],
+    "tableDataPath": "/SubCategories"
+    },
+    "locationMaster":{
+    "title": "Location Master",
+    "formFields": [
+        { "label": "Location Code", "path": "LocationCode", "type": "Input", "editable": false },
+        { "label": "Location Name", "path": "LocationName", "type": "Input", "editable": true },
+        { "label": "Location Type", "path": "LocationType", "type": "Select", "items": ["production", "warehouse"] }
+    ],
+    "tableColumns": [
+        { "header": "Location Code", "path": "LocationCode" },
+        { "header": "Location Name", "path": "LocationName" },
+        { "header": "Location Type", "path": "LocationType" }
+    ],
+    "tableDataPath": "/Locations"
+    }
+}

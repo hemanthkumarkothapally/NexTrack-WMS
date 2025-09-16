@@ -59,6 +59,9 @@
   ],
   "KeyPages": {
   "categoryMaster": "idCategoryMasterPage",
+  "subCategoryMaster": "idCategoryMasterPage",
+  "locationMaster": "idCategoryMasterPage",
+  "subLocationMaster": "idCategoryMasterPage",
   "asset": "idAssetCreationPage"
   }
 

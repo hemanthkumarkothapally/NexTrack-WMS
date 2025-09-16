@@ -1,8 +1,14 @@
-<mvc:View xmlns:tnt="sap.tnt" controllerName="nextrackwms.nextrackwms.controller.Main"
+<mvc:View
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:tnt="sap.tnt"
+    controllerName="nextrackwms.nextrackwms.controller.Main"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <tnt:ToolPage id="mainpage" >
-    <tnt:header>  <tnt:ToolHeader
+    xmlns="sap.m"
+>
+    <tnt:ToolPage id="mainpage">
+        <tnt:header>
+            <tnt:ToolHeader
                 class="headerclass"
                 height="40px"
             >
@@ -12,18 +18,17 @@
                     type="Transparent"
                     press=".onMenuButtonPress"
                 />
-                <Title text="NEXTRACK WMS"></Title>
-            </tnt:ToolHeader></tnt:header>
-            <tnt:sideContent>
+                <Title text="NEXTRACK WMS" />
+            </tnt:ToolHeader>
+        </tnt:header>
+        <tnt:sideContent>
             <tnt:SideNavigation
                 id="sidecontent"
                 expanded="true"
                 itemSelect="onItemSelect"
                 class="mySmallSideNav"
             >
-                <tnt:NavigationList
-                    items="{NexTrackModel>/navigation}"
-                >
+                <tnt:NavigationList items="{NexTrackModel>/navigation}">
                     <tnt:NavigationListItem
                         text="{NexTrackModel>text}"
                         icon="{NexTrackModel>icon}"
@@ -33,6 +38,7 @@
                         items="{
                 path: 'NexTrackModel>children'
             }"
+                        selectable="false"
                     >
                         <tnt:NavigationListItem
                             text="{NexTrackModel>text}"
@@ -45,12 +51,66 @@
             </tnt:SideNavigation>
         </tnt:sideContent>
         <tnt:mainContents>
-        <NavContainer id="maincontainer">
-        <pages>
-        <Page id="idCategoryMasterPage" title="Category Master"></Page>
-        <Page id="idAssetCreationPage" title="Asset Creation"></Page>
-        </pages>
-        </NavContainer>
+            <NavContainer id="maincontainer">
+                <pages>
+                    <Page
+                        id="idCategoryMasterPage"
+                        title="{config>/title}"
+                        class="sapUiContentPadding"
+                    >
+                        <content>
+                            <!-- <VBox
+                                items="{config>/formFields}"
+                                class="sapUiSmallMargin"
+                            >
+                                <HBox class="sapUiTinyMarginBottom">
+                                    <VBox width="200px">
+                                        <Label
+                                            text="{config>label}"
+                                            class="sapUiTinyMarginEnd"
+                                        />
+                                    </VBox>
+                                    <VBox width="300px">
+                                        <Input />
+                                    </VBox>
+                                </HBox>
+                            </VBox> -->
+                            <f:SimpleForm id="idDynForm" layout="ColumnLayout"></f:SimpleForm>
+                            <HBox
+                                class="sapUiSmallMarginTop"
+                                justifyContent="Center"
+                            >
+                                <Button
+                                    text="Cancel"
+                                    press="onCancel"
+                                    class="sapUiSmallMarginEnd"
+                                    type="Reject"
+                                />
+                                <Button
+                                    text="Submit"
+                                    press="onSubmit"
+                                    type="Accept"
+                                />
+                            </HBox>
+                            <Table
+                                id="idCategoryTable"
+                                inset="false"
+                                class="sapUiSmallMarginTop"
+                            >
+                                <headerToolbar>
+                                    <Toolbar>
+                                        <Title text="Category List" />
+                                    </Toolbar>
+                                </headerToolbar>
+                            </Table>
+                        </content>
+                    </Page>
+                    <Page
+                        id="idAssetCreationPage"
+                        title="Asset Creation"
+                    />
+                </pages>
+            </NavContainer>
         </tnt:mainContents>
     </tnt:ToolPage>
 </mvc:View>
