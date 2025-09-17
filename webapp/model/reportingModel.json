@@ -1,0 +1,127 @@
+{
+  "grnList": {
+    "title": "Grn List",
+    "tableColumns": [
+      {
+        "header": "Po Number",
+        "path": "PoNumber"
+      },
+      {
+        "header": "Item Code",
+        "path": "ItemCode"
+      },
+      {
+        "header": "Item Name",
+        "path": "ItemName"
+      },
+      {
+        "header": "Item Category",
+        "path": "ItemCategory"
+      },
+      {
+        "header": "Expected Qty.",
+        "path": "ExpectedQty"
+      },
+      {
+        "header": "Received Qty.",
+        "path": "ReceivedQty"
+      },
+      {
+        "header": "Received Date",
+        "path": "ReceivedDate"
+      }
+    ],
+    "tableRows": [
+      {
+        "PoNumber": "po2370",
+        "ItemCode": "ITM-1010",
+        "ItemName": "Stapler",
+        "ItemCategory": "CATOFF001",
+        "ExpectedQty": 100,
+        "ReceivedQty": 0,
+        "ReceivedDate": "2025-09-08T10:25:51.790285Z"
+      },
+      {
+        "PoNumber": "456vb",
+        "ItemCode": "ITM-1009",
+        "ItemName": "Hand Wash",
+        "ItemCategory": "CATPER001",
+        "ExpectedQty": 784,
+        "ReceivedQty": 2,
+        "ReceivedDate": "2025-08-28T07:33:47.176739Z"
+      },
+      {
+        "PoNumber": "po2370",
+        "ItemCode": "ITM-1010",
+        "ItemName": "Stapler",
+        "ItemCategory": "CATOFF001",
+        "ExpectedQty": 100,
+        "ReceivedQty": 1,
+        "ReceivedDate": "2025-08-25T13:16:52.607677Z"
+      },
+      {
+        "PoNumber": "po2370",
+        "ItemCode": "ITM-1010",
+        "ItemName": "Stapler",
+        "ItemCategory": "CATOFF001",
+        "ExpectedQty": 100,
+        "ReceivedQty": 2,
+        "ReceivedDate": "2025-08-22T03:04:31.273232Z"
+      },
+      {
+        "PoNumber": "po2370",
+        "ItemCode": "ITM-1010",
+        "ItemName": "Stapler",
+        "ItemCategory": "CATOFF001",
+        "ExpectedQty": 100,
+        "ReceivedQty": 1,
+        "ReceivedDate": "2025-08-13T05:45:10.687572Z"
+      },
+      {
+        "PoNumber": "po2370",
+        "ItemCode": "ITM-1010",
+        "ItemName": "Stapler",
+        "ItemCategory": "CATOFF001",
+        "ExpectedQty": 100,
+        "ReceivedQty": 2,
+        "ReceivedDate": "2025-08-11T07:15:18.364792Z"
+      }
+    ]
+  },
+  "assetItemHistory": {
+    "title": "Asset/Item History",
+      "tableColumns": [
+        {"header": "SKU NO", "path": "SKUNO"},
+        {"header": "Item Code", "path": "ItemCode"},
+        {"header": "Item Name", "path": "ItemName"},
+        {"header": "Item Category", "path": "ItemCategory"},
+        {"header": "Description", "path": "Description"},
+        {"header": "Brand", "path": "Brand"},
+        {"header": "Model", "path": "Model"},
+        {"header": "Color", "path": "Color"},
+        {"header": "Length Cut", "path": "LengthCut"}
+      ],
+      "tableRows": [
+        {"SKUNO": "SKU-EX-2370", "ItemCode": "Ex-2370", "ItemName": "Samsung mobile", "ItemCategory": "Electronics", "Description": ""},
+        {"SKUNO": "sku-cnr-1025", "ItemCode": "cnr-1025", "ItemName": "car breakes", "ItemCategory": "car", "Description": "Maruthi Alto800 car Breakes"},
+        {"SKUNO": "SKU-SGP-1020", "ItemCode": "SGP-1020", "ItemName": "Spices & Herbs", "ItemCategory": "Processed Spices & Herbs", "Description": "Processed spices and herbs for cooking and food production."}
+      ]
+    },
+    "assetTable": {
+      "columns": [
+        {"header": "Asset Code", "path": "AssetCode"},
+        {"header": "Asset Name", "path": "AssetName"},
+        {"header": "Asset Category", "path": "AssetCategory"},
+        {"header": "Brand", "path": "Brand"},
+        {"header": "Model", "path": "Model"},
+        {"header": "Quantity", "path": "Quantity"}
+      ],
+      "tableRows": [
+        {"AssetCode": "MUM-004-2025-09-000005", "AssetName": "ne1", "AssetCategory": "Automotive Parts", "Brand": "Cobb-Oconnor", "Model": "ThinkPad X1 Carbon", "Quantity": null},
+        {"AssetCode": "MUM-004-2025-09-000006", "AssetName": "ne1", "AssetCategory": "Automotive Parts", "Brand": "Cobb-Oconnor", "Model": "RACK-01", "Quantity": null},
+        {"AssetCode": "BAN-005-2025-09-000004", "AssetName": "laptop24", "AssetCategory": "IT Equipment", "Brand": "HPE", "Model": "HP", "Quantity": 24.000},
+        {"AssetCode": "HYD-003-2025-09-000007", "AssetName": "new asse 1", "AssetCategory": "Presentation", "Brand": null, "Model": null, "Quantity": 4.000},
+        {"AssetCode": "HYD-003-2025-09-000006", "AssetName": "new", "AssetCategory": "Networking", "Brand": "Comms", "Model": "ThinkPad X1 Carbon", "Quantity": null}
+      ]
+    }
+}

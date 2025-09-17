@@ -56,9 +56,13 @@
         "type": "sap.ui.model.json.JSONModel",
         "uri": "model/nextrackModel.json"
       },
-       "MasterModel": {
+      "MasterModel": {
         "type": "sap.ui.model.json.JSONModel",
         "uri": "model/masterModel.json"
+      },
+      "ReportingModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/reportingModel.json"
       }
     },
     "resources": {

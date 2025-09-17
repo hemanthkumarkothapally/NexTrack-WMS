@@ -75,20 +75,23 @@
                                     </VBox>
                                 </HBox>
                             </VBox> -->
-                            <f:SimpleForm id="idDynForm" layout="ColumnLayout"></f:SimpleForm>
+                            <f:SimpleForm
+                                id="idDynForm"
+                                layout="ColumnLayout"
+                            />
                             <HBox
                                 class="sapUiSmallMarginTop"
                                 justifyContent="Center"
                             >
                                 <Button
                                     text="Cancel"
-                                    press="onCancel"
+                                    press=".onCancelPress"
                                     class="sapUiSmallMarginEnd"
                                     type="Reject"
                                 />
                                 <Button
                                     text="Submit"
-                                    press="onSubmit"
+                                    press=".onSubmitPress"
                                     type="Accept"
                                 />
                             </HBox>
@@ -96,19 +99,153 @@
                                 id="idCategoryTable"
                                 inset="false"
                                 class="sapUiSmallMarginTop"
-                            >
-                                <headerToolbar>
-                                    <Toolbar>
-                                        <Title text="Category List" />
-                                    </Toolbar>
-                                </headerToolbar>
-                            </Table>
+                            />
                         </content>
                     </Page>
                     <Page
                         id="idAssetCreationPage"
                         title="Asset Creation"
                     />
+                    <Page
+                        id="idGrnListPage"
+                        title="{ReportingModel>/grnList/title}"
+                        class="sapUiContentPadding"
+                    >
+                        <content>
+                            <ScrollContainer
+                                width="100%"
+                                horizontal="true"
+                                vertical="false"
+                            >
+                                <Table
+                                    id="grnTable"
+                                    items="{ReportingModel>/grnList/tableRows}"
+                                >
+                                    <columns>
+                                        <Column>
+                                            <Title text="Po Number" />
+                                        </Column>
+                                        <Column>
+                                            <Title text="Item Code" />
+                                        </Column>
+                                        <Column>
+                                            <Title text="Item Name" />
+                                        </Column>
+                                        <Column>
+                                            <Title text="Item Category" />
+                                        </Column>
+                                        <Column>
+                                            <Title text="Expected Qty." />
+                                        </Column>
+                                        <Column>
+                                            <Title text="Received Qty." />
+                                        </Column>
+                                        <Column>
+                                            <Title text="Received Date" />
+                                        </Column>
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem>
+                                            <cells>
+                                                <Text
+                                                    text="{ReportingModel>PoNumber}"
+                                                    wrapping="false"
+                                                />
+                                                <Text
+                                                    text="{ReportingModel>ItemCode}"
+                                                />
+                                                <Text
+                                                    text="{ReportingModel>ItemName}"
+                                                />
+                                                <Text
+                                                    text="{ReportingModel>ItemCategory}"
+                                                />
+                                                <Text
+                                                    text="{ReportingModel>ExpectedQty}"
+                                                />
+                                                <Text
+                                                    text="{ReportingModel>ReceivedQty}"
+                                                />
+                                                <Text
+                                                    text="{ReportingModel>ReceivedDate}"
+                                                    wrapping="false"
+                                                    width="100%"
+                                                />
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </ScrollContainer>
+                        </content>
+                    </Page>
+                    <Page
+                        id="idAssetHistoryPage"
+                        title="Asset/Item History"
+                        class="sapUiContentPadding"
+                    >
+                        <content>
+                            <f:SimpleForm editable="true">
+                                <f:content>
+                                    <Label text="Asset/Item" />
+
+                                    <ComboBox selectedKey="Item" change=".onItemorAssetPress" width="150px">
+                                        <core:Item
+                                            key="Item"
+                                            text="Item"
+                                        />
+                                        <core:Item
+                                            key="Asset"
+                                            text="Asset"
+                                        />
+                                    </ComboBox>
+                                </f:content>
+                            </f:SimpleForm>
+                            <Table
+                                id="idItemTable"
+                                class="sapUiSmallMarginTop"
+                                visible="true"
+                            />
+                            <Table
+                                id="idAssetTable"
+                                class="sapUiSmallMarginTop"
+                                visible="false"
+                                items="{ReportingModel>/assetTable/tableRows}"
+                            >
+                                <columns>
+                                    <Column>
+                                        <Text text="Asset Code" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Asset Name" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Asset Category" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Brand" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Model" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Quantity" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{ReportingModel>AssetCode}" />
+                                            <Text text="{ReportingModel>AssetName}" />
+                                            <Text text="{ReportingModel>AssetCategory}" />
+                                            <Text text="{ReportingModel>Brand}" />
+                                            <Text text="{ReportingModel>Model}" />
+                                            <Text text="{ReportingModel>Quantity}" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </content>
+                    </Page>
                 </pages>
             </NavContainer>
         </tnt:mainContents>

@@ -49,5 +49,261 @@
         { "header": "Location Type", "path": "LocationType" }
     ],
     "tableDataPath": "/Locations"
-    }
+    },
+    "subLocationMaster": {
+        "title": "Sub-Location Master",
+        "formFields": [
+            { "label": "Location",           "path": "Location",         "type": "Select", "items": ["Kerela", "california", "Hyderabad"] },
+            { "label": "Sub-Location Code",  "path": "SubLocationCode",  "type": "Input",  "editable": false },
+            { "label": "Sub-Location Name",  "path": "SubLocationName",  "type": "Input",  "editable": true },
+            { "label": "Sub-Location Type",  "path": "SubLocationType",  "type": "Select", "items": ["zone1", "zone2", "zone3"] }
+        ],
+        "tableColumns": [
+            { "header": "Location",          "path": "Location" },
+            { "header": "Sub-Location Code", "path": "SubLocationCode" },
+            { "header": "Sub-Location Name", "path": "SubLocationName" },
+            { "header": "Sub-Location Type", "path": "SubLocationType" }
+        ],
+        "tableRows": [
+            { "Location": "Kerela",     "SubLocationCode": "SUBLOC1758004838722",  "SubLocationName": "Kadayiruppu",    "SubLocationType": "zone1" },
+            { "Location": "california", "SubLocationCode": "SUBLOC1757052737611",  "SubLocationName": "San Francisco", "SubLocationType": "zone1" },
+            { "Location": "Hyderabad",  "SubLocationCode": "SUBLOC1755589924652",  "SubLocationName": "Madhapur",      "SubLocationType": "zone1" }
+        ]
+    },
+    "employeeMaster": {
+        "title": "Employee Master",
+        "formFields": [
+        {
+            "label": "Employee Code",
+            "path": "EmployeeCode",
+            "type": "Input",
+            "editable": true
+        },
+        {
+            "label": "Employee Name",
+            "path": "EmployeeName",
+            "type": "Input",
+            "editable": true
+        },
+        {
+            "label": "Email",
+            "path": "Email",
+            "type": "Input",
+            "editable": true
+        },
+        {
+            "label": "Date of Birth",
+            "path": "DateOfBirth",
+            "type": "Date",
+            "editable": true
+        },
+        {
+            "label": "Designation",
+            "path": "Designation",
+            "type": "Select",
+            "items": [],
+            "editable": true
+        },
+        {
+            "label": "Location",
+            "path": "Location",
+            "type": "Select",
+            "items": [],
+            "editable": true
+        },
+        {
+            "label": "Password",
+            "path": "Password",
+            "type": "Input",
+            "editable": true
+        }
+        ],
+        "tableColumns": [
+        {
+            "header": "Employee Code",
+            "path": "EmployeeCode"
+        },
+        {
+            "header": "Name",
+            "path": "Name"
+        },
+        {
+            "header": "Email",
+            "path": "Email"
+        },
+        {
+            "header": "Date of Birth",
+            "path": "DateOfBirth"
+        },
+        {
+            "header": "Designation",
+            "path": "Designation"
+        },
+        {
+            "header": "Location",
+            "path": "Location"
+        }
+        ],
+        "tableRows": [
+        {
+            "EmployeeCode": "EMP1758006301533",
+            "Name": "Joseph",
+            "Email": "josephz@gmail.com",
+            "DateOfBirth": "2025-09-16",
+            "Designation": "staff",
+            "Location": "Kerela"
+        }
+        ]
+    },
+    "antennaMaster": {
+        "title": "Antenna Master",
+        "formFields": [
+        {
+            "label": "Antenna Code",
+            "path": "AntennaCode",
+            "type": "Input",
+            "editable": true
+        },
+        {
+            "label": "Antenna Description",
+            "path": "AntennaDescription",
+            "type": "Input",
+            "editable": true
+        },
+        {
+            "label": "Make",
+            "path": "Make",
+            "type": "Input",
+            "editable": true
+        },
+        {
+            "label": "Model",
+            "path": "Model",
+            "type": "Input",
+            "editable": true
+        },
+        {
+            "label": "Serial Number",
+            "path": "SerialNumber",
+            "type": "Input",
+            "editable": true
+        },
+        {
+            "label": "Remarks",
+            "path": "Remarks",
+            "type": "Input",
+            "editable": true
+        }
+        ],
+        "tableColumns": [
+        {
+            "header": "Antenna Code",
+            "path": "AntennaCode"
+        },
+        {
+            "header": "Antenna Description",
+            "path": "AntennaDescription"
+        },
+        {
+            "header": "Make",
+            "path": "Make"
+        },
+        {
+            "header": "Model",
+            "path": "Model"
+        },
+        {
+            "header": "Serial Number",
+            "path": "SerialNumber"
+        },
+        {
+            "header": "Remarks",
+            "path": "Remarks"
+        }
+        ],
+        "tableRows": [
+        {
+            "AntennaCode": "ANT1755687780040",
+            "AntennaDescription": "Test",
+            "Make": "API",
+            "Model": "PA",
+            "SerialNumber": "API2389",
+            "Remarks": "Good"
+        }
+        ]
+    },
+    "costCenterMaster": {
+        "title": "Cost Center Master",
+        "formFields": [
+        {
+            "label": "Cost Center Code",
+            "path": "CostCenterCode",
+            "type": "Input",
+            "editable": true
+        },
+        {
+            "label": "Cost Center Description",
+            "path": "CostCenterDescription",
+            "type": "Input",
+            "editable": true
+        },
+        {
+            "label": "Notes",
+            "path": "Notes",
+            "type": "Input",
+            "editable": true
+        }
+        ],
+        "tableColumns": [
+        {
+            "header": "Cost Center Code",
+            "path": "CostCenterCode"
+        },
+        {
+            "header": "Cost Center Description",
+            "path": "CostCenterDescription"
+        },
+        {
+            "header": "Notes",
+            "path": "Notes"
+        }
+        ],
+        "tableRows": [
+        {
+            "CostCenterCode": "CCC1753182326583",
+            "CostCenterDescription": "CostCenterA",
+            "Notes": "CostCenterA"
+        },
+        {
+            "CostCenterCode": "CCC1753182334637",
+            "CostCenterDescription": "CostCenterB",
+            "Notes": "CostCenterB"
+        },
+        {
+            "CostCenterCode": "CCC1753182345820",
+            "CostCenterDescription": "CostCenterC",
+            "Notes": "CostCenterC"
+        }
+        ]
+    },
+    "groupMaster": {
+        "title": "Group Master",
+        "formFields": [
+            { "label": "Group Code",        "path": "GroupCode",        "type": "Input", "editable": false },
+            { "label": "Group Description", "path": "GroupDescription", "type": "Input", "editable": true },
+            { "label": "Notes",             "path": "Notes",            "type": "Input", "editable": true }
+        ],
+        "tableColumns": [
+            { "header": "Group Code",        "path": "GroupCode" },
+            { "header": "Group Description", "path": "GroupDescription" },
+            { "header": "Notes",             "path": "Notes" }
+        ],
+        "tableRows": [
+            { "GroupCode": "GRPALP01", "GroupDescription": "GroupAlpha", "Notes": "AlphaGroup" },
+            { "GroupCode": "GRPALP02", "GroupDescription": "GroupBeta",  "Notes": "BetaGroup" },
+            { "GroupCode": "GRPALP03", "GroupDescription": "GroupGamma", "Notes": "GammaGroup" }
+        ]
+        }
+
+
 }

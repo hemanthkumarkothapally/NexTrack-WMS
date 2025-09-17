@@ -62,8 +62,26 @@
   "subCategoryMaster": "idCategoryMasterPage",
   "locationMaster": "idCategoryMasterPage",
   "subLocationMaster": "idCategoryMasterPage",
-  "asset": "idAssetCreationPage"
-  }
+  "employeeMaster": "idCategoryMasterPage",
+  "scheduleMaster": "idCategoryMasterPage",
+  "vendorMaster": "idCategoryMasterPage",
+  "zoneMaster": "idCategoryMasterPage",
+  "readerMaster": "idCategoryMasterPage",
+  "antennaMaster": "idCategoryMasterPage",
+  "zoneReaderMapping": "idCategoryMasterPage",
+  "itemMaster": "idCategoryMasterPage",
+  "costCenterMaster": "idCategoryMasterPage",
+  "groupMaster": "idCategoryMasterPage",
+
+  "asset": "idAssetCreationPage",
+
+  "itemPhysicalVerification": "idAssetCreationPage",
+  "grnList": "idGrnListPage",
+  "assetItemHistory": "idAssetHistoryPage",
+  "assetItemList": "idAssetHistoryPage",
+  "assetPhysicalVerification": "idAssetCreationPage"
+  },
+  "formData":{}
 
 
 }
