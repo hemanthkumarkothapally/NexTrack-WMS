@@ -1,6 +1,7 @@
 {
     "categoryMaster":{
     "title": "Category Master",
+    "sPath":"/categoryMaster",
     "formFields": [
         { "label": "Category Code", "path": "CategoryCode", "type": "Input", "editable": true },
         { "label": "Category Description", "path": "CategoryDescription", "type": "Input", "editable": true },
@@ -20,24 +21,84 @@
             { "CategoryCode": "CT1758005219630", "CategoryDescription": "Spice Blend",      "CategoryType": "Item" }
         ]
 },
-"subCategoryMaster":{
+"subCategoryMaster": {
     "title": "Sub-Category Master",
+    "sPath":"/subCategoryMaster",
     "formFields": [
-        { "label": "Category Code", "path": "CategoryCode", "type": "Select", "items": ["CATOFF003", "CATPRE001", "CATHOM002"] },
-        { "label": "Category Description", "path": "CategoryDescription", "type": "Input", "editable": false },
-        { "label": "Sub-Category Code", "path": "SubCategoryCode", "type": "Input", "editable": false },
-        { "label": "Description", "path": "Description", "type": "Input", "editable": true }
+      {
+        "label": "Category Code",
+        "path": "CategoryCode",
+        "type": "Select",
+        "items": [
+          "CATOFF003",
+          "CATPRE001",
+          "CATHOM002",
+          "CT1758283098600",
+          "CT1758281568991",
+          "CATPOW001"
+        ]
+      },
+      {
+        "label": "Category Description",
+        "path": "CategoryDescription",
+        "type": "Input",
+        "editable": false
+      },
+      {
+        "label": "Sub-Category Code",
+        "path": "SubCategoryCode",
+        "type": "Input",
+        "editable": false
+      },
+      {
+        "label": "Description",
+        "path": "Description",
+        "type": "Input",
+        "editable": true
+      }
     ],
     "tableColumns": [
-        { "header": "Category Code", "path": "CategoryCode" },
-        { "header": "Category Disc", "path": "CategoryDescription" },
-        { "header": "Sub-Category Code", "path": "SubCategoryCode" },
-        { "header": "Description", "path": "Description" }
+      {
+        "header": "Category Code",
+        "path": "CategoryCode"
+      },
+      {
+        "header": "Category Disc",
+        "path": "CategoryDescription"
+      },
+      {
+        "header": "Sub-Category Code",
+        "path": "SubCategoryCode"
+      },
+      {
+        "header": "Description",
+        "path": "Description"
+      }
     ],
-    "tableDataPath": "/SubCategories"
-    },
+    "tableRows": [
+      {
+        "CategoryCode": "CT1758283098600",
+        "CategoryDescription": "IT Infrastructure",
+        "SubCategoryCode": "SUB1758283121568",
+        "Description": "wheel chair"
+      },
+      {
+        "CategoryCode": "CT1758281568991",
+        "CategoryDescription": "IT Equipment",
+        "SubCategoryCode": "SUB1758281758501",
+        "Description": "mouse"
+      },
+      {
+        "CategoryCode": "CATPOW001",
+        "CategoryDescription": "Power Equipment",
+        "SubCategoryCode": "SUB1758180993285",
+        "Description": "yihujkl"
+      }
+    ]
+  },
     "locationMaster":{
     "title": "Location Master",
+    "sPath":"/locationMaster",
     "formFields": [
         { "label": "Location Code", "path": "LocationCode", "type": "Input", "editable": false },
         { "label": "Location Name", "path": "LocationName", "type": "Input", "editable": true },
@@ -48,10 +109,37 @@
         { "header": "Location Name", "path": "LocationName" },
         { "header": "Location Type", "path": "LocationType" }
     ],
-    "tableDataPath": "/Locations"
+    "tableRows": [
+      {
+        "LocationCode": "LOC1758281779007",
+        "LocationName": "Tirupathi",
+        "LocationType": "store"
+      },
+      {
+        "LocationCode": "LOC1758004819833",
+        "LocationName": "Kerela",
+        "LocationType": "production"
+      },
+      {
+        "LocationCode": "LOC1757052717666",
+        "LocationName": "california",
+        "LocationType": "production"
+      },
+      {
+        "LocationCode": "LOCMUM001",
+        "LocationName": "Mumbai",
+        "LocationType": "Warehouse"
+      },
+      {
+        "LocationCode": "LOCCHE001",
+        "LocationName": "Chennai",
+        "LocationType": "production"
+      }
+    ]
     },
     "subLocationMaster": {
         "title": "Sub-Location Master",
+        "sPath":"/subLocationMaster",
         "formFields": [
             { "label": "Location",           "path": "Location",         "type": "Select", "items": ["Kerela", "california", "Hyderabad"] },
             { "label": "Sub-Location Code",  "path": "SubLocationCode",  "type": "Input",  "editable": false },
@@ -72,6 +160,7 @@
     },
     "employeeMaster": {
         "title": "Employee Master",
+        "sPath":"/employeeMaster",
         "formFields": [
         {
             "label": "Employee Code",
@@ -155,8 +244,612 @@
         }
         ]
     },
+    "scheduleMaster": {
+    "title": "Schedule Master",
+    "sPath":"/scheduleMaster",
+    "formFields": [
+      {
+        "label": "Asset/Item",
+        "path": "AssetItem",
+        "type": "Select",
+        "editable": true,
+        "items": ["Item", "Asset"]
+      },
+      {
+        "label": "Schedule Number",
+        "path": "ScheduleNumber",
+        "type": "Input",
+        "editable": true
+      },
+      {
+        "label": "Schedule Description",
+        "path": "ScheduleDescription",
+        "type": "Input",
+        "editable": true
+      },
+      {
+        "label": "Schedule Type",
+        "path": "ScheduleType",
+        "type": "Select",
+        "editable": true,
+        "items": ["Select", "daywise", "weekly"]
+      },
+      {
+        "label": "Schedule Create Date",
+        "path": "ScheduleCreateDate",
+        "type": "Date",
+        "editable": true
+      },
+      {
+        "label": "Audit Start Date",
+        "path": "AuditStartDate",
+        "type": "Date",
+        "editable": true
+      },
+      {
+        "label": "Audit End Date",
+        "path": "AuditEndDate",
+        "type": "Date",
+        "editable": true
+      },
+      {
+        "label": "Audit Location",
+        "path": "AuditLocation",
+        "type": "Select",
+        "editable": true,
+        "items": ["Select", "Kerela", "Hyderabad", "Mumbai", "Chennai"]
+      },
+      {
+        "label": "Audit Category",
+        "path": "AuditCategory",
+        "type": "Select",
+        "editable": true,
+        "items": ["Select", "PhysicalVerification", "Documentation"]
+      },
+      {
+        "label": "Select Employees",
+        "path": "SelectEmployees",
+        "type": "Select",
+        "editable": true,
+        "items": ["Select", "Joseph", "Ashok", "Nithinn", "Raja", "seMhar"]
+      },
+      {
+        "label": "Box No.",
+        "path": "BoxNo",
+        "type": "Input",
+        "editable": true
+      }
+    ],
+    "tableColumns": [
+      {
+        "header": "Schedule Number",
+        "path": "ScheduleNumber"
+      },
+      {
+        "header": "Schedule Description",
+        "path": "ScheduleDescription"
+      },
+      {
+        "header": "Schedule Type",
+        "path": "ScheduleType"
+      },
+      {
+        "header": "Schedule Create Date",
+        "path": "ScheduleCreateDate"
+      },
+      {
+        "header": "Audit Start Date",
+        "path": "AuditStartDate"
+      },
+      {
+        "header": "Audit End Date",
+        "path": "AuditEndDate"
+      },
+      {
+        "header": "Audit Location",
+        "path": "AuditLocation"
+      },
+      {
+        "header": "Audit Category",
+        "path": "AuditCategory"
+      },
+      {
+        "header": "Select Employees",
+        "path": "SelectEmployees"
+      },
+      {
+        "header": "Box No.",
+        "path": "BoxNo"
+      },
+      {
+        "header": "Type",
+        "path": "Type"
+      }
+    ],
+    "tableRows": [
+      {
+        "ScheduleNumber": "SCH174980750123701",
+        "ScheduleDescription": "Test Audit",
+        "ScheduleType": "daywise",
+        "ScheduleCreateDate": "2025-09-17",
+        "AuditStartDate": "2025-09-17",
+        "AuditEndDate": "2025-09-17",
+        "AuditLocation": "Kerela",
+        "AuditCategory": "PhysicalVerification",
+        "SelectEmployees": "Joseph",
+        "BoxNo": "1",
+        "Type": "Item"
+      },
+      {
+        "ScheduleNumber": "SCH1757606414060",
+        "ScheduleDescription": "Jewellery Items Audit",
+        "ScheduleType": "daywise",
+        "ScheduleCreateDate": "2025-09-11",
+        "AuditStartDate": "2025-09-11",
+        "AuditEndDate": "2025-09-11",
+        "AuditLocation": "Hyderabad",
+        "AuditCategory": "PhysicalVerification",
+        "SelectEmployees": "Ashok",
+        "BoxNo": "4",
+        "Type": "Item"
+      },
+      {
+        "ScheduleNumber": "SCH1757501124408",
+        "ScheduleDescription": "Jewellery Daily Audit",
+        "ScheduleType": "daywise",
+        "ScheduleCreateDate": "2025-09-10",
+        "AuditStartDate": "2025-09-10",
+        "AuditEndDate": "2025-09-10",
+        "AuditLocation": "Hyderabad",
+        "AuditCategory": "PhysicalVerification",
+        "SelectEmployees": "Nithinn",
+        "BoxNo": "4",
+        "Type": "Item"
+      },
+      {
+        "ScheduleNumber": "SCH1757078025616",
+        "ScheduleDescription": "Daily Audit",
+        "ScheduleType": "daywise",
+        "ScheduleCreateDate": "2025-09-05",
+        "AuditStartDate": "2025-09-05",
+        "AuditEndDate": "2025-09-05",
+        "AuditLocation": "Mumbai",
+        "AuditCategory": "PhysicalVerification",
+        "SelectEmployees": "Raja",
+        "BoxNo": "1",
+        "Type": "Item"
+      },
+      {
+        "ScheduleNumber": "SCH1756453485444",
+        "ScheduleDescription": "Daily Audit Stellantis",
+        "ScheduleType": "daywise",
+        "ScheduleCreateDate": "2025-08-29",
+        "AuditStartDate": "2025-08-29",
+        "AuditEndDate": "2025-08-29",
+        "AuditLocation": "Chennai",
+        "AuditCategory": "PhysicalVerification",
+        "SelectEmployees": "seMhar",
+        "BoxNo": "1",
+        "Type": "Item"
+      }
+    ]
+  },
+  "vendorMaster": {
+    "title": "Vendor Master",
+    "sPath":"/vendorMaster",
+    "formFields": [
+      {
+        "label": "Vendor Code",
+        "path": "VendorCode",
+        "type": "Input",
+        "editable": true
+      },
+      {
+        "label": "Vendor Name",
+        "path": "VendorName",
+        "type": "Input",
+        "editable": true
+      },
+      {
+        "label": "Address",
+        "path": "Address",
+        "type": "Input",
+        "editable": true
+      },
+      {
+        "label": "Vendor Type",
+        "path": "VendorType",
+        "type": "Select",
+        "items": [
+          "Select",
+          "raw_material",
+          "service"
+        ]
+      },
+      {
+        "label": "Remarks",
+        "path": "Remarks",
+        "type": "Input",
+        "editable": true
+      },
+      {
+        "label": "Contact Number",
+        "path": "ContactNumber",
+        "type": "Input",
+        "editable": true
+      },
+      {
+        "label": "Email",
+        "path": "Email",
+        "type": "Input",
+        "editable": true
+      },
+      {
+        "label": "File(PDF)",
+        "path": "File",
+        "type": "FileUpload",
+        "editable": true
+      },
+      {
+        "label": "GST No.",
+        "path": "GSTNo",
+        "type": "Input",
+        "editable": true
+      },
+      {
+        "label": "PAN",
+        "path": "PAN",
+        "type": "Input",
+        "editable": true
+      }
+    ],
+    "tableColumns": [
+      {
+        "header": "Vendor Code",
+        "path": "VendorCode"
+      },
+      {
+        "header": "Vendor Name",
+        "path": "VendorName"
+      },
+      {
+        "header": "Address",
+        "path": "Address"
+      },
+      {
+        "header": "Vendor Type",
+        "path": "VendorType"
+      },
+      {
+        "header": "Remarks",
+        "path": "Remarks"
+      },
+      {
+        "header": "Contact",
+        "path": "ContactNumber"
+      },
+      {
+        "header": "Email",
+        "path": "Email"
+      },
+      {
+        "header": "Document",
+        "path": "File"
+      },
+      {
+        "header": "GST No.",
+        "path": "GSTNo"
+      },
+      {
+        "header": "PAN",
+        "path": "PAN"
+      }
+    ],
+    "tableRows": [
+      {
+        "VendorCode": "VN1755684946120",
+        "VendorName": "test2",
+        "Address": "hitech city",
+        "VendorType": "raw_material",
+        "Remarks": "Testing required",
+        "ContactNumber": null,
+        "Email": null,
+        "File": "Download",
+        "GSTNo": "22456ty",
+        "PAN": null
+      },
+      {
+        "VendorCode": "VN1755684466569",
+        "VendorName": "venu",
+        "Address": "hitech city",
+        "VendorType": "raw_material",
+        "Remarks": "Testing required",
+        "ContactNumber": "Steve Marsh",
+        "Email": "siva@processweaver.com",
+        "File": "Download",
+        "GSTNo": null,
+        "PAN": null
+      }
+    ]
+  },
+  "zoneMaster": {
+    "title": "Zone Master",
+    "sPath":"/zoneMaster",
+
+    "formFields": [
+      {
+        "label": "Zone Code",
+        "path": "ZoneCode",
+        "type": "Input",
+        "editable": true
+      },
+      {
+        "label": "Zone Name",
+        "path": "ZoneName",
+        "type": "Input",
+        "editable": true
+      },
+      {
+        "label": "Location",
+        "path": "Location",
+        "type": "Select",
+        "items": [
+          "Select",
+          "Kerela",
+          "Chennai"
+        ]
+      },
+      {
+        "label": "Sub-Location",
+        "path": "SubLocation",
+        "type": "Select",
+        "items": [
+          "Sub Location",
+          "Kadayiruppu",
+          "Thoraipakam"
+        ]
+      },
+      {
+        "label": "From Location",
+        "path": "FromLocation",
+        "type": "Select",
+        "items": [
+          "Select",
+          "Kerela",
+          "Chennai"
+        ]
+      },
+      {
+        "label": "To Location",
+        "path": "ToLocation",
+        "type": "Select",
+        "items": [
+          "Select",
+          "Kerela",
+          "Chennai"
+        ]
+      },
+      {
+        "label": "From Sub-Location",
+        "path": "FromSubLocation",
+        "type": "Select",
+        "items": [
+          "From Sub Location",
+          "Kadayiruppu",
+          "Thoraipakam"
+        ]
+      },
+      {
+        "label": "To Sub-Location",
+        "path": "ToSubLocation",
+        "type": "Select",
+        "items": [
+          "To Sub Location",
+          "Kadayiruppu",
+          "Thoraipakam"
+        ]
+      },
+      {
+        "label": "Remarks",
+        "path": "Remarks",
+        "type": "Input",
+        "editable": true
+      }
+    ],
+    "tableColumns": [
+      {
+        "header": "Zone Code",
+        "path": "ZoneCode"
+      },
+      {
+        "header": "Zone Name",
+        "path": "ZoneName"
+      },
+      {
+        "header": "Location",
+        "path": "Location"
+      },
+      {
+        "header": "Sub-Location",
+        "path": "SubLocation"
+      },
+      {
+        "header": "From Location",
+        "path": "FromLocation"
+      },
+      {
+        "header": "To Location",
+        "path": "ToLocation"
+      },
+      {
+        "header": "From Sub-Location",
+        "path": "FromSubLocation"
+      },
+      {
+        "header": "To Sub-Location",
+        "path": "ToSubLocation"
+      },
+      {
+        "header": "Remarks",
+        "path": "Remarks"
+      }
+    ],
+    "tableRows": [
+      {
+        "ZoneCode": "ZN1758006367034",
+        "ZoneName": "Production Zone",
+        "Location": "Kerela",
+        "SubLocation": "Kadayiruppu",
+        "FromLocation": "Kerela",
+        "ToLocation": "Kerela",
+        "FromSubLocation": "Kadayiruppu",
+        "ToSubLocation": "Kadayiruppu",
+        "Remarks": "Production Area"
+      },
+      {
+        "ZoneCode": "1756379653063",
+        "ZoneName": "Storage parts",
+        "Location": "Chennai",
+        "SubLocation": "Thoraipakam",
+        "FromLocation": "Chennai",
+        "ToLocation": "Chennai",
+        "FromSubLocation": "Thoraipakam",
+        "ToSubLocation": "Thoraipakam",
+        "Remarks": "Storing parts"
+      }
+    ]
+  },
+  "readerMaster": {
+    "title": "Reader Master",
+    "sPath":"/readerMaster",
+    "formFields": [
+      {
+        "label": "Reader Code",
+        "path": "ReaderCode",
+        "type": "Input",
+        "editable": true
+      },
+      {
+        "label": "Reader Name",
+        "path": "ReaderName",
+        "type": "Input",
+        "editable": true
+      },
+      {
+        "label": "Reader Description",
+        "path": "ReaderDescription",
+        "type": "Input",
+        "editable": true
+      },
+      {
+        "label": "Reader Point",
+        "path": "ReaderPoint",
+        "type": "Input",
+        "editable": true
+      },
+      {
+        "label": "MAC Address",
+        "path": "MACAddress",
+        "type": "Input",
+        "editable": true
+      },
+      {
+        "label": "Make",
+        "path": "Make",
+        "type": "Input",
+        "editable": true
+      },
+      {
+        "label": "Model",
+        "path": "Model",
+        "type": "Input",
+        "editable": true
+      },
+      {
+        "label": "Reader Antenna Ports",
+        "path": "ReaderAntennaPorts",
+        "type": "Select",
+        "items": [
+          "Select",
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      {
+        "label": "Remarks",
+        "path": "Remarks",
+        "type": "Input",
+        "editable": true
+      }
+    ],
+    "tableColumns": [
+      {
+        "header": "Reader Code",
+        "path": "ReaderCode"
+      },
+      {
+        "header": "Reader Name",
+        "path": "ReaderName"
+      },
+      {
+        "header": "Description",
+        "path": "ReaderDescription"
+      },
+      {
+        "header": "Reader Point",
+        "path": "ReaderPoint"
+      },
+      {
+        "header": "MAC Address",
+        "path": "MACAddress"
+      },
+      {
+        "header": "Make",
+        "path": "Make"
+      },
+      {
+        "header": "Model",
+        "path": "Model"
+      },
+      {
+        "header": "Reader Antenna Ports",
+        "path": "ReaderAntennaPorts"
+      },
+      {
+        "header": "Remarks",
+        "path": "Remarks"
+      }
+    ],
+    "tableRows": [
+      {
+        "ReaderCode": "RD17556093282600",
+        "ReaderName": "test",
+        "ReaderDescription": "test",
+        "ReaderPoint": "test",
+        "MACAddress": "454",
+        "Make": "test",
+        "Model": "test",
+        "ReaderAntennaPorts": "2",
+        "Remarks": "nothing"
+      },
+      {
+        "ReaderCode": "RD2370",
+        "ReaderName": "Postman Reader testing",
+        "ReaderDescription": "Testing the APIs",
+        "ReaderPoint": "Testing room",
+        "MACAddress": "00:00:00:00:00:00",
+        "Make": "test",
+        "Model": "test",
+        "ReaderAntennaPorts": "2",
+        "Remarks": "test"
+      }
+    ]
+  },
     "antennaMaster": {
         "title": "Antenna Master",
+        "sPath":"/antennaMaster",
         "formFields": [
         {
             "label": "Antenna Code",
@@ -232,8 +925,271 @@
         }
         ]
     },
+    "zoneReaderMapping": {
+    "title": "Zone Reader Mapping",
+    "sPath":"/zoneReaderMapping",
+    "formFields": [
+      {
+        "label": "Location",
+        "path": "Location",
+        "type": "Select",
+        "editable": true,
+        "items": [
+          "Select",
+          "Mumbai"
+        ]
+      },
+      {
+        "label": "Zone",
+        "path": "Zone",
+        "type": "Select",
+        "editable": true,
+        "items": [
+          "Select",
+          "Storage",
+          "Production Zone"
+        ]
+      },
+      {
+        "label": "RFID Reader",
+        "path": "RFIDReader",
+        "type": "Select",
+        "editable": true,
+        "items": [
+          "Select",
+          "RD1753177428415"
+        ]
+      },
+      {
+        "label": "Reader Point",
+        "path": "ReaderPoint",
+        "type": "Input",
+        "editable": true
+      },
+      {
+        "label": "Reader Antenna Port",
+        "path": "ReaderAntennaPort",
+        "type": "Select",
+        "editable": true,
+        "items": [
+          "Select",
+          "1",
+          "2"
+        ]
+      },
+      {
+        "label": "Antenna",
+        "path": "Antenna",
+        "type": "Select",
+        "editable": true,
+        "items": [
+          "Select",
+          "ANT1753177495485",
+          "ANT1753177537428"
+        ]
+      },
+      {
+        "label": "Antenna Type",
+        "path": "AntennaType",
+        "type": "Select",
+        "editable": true,
+        "items": [
+          "Select",
+          "exit",
+          "entry"
+        ]
+      },
+      {
+        "label": "Remarks",
+        "path": "Remarks",
+        "type": "Input",
+        "editable": true
+      }
+    ],
+    "tableColumns": [
+      {
+        "header": "Antenna",
+        "path": "Antenna"
+      },
+      {
+        "header": "Antenna Type",
+        "path": "AntennaType"
+      },
+      {
+        "header": "RFID Reader",
+        "path": "RFIDReader"
+      },
+      {
+        "header": "Reader Point",
+        "path": "ReaderPoint"
+      },
+      {
+        "header": "Reader Antenna Ports",
+        "path": "ReaderAntennaPort"
+      },
+      {
+        "header": "Location",
+        "path": "Location"
+      },
+      {
+        "header": "Zone",
+        "path": "Zone"
+      },
+      {
+        "header": "Remarks",
+        "path": "Remarks"
+      }
+    ],
+    "tableRows": [
+      {
+        "Antenna": "ANT1753177495485",
+        "AntennaType": "exit",
+        "RFIDReader": "RD1753177428415",
+        "ReaderPoint": "server room",
+        "ReaderAntennaPort": 2,
+        "Location": "Mumbai",
+        "Zone": "Storage",
+        "Remarks": "Wizpro antenna in storage room"
+      },
+      {
+        "Antenna": "ANT1753177537428",
+        "AntennaType": "entry",
+        "RFIDReader": "RD1753177428415",
+        "ReaderPoint": "server room",
+        "ReaderAntennaPort": 1,
+        "Location": "Mumbai",
+        "Zone": "Production Zone",
+        "Remarks": "Zebra Antenna in server room"
+      }
+    ]
+  },
+  "itemMaster": {
+    "title": "Item Master",
+    "sPath":"/itemMaster",
+    "formFields": [
+      {
+        "label": "SKU No.",
+        "path": "SKUNo",
+        "type": "Input",
+        "editable": true
+      },
+      {
+        "label": "Item Name",
+        "path": "ItemName",
+        "type": "Input",
+        "editable": true
+      },
+      {
+        "label": "Item Code",
+        "path": "ItemCode",
+        "type": "Input",
+        "editable": true
+      },
+      {
+        "label": "Item Category",
+        "path": "ItemCategory",
+        "type": "Select",
+        "editable": true,
+        "items": ["Select", "Airvehicle", "Electronics", "car"]
+      },
+      {
+        "label": "Description",
+        "path": "Description",
+        "type": "Input",
+        "editable": true
+      },
+      {
+        "label": "Brand",
+        "path": "Brand",
+        "type": "Select",
+        "editable": true,
+        "items": ["Select", "indigo", "LG", "maruthi"]
+      },
+      {
+        "label": "Model",
+        "path": "Model",
+        "type": "Select",
+        "editable": true,
+        "items": ["Select", "flight", "ultra mobile", "Alto800"]
+      },
+      {
+        "label": "Color",
+        "path": "Color",
+        "type": "Select",
+        "editable": true,
+        "items": ["Select", "White", "Blue", "car"]
+      }
+    ],
+    "tableColumns": [
+      {
+        "header": "SKU No.",
+        "path": "SKUNo"
+      },
+      {
+        "header": "Item Name",
+        "path": "ItemName"
+      },
+      {
+        "header": "Item Code",
+        "path": "ItemCode"
+      },
+      {
+        "header": "Item Category",
+        "path": "ItemCategory"
+      },
+      {
+        "header": "Description",
+        "path": "Description"
+      },
+      {
+        "header": "Brand",
+        "path": "Brand"
+      },
+      {
+        "header": "Model",
+        "path": "Model"
+      },
+      {
+        "header": "Color",
+        "path": "Color"
+      }
+    ],
+    "tableRows": [
+      {
+        "SKUNo": "SKU-CNR-24",
+        "ItemName": "Aeroplane",
+        "ItemCode": "CNR-24",
+        "ItemCategory": "Airvehicle",
+        "Description": "Aeroplane",
+        "Brand": "indigo",
+        "Model": "flight",
+        "Color": "White"
+      },
+      {
+        "SKUNo": "sku-ex-01",
+        "ItemName": "S25",
+        "ItemCode": "SS-01",
+        "ItemCategory": "Electronics",
+        "Description": "S25 ultra mobile",
+        "Brand": "LG",
+        "Model": "ultra mobile",
+        "Color": "Blue"
+      },
+      {
+        "SKUNo": "SKU-SGP-1024",
+        "ItemName": "car Door",
+        "ItemCode": "SGP-1024",
+        "ItemCategory": "car",
+        "Description": "Maruthi Alto800 car door",
+        "Brand": "maruthi",
+        "Model": "hatchback",
+        "Color": "Blue"
+      }
+    ]
+  },
     "costCenterMaster": {
         "title": "Cost Center Master",
+        "sPath":"/costCenterMaster",
         "formFields": [
         {
             "label": "Cost Center Code",
@@ -288,6 +1244,7 @@
     },
     "groupMaster": {
         "title": "Group Master",
+        "sPath":"/groupMaster",
         "formFields": [
             { "label": "Group Code",        "path": "GroupCode",        "type": "Input", "editable": false },
             { "label": "Group Description", "path": "GroupDescription", "type": "Input", "editable": true },
@@ -304,6 +1261,5 @@
             { "GroupCode": "GRPALP03", "GroupDescription": "GroupGamma", "Notes": "GammaGroup" }
         ]
         }
-
 
 }

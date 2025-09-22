@@ -1,176 +1,230 @@
-<mvc:View
+<mvc:View xmlns:odata="sap.ui.comp.odata"
+    xmlns:f2="sap.f"
+    xmlns:l="sap.ui.layout"
     xmlns:f="sap.ui.layout.form"
     xmlns:core="sap.ui.core"
-    xmlns:tnt="sap.tnt"
-    controllerName="nextrackwms.nextrackwms.controller.Main"
+    xmlns:tnt="sap.tnt" controllerName="nextrackwms.nextrackwms.controller.Main"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
->
+    xmlns:card="sap.f.cards"
+    xmlns:crd="sap.f"
+    xmlns:t="sap.ui.table"
+    xmlns:u="sap.ui.unified">
     <tnt:ToolPage id="mainpage">
         <tnt:header>
-            <tnt:ToolHeader
-                class="headerclass"
-                height="40px"
-            >
-                <Button
-                    id="sideNavigationToggleButton"
-                    icon="sap-icon://menu2"
-                    type="Transparent"
-                    press=".onMenuButtonPress"
-                />
+            <tnt:ToolHeader class="headerclass" height="40px">
+                <Button id="sideNavigationToggleButton" icon="sap-icon://menu2" type="Transparent" press=".onMenuButtonPress" />
                 <Title text="NEXTRACK WMS" />
             </tnt:ToolHeader>
         </tnt:header>
         <tnt:sideContent>
-            <tnt:SideNavigation
-                id="sidecontent"
-                expanded="true"
-                itemSelect="onItemSelect"
-                class="mySmallSideNav"
-            >
+            <tnt:SideNavigation id="sidecontent" expanded="true" itemSelect="onItemSelect" class="mySmallSideNav">
                 <tnt:NavigationList items="{NexTrackModel>/navigation}">
-                    <tnt:NavigationListItem
-                        text="{NexTrackModel>text}"
-                        icon="{NexTrackModel>icon}"
-                        key="{NexTrackModel>key}"
-                        press=".onQuickActionPress"
-                        expanded="{NexTrackModel>expanded}"
-                        items="{
+                    <tnt:NavigationListItem text="{NexTrackModel>text}" icon="{NexTrackModel>icon}" key="{NexTrackModel>key}" press=".onQuickActionPress" expanded="{NexTrackModel>expanded}" items="{
                 path: 'NexTrackModel>children'
-            }"
-                        selectable="false"
-                    >
-                        <tnt:NavigationListItem
-                            text="{NexTrackModel>text}"
-                            icon="{NexTrackModel>icon}"
-                            key="{NexTrackModel>key}"
-                            press=".onQuickActionPress"
-                        />
+            }" selectable="false">
+                        <tnt:NavigationListItem text="{NexTrackModel>text}" icon="{NexTrackModel>icon}" key="{NexTrackModel>key}" press=".onQuickActionPress" />
                     </tnt:NavigationListItem>
                 </tnt:NavigationList>
             </tnt:SideNavigation>
         </tnt:sideContent>
         <tnt:mainContents>
-            <NavContainer id="maincontainer">
+            <NavContainer initialPage="idDashboardPage" id="maincontainer">
                 <pages>
-                    <Page
-                        id="idCategoryMasterPage"
-                        title="{config>/title}"
-                        class="sapUiContentPadding"
-                    >
+                    <Page id="idDashboardPage" title="Dashboard" backgroundDesign="Solid">
                         <content>
-                            <!-- <VBox
-                                items="{config>/formFields}"
-                                class="sapUiSmallMargin"
-                            >
-                                <HBox class="sapUiTinyMarginBottom">
-                                    <VBox width="200px">
-                                        <Label
-                                            text="{config>label}"
-                                            class="sapUiTinyMarginEnd"
-                                        />
-                                    </VBox>
-                                    <VBox width="300px">
-                                        <Input />
-                                    </VBox>
+                            <ScrollContainer height="auto" width="100%" horizontal="true" vertical="false" class="sapUiSmallMargin">
+                                <HBox>
+                                    <f2:Card width="250px" class="sapUiSmallMarginEnd assetTaggedCard">
+                                        <f2:header>
+                                            <card:Header title="Asset Information" />
+                                        </f2:header>
+                                        <f2:content>
+                                            <VBox class="sapUiSmallMargin" width="100%">
+                                                <HBox justifyContent="SpaceBetween" class="card-item-container">
+                                                    <Text text="Total Asset" class="card-item-label" />
+                                                    <Text text="0" class="card-item-value" />
+                                                </HBox>
+                                                <HBox justifyContent="SpaceBetween" class="card-item-container">
+                                                    <Text text="RFID Tagged Asset" class="card-item-label" />
+                                                    <Text text="0" class="card-item-value" />
+                                                </HBox>
+                                                <HBox justifyContent="SpaceBetween" class="card-item-container">
+                                                    <Text text="RFID Untagged Asset" class="card-item-label" />
+                                                    <Text text="0" class="card-item-value" />
+                                                </HBox>
+                                            </VBox>
+                                        </f2:content>
+                                    </f2:Card>
+                                    <f2:Card width="250px" class="sapUiSmallMarginEnd assetTaggedCard">
+                                        <f2:header>
+                                            <card:Header title="Asset Tagged" />
+                                        </f2:header>
+                                        <f2:content>
+                                            <VBox class="sapUiSmallMargin" width="100%">
+                                                <HBox justifyContent="SpaceBetween" class="card-item-container">
+                                                    <Text text="RFID Tagged Asset" class="card-item-label" />
+                                                    <Text text="0" class="card-item-value" />
+                                                </HBox>
+                                                <HBox justifyContent="SpaceBetween" class="card-item-container">
+                                                    <Text text="Antenna Mapped Asset" class="card-item-label" />
+                                                    <Text text="0" class="card-item-value" />
+                                                </HBox>
+                                                <HBox justifyContent="SpaceBetween" class="card-item-container">
+                                                    <Text text="Antenna Unmapped Asset" class="card-item-label" />
+                                                    <Text text="0" class="card-item-value" />
+                                                </HBox>
+                                            </VBox>
+                                        </f2:content>
+                                    </f2:Card>
+                                    <f2:Card width="250px" class="sapUiSmallMarginEnd assetTaggedCard">
+                                        <f2:header>
+                                            <card:Header title="Asset Continuous Scanning" />
+                                        </f2:header>
+                                        <f2:content>
+                                            <VBox class="sapUiSmallMargin" width="100%">
+                                                <HBox justifyContent="SpaceBetween" class="card-item-container">
+                                                    <Text text="Antenna Mapped Asset" class="card-item-label" />
+                                                    <Text text="0" class="card-item-value" />
+                                                </HBox>
+                                                <HBox justifyContent="SpaceBetween" class="card-item-container">
+                                                    <Text text="Asset Scanning" class="card-item-label" />
+                                                    <Text text="0" class="card-item-value" />
+                                                </HBox>
+                                                <HBox justifyContent="SpaceBetween" class="card-item-container">
+                                                    <Text text="Unscanned Asset" class="card-item-label" />
+                                                    <Text text="0" class="card-item-value" />
+                                                </HBox>
+                                            </VBox>
+                                        </f2:content>
+                                    </f2:Card>
+                                    <f2:Card width="250px" height="129px" class="sapUiSmallMarginEnd sapUiSmallMarginBottom assetTaggedCard">
+                                        <f2:header>
+                                            <card:Header title="Asset Transit" />
+                                        </f2:header>
+                                        <f2:content>
+                                            <VBox class="sapUiSmallMargin" width="100%">
+                                                <HBox justifyContent="SpaceBetween" class="card-item-container">
+                                                    <Text text="Antenna Mapped Asset" class="card-item-label" />
+                                                    <Text text="0" class="card-item-value" />
+                                                </HBox>
+                                                <HBox justifyContent="SpaceBetween" class="card-item-container">
+                                                    <Text text="Unauthorized/In-Transit Asset" class="card-item-label" />
+                                                    <Text text="0" class="card-item-value" />
+                                                </HBox>
+                                            </VBox>
+                                        </f2:content>
+                                    </f2:Card>
+                                    <f2:Card width="250px" height="129px" class="sapUiSmallMarginEnd assetTaggedCard">
+                                        <f2:header>
+                                            <card:Header title="Location Mismatch Asset" />
+                                        </f2:header>
+                                        <f2:content>
+                                            <VBox class="sapUiSmallMargin" width="100%">
+                                                <HBox justifyContent="SpaceBetween" class="card-item-container">
+                                                    <Text text="Assets" class="card-item-label" />
+                                                    <Text text="0" class="card-item-value" />
+                                                </HBox>
+                                            </VBox>
+                                        </f2:content>
+                                    </f2:Card>
                                 </HBox>
-                            </VBox> -->
-                            <f:SimpleForm
-                                id="idDynForm"
-                                layout="ColumnLayout"
-                            />
-                            <HBox
-                                class="sapUiSmallMarginTop"
-                                justifyContent="Center"
-                            >
-                                <Button
-                                    text="Cancel"
-                                    press=".onCancelPress"
-                                    class="sapUiSmallMarginEnd"
-                                    type="Reject"
-                                />
-                                <Button
-                                    text="Submit"
-                                    press=".onSubmitPress"
-                                    type="Accept"
-                                />
-                            </HBox>
-                            <Table
-                                id="idCategoryTable"
-                                inset="false"
-                                class="sapUiSmallMarginTop"
-                            />
+                            </ScrollContainer>
+                            <Table id="assetTransitTable" sticky="ColumnHeaders" class="table-bordered dashboard-table-style" items="{path: 'NexTrackModel>/DashbordtableRows'}">
+                                <columns>
+                                    <Column>
+                                        <Text text="RFID No." />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Asset ID" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Asset Description" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Employee Name" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="From Zone" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="To Zone" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Last Scanned Location" />
+                                    </Column>
+                                    <Column>
+                                        <Text text="Last Updated" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{NexTrackModel>RFIDNo}" />
+                                            <Text text="{NexTrackModel>AssetID}" />
+                                            <Text text="{NexTrackModel>AssetDescription}" />
+                                            <Text text="{NexTrackModel>EmployeeName}" />
+                                            <Text text="{NexTrackModel>FromZone}" />
+                                            <Text text="{NexTrackModel>ToZone}" />
+                                            <Text text="{NexTrackModel>LastScannedLocation}" />
+                                            <Text text="{NexTrackModel>LastUpdated}" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
                         </content>
                     </Page>
-                    <Page
-                        id="idAssetCreationPage"
-                        title="Asset Creation"
-                    />
-                    <Page
-                        id="idGrnListPage"
-                        title="{ReportingModel>/grnList/title}"
-                        class="sapUiContentPadding"
-                    >
+                    <Page id="idCategoryMasterPage" titleAlignment="Start" class="sapUiContentPadding masterPageBackground" backgroundDesign="Solid">
+                        <headerContent>
+                            <Title text="{config>/title}" />
+                            <ToolbarSpacer />
+                        </headerContent>
                         <content>
-                            <ScrollContainer
-                                width="100%"
-                                horizontal="true"
-                                vertical="false"
-                            >
-                                <Table
-                                    id="grnTable"
-                                    items="{ReportingModel>/grnList/tableRows}"
-                                >
+                            <f:SimpleForm id="idDynForm" layout="ColumnLayout" columnsXL="2" class="vendor-master-form" />
+                            <HBox class="sapUiSmallMarginTop" justifyContent="Center">
+                                <Button text="Cancel" press=".onCancelPress" class="sapUiSmallMarginEnd" type="Reject" />
+                                <Button text="Submit" press=".onSubmitPress" type="Accept" />
+                            </HBox>
+                            <Table id="idCategoryTable" inset="false" class="sapUiSmallMarginTop" />
+                        </content>
+                    </Page>
+                    <Page id="idGrnListPage" title="{ReportingModel>/grnList/title}" class="sapUiContentPadding">
+                        <content>
+                            <ScrollContainer width="100%" horizontal="true" vertical="false">
+                                <Table id="grnTable" items="{ReportingModel>/grnList/tableRows}">
                                     <columns>
                                         <Column>
-                                            <Title text="Po Number" />
+                                            <Text text="Po Number" />
                                         </Column>
                                         <Column>
-                                            <Title text="Item Code" />
+                                            <Text text="Item Code" />
                                         </Column>
                                         <Column>
-                                            <Title text="Item Name" />
+                                            <Text text="Item Name" />
                                         </Column>
                                         <Column>
-                                            <Title text="Item Category" />
+                                            <Text text="Item Category" />
                                         </Column>
                                         <Column>
-                                            <Title text="Expected Qty." />
+                                            <Text text="Expected Qty." />
                                         </Column>
                                         <Column>
-                                            <Title text="Received Qty." />
+                                            <Text text="Received Qty." />
                                         </Column>
                                         <Column>
-                                            <Title text="Received Date" />
+                                            <Text text="Received Date" />
                                         </Column>
                                     </columns>
                                     <items>
                                         <ColumnListItem>
                                             <cells>
-                                                <Text
-                                                    text="{ReportingModel>PoNumber}"
-                                                    wrapping="false"
-                                                />
-                                                <Text
-                                                    text="{ReportingModel>ItemCode}"
-                                                />
-                                                <Text
-                                                    text="{ReportingModel>ItemName}"
-                                                />
-                                                <Text
-                                                    text="{ReportingModel>ItemCategory}"
-                                                />
-                                                <Text
-                                                    text="{ReportingModel>ExpectedQty}"
-                                                />
-                                                <Text
-                                                    text="{ReportingModel>ReceivedQty}"
-                                                />
-                                                <Text
-                                                    text="{ReportingModel>ReceivedDate}"
-                                                    wrapping="false"
-                                                    width="100%"
-                                                />
+                                                <Text text="{ReportingModel>PoNumber}" wrapping="false" />
+                                                <Text text="{ReportingModel>ItemCode}" />
+                                                <Text text="{ReportingModel>ItemName}" />
+                                                <Text text="{ReportingModel>ItemCategory}" />
+                                                <Text text="{ReportingModel>ExpectedQty}" />
+                                                <Text text="{ReportingModel>ReceivedQty}" />
+                                                <Text text="{ReportingModel>ReceivedDate}" wrapping="false" width="100%" />
                                             </cells>
                                         </ColumnListItem>
                                     </items>
@@ -178,39 +232,63 @@
                             </ScrollContainer>
                         </content>
                     </Page>
-                    <Page
-                        id="idAssetHistoryPage"
-                        title="Asset/Item History"
-                        class="sapUiContentPadding"
-                    >
+                    <Page id="idItemVerificationPage" title="Asset Physical Verification Report" class="sapUiContentPadding">
+                        <content>
+                            <HBox alignItems="Center" alignContent="Center" wrap="Wrap">
+                                <ComboBox placeholder="Select Schedule Number" items="{
+                                path: 'mainModel>/scheduleNumbers',
+                                templateShareable: false
+                            }">
+                                    <core:Item key="{mainModel>key}" text="{mainModel>text}" />
+                                </ComboBox>
+                                <DatePicker placeholder="dd-mm-yyyy" valueFormat="dd-MM-yyyy" displayFormat="dd-MM-yyyy" />
+                                <DatePicker placeholder="dd-mm-yyyy" valueFormat="dd-MM-yyyy" displayFormat="dd-MM-yyyy" />
+                                <HBox class="sapUiTinyMarginTop">
+                                    <Button text="Search" type="Accept" class="sapUiTinyMarginEnd" />
+                                    <Button text="Reset" type="Ghost" />
+                                </HBox>
+                                <ToolbarSpacer />
+                                <Button text="Download as Excel" type="Transparent" class="download-excel-button" />
+                            </HBox>
+                            <HBox>
+                                <GenericTile header="Matched" subheader="0" class="kpi-card-matched" />
+                            </HBox>
+                        </content>
+                    </Page>
+                    <Page id="idAssetVerificationPage" title="Asset Physical Verification Report" class="sapUiContentPadding">
+                        <content>
+                            <HBox alignItems="Center" alignContent="Center" wrap="Wrap">
+                                <ComboBox placeholder="Select Schedule Number" items="{
+                                path: 'mainModel>/scheduleNumbers',
+                                templateShareable: false
+                            }">
+                                    <core:Item key="{mainModel>key}" text="{mainModel>text}" />
+                                </ComboBox>
+                                <DatePicker placeholder="dd-mm-yyyy" valueFormat="dd-MM-yyyy" displayFormat="dd-MM-yyyy" />
+                                <DatePicker placeholder="dd-mm-yyyy" valueFormat="dd-MM-yyyy" displayFormat="dd-MM-yyyy" />
+                                <HBox class="sapUiTinyMarginTop">
+                                    <Button text="Search" type="Accept" class="sapUiTinyMarginEnd" />
+                                    <Button text="Reset" type="Ghost" />
+                                </HBox>
+                                <ToolbarSpacer />
+                                <Button text="Download as Excel" type="Transparent" class="download-excel-button" />
+                            </HBox>
+                        </content>
+                    </Page>
+                    <Page id="idAssetHistoryPage" title="{config>/title}" class="sapUiContentPadding">
                         <content>
                             <f:SimpleForm editable="true">
                                 <f:content>
                                     <Label text="Asset/Item" />
 
                                     <ComboBox selectedKey="Item" change=".onItemorAssetPress" width="150px">
-                                        <core:Item
-                                            key="Item"
-                                            text="Item"
-                                        />
-                                        <core:Item
-                                            key="Asset"
-                                            text="Asset"
-                                        />
+                                        <core:Item key="Item" text="Item" />
+                                        <core:Item key="Asset" text="Asset" />
                                     </ComboBox>
                                 </f:content>
                             </f:SimpleForm>
-                            <Table
-                                id="idItemTable"
-                                class="sapUiSmallMarginTop"
-                                visible="true"
-                            />
-                            <Table
-                                id="idAssetTable"
-                                class="sapUiSmallMarginTop"
-                                visible="false"
-                                items="{ReportingModel>/assetTable/tableRows}"
-                            >
+                            <Table id="idItemTable" class="sapUiSmallMarginTop" visible="true" />
+                            <Table id="idAssetTable" class="sapUiSmallMarginTop" visible="false" items="{ReportingModel>/assetTable/tableRows}">
                                 <columns>
                                     <Column>
                                         <Text text="Asset Code" />
@@ -246,8 +324,1786 @@
                             </Table>
                         </content>
                     </Page>
+
+                    <!-- TRANSACTION PAGES -->
+
+                    <Page id="idAssetCreationPage" title="Asset Management">
+                        <IconTabBar id="idIconTabBarNoIcons" class="sapUiResponsiveContentPadding">
+                            <items>
+                                <IconTabFilter id="_IDGenIconTabFilter1" text="Details" key="info">
+                                    <f:SimpleForm editable="true" layout="ColumnLayout" class="sapUiSmallMarginBottom" id="_IDGenSimpleForm">
+                                        <Label id="_IDGenLabel1" text="Search Asset" />
+                                        <SearchField id="_IDGenSearchField1" search=".findAsset" width="90%" />
+                                        <Label id="_IDGenLabel2" text="Parent ID" />
+                                        <Input id="_IDGenInput" value="{TransactionModel>/Transactions/0/parentId}" />
+                                    </f:SimpleForm>
+                                    <f:SimpleForm id="_IDGenSimpleForm1" editable="true" class="sapUiSmallMarginBottom" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+                                        <core:Title id="_IDGenTitle2" text="Asset Details" />
+                                        <Label id="_IDGenLabel3" text="Asset ID" />
+                                        <Input id="_IDGenInput64" value="{TransactionModel>/Transactions/0/assetId}" />
+                                        <Label id="_IDGenLabel4" text="Asset Description " />
+                                        <Input id="_IDGenInput66" value="{TransactionModel>/Transactions/0/assetDesc}" required="true" />
+                                        <Label id="_IDGenLabel5" text="Acquisition Date" />
+                                        <DatePicker id="_IDGenDatePicker17" value="{TransactionModel>/Transactions/0/acqDate}" valueFormat="yyyy-MM-dd" displayFormat="dd-MM-yyyy" />
+                                        <Label id="_IDGenLabel6" text="Use Date" />
+                                        <DatePicker id="_IDGenDatePicker18" value="{TransactionModel>/Transactions/0/useDate}" valueFormat="yyyy-MM-dd" displayFormat="dd-MM-yyyy" />
+                                        <Label id="_IDGenLabel7" text="Retire Date" />
+                                        <DatePicker id="_IDGenDatePicker19" value="{TransactionModel>/Transactions/0/retireDate}" valueFormat="yyyy-MM-dd" displayFormat="dd-MM-yyyy" />
+                                        <Label id="_IDGenLabel8" text="Category *" />
+                                        <ComboBox id="_IDGenComboBox16" items="{
+        path: 'TransactionModel>/Categories'
+    }" selectedKey="{TransactionModel>/Transactions/0/category}" change=".onComboChange($event,'Category')" required="true">
+                                            <items>
+                                                <core:Item id="_IDGenItem" key="{TransactionModel>name}" text="{TransactionModel>name}" />
+                                            </items>
+                                        </ComboBox>
+                                        <Label id="_IDGenLabel9" text="Sub-Category" />
+                                        <ComboBox id="_IDGenComboBox17" items="{
+        path: 'TransactionModel>/SubCategories'
+    }" selectedKey="{TransactionModel>/Transactions/0/subCategory}">
+                                            <items>
+                                                <core:Item id="_IDGenItem2" key="{TransactionModel>}" text="{TransactionModel>}" />
+                                            </items>
+                                        </ComboBox>
+                                        <Label id="_IDGenLabel10" text="Reference Number" />
+                                        <Input id="_IDGenInput67" value="{TransactionModel>/Transactions/0/refNumber}" />
+                                        <Label id="_IDGenLabel11" text="Location *" />
+                                        <ComboBox id="_IDGenComboBox18" change=".onComboChange($event,'Location')" selectedKey="{TransactionModel>/Transactions/0/location}" items="{
+        path: 'TransactionModel>/Locations'
+    }" required="true">
+                                            <items>
+                                                <core:Item id="_IDGenItem4" key="{TransactionModel>name}" text="{TransactionModel>name}" />
+                                            </items>
+                                        </ComboBox>
+                                        <Label id="_IDGenLabel12" text="Sub Location" />
+                                        <ComboBox id="_IDGenComboBox19" items="{
+        path: 'TransactionModel>/Sublocations' 
+    }" selectedKey="{TransactionModel>/Transactions/0/subLocation}">
+                                            <items>
+                                                <core:Item id="_IDGenItem6" key="{TransactionModel>}" text="{TransactionModel>}" />
+                                            </items>
+                                        </ComboBox>
+                                        <Label id="_IDGenLabel13" text="Cost Center" />
+                                        <ComboBox id="_IDGenComboBox20" items="{
+        path: 'TransactionModel>/CostCenters' 
+    }" selectedKey="{TransactionModel>/Transactions/0/costCenter}">
+                                            <items>
+                                                <core:Item id="_IDGenItem8" key="{TransactionModel>}" text="{TransactionModel>}" />
+                                            </items>
+                                        </ComboBox>
+                                        <Label id="_IDGenLabel14" text="Group" />
+                                        <ComboBox id="_IDGenComboBox21" items="{path: 'TransactionModel>/Groups'}" selectedKey="{TransactionModel>/Transactions/0/group}">
+                                            <items>
+                                                <core:Item id="_IDGenItem10" key="{TransactionModel>}" text="{TransactionModel>}" />
+                                            </items>
+                                        </ComboBox>
+                                        <Label id="_IDGenLabel15" text="Physical Status" />
+                                        <ComboBox id="_IDGenComboBox22" selectedKey="{TransactionModel>/Transactions/0/physicalStatus}">
+                                            <items>
+                                                <core:Item id="_IDGenItem12" key="ps1" text="Damaged" />
+                                                <core:Item id="_IDGenItem13" key="ps2" text="Good" />
+                                            </items>
+                                        </ComboBox>
+                                        <Label id="_IDGenLabel16" text="Machine Number" />
+                                        <Input id="_IDGenInput68" value="{TransactionModel>/Transactions/0/machineNumber}" />
+                                        <Label id="_IDGenLabel17" text="Dep. Rate (IT Act)" />
+                                        <Input id="_IDGenInput69" type="Number" value="{TransactionModel>/Transactions/0/depRateITAct}" />
+                                        <Label id="_IDGenLabel18" text="Additional Dep. Rate (IT Act)" />
+                                        <Input id="_IDGenInput70" type="Number" value="{TransactionModel>/Transactions/0/addDepRateITAct}" />
+                                        <Label id="_IDGenLabel19" text="Dep. Rate (C Act)" />
+                                        <Input id="_IDGenInput71" type="Number" value="{TransactionModel>/Transactions/0/depRateCAct}" />
+                                        <Label id="_IDGenLabel20" text="Quantity" />
+                                        <Input id="_IDGenInput72" type="Number" value="{TransactionModel>/Transactions/0/quantity}" />
+                                        <Label id="_IDGenLabel21" text="Book Life" />
+                                        <Input id="_IDGenInput73" value="{TransactionModel>/Transactions/0/bookLife}" />
+                                    </f:SimpleForm>
+                                    <f:SimpleForm id="_IDGenSimpleForm2" editable="true" class="sapUiSmallMarginBottom" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+                                        <core:Title id="_IDGenTitle3" text="More Details" />
+                                        <Label id="_IDGenLabel22" text="Vendor" />
+                                        <ComboBox id="_IDGenComboBox23" items="{
+                                     path: 'TransactionModel>/Vendor'
+                                 }" selectedKey="{TransactionModel>/Transactions/0/vendor}">
+                                            <core:Item id="_IDGenItem3" key="{TransactionModel>}" text="{TransactionModel>}" />
+                                        </ComboBox>
+                                        <Label id="_IDGenLabel23" text="Make" />
+                                        <ComboBox id="_IDGenComboBox24" items="{path: 'TransactionModel>/Make'}" selectedKey="{TransactionModel>/Transactions/0/make}">
+                                            <core:Item id="_IDGenItem5" key="{TransactionModel>}" text="{TransactionModel>}" />
+                                        </ComboBox>
+                                        <Label id="_IDGenLabel24" text="Model" />
+                                        <ComboBox id="_IDGenComboBox25" items="{path: 'TransactionModel>/Model'}" selectedKey="{TransactionModel>/Transactions/0/model}">
+                                            <core:Item id="_IDGenItem7" key="{TransactionModel>}" text="{TransactionModel>}" />
+                                        </ComboBox>
+                                        <Label id="_IDGenLabel25" text="Voucher Date" />
+                                        <DatePicker id="_IDGenDatePicker20" value="{TransactionModel>/Transactions/0/voucherDate}" valueFormat="yyyy-MM-dd" displayFormat="dd-MM-yyyy" />
+                                        <Label id="_IDGenLabel26" text="Voucher Number" />
+                                        <Input id="_IDGenInput74" value="{TransactionModel>/Transactions/0/voucherNumber}" />
+                                        <Label id="_IDGenLabel27" text="Invoice Date" />
+                                        <DatePicker id="_IDGenDatePicker21" value="{TransactionModel>/Transactions/0/invoiceDate}" valueFormat="yyyy-MM-dd" displayFormat="dd-MM-yyyy" />
+                                        <Label id="_IDGenLabel28" text="Invoice Number" />
+                                        <Input id="_IDGenInput75" value="{TransactionModel>/Transactions/0/invoiceNumber}" />
+                                        <Label id="_IDGenLabel29" text="Serial Number" />
+                                        <Input id="_IDGenInput76" value="{TransactionModel>/Transactions/0/serialNumber}" />
+                                        <Label id="_IDGenLabel30" text="PO Number" />
+                                        <Input id="_IDGenInput77" value="{TransactionModel>/Transactions/0/poNumber}" />
+                                        <Label id="_IDGenLabel31" text="PO Date" />
+                                        <DatePicker id="_IDGenDatePicker22" value="{TransactionModel>/Transactions/0/poDate}" valueFormat="yyyy-MM-dd" displayFormat="dd-MM-yyyy" />
+                                        <Label id="_IDGenLabel32" text="Working in Shift" />
+                                        <ComboBox id="_IDGenComboBox26" items="{path: 'TransactionModel>/Working_in_Shift'}" selectedKey="{TransactionModel>/Transactions/0/workingInShift}">
+                                            <core:Item id="_IDGenItem9" key="{TransactionModel>}" text="{TransactionModel>}" />
+                                        </ComboBox>
+                                        <Label id="_IDGenLabel33" text="Shift Rate" />
+                                        <Input id="_IDGenInput78" value="{TransactionModel>/Transactions/0/shiftRate}" />
+                                        <Label id="_IDGenLabel34" text="Ownership" />
+                                        <ComboBox id="_IDGenComboBox27" items="{path: 'TransactionModel>/Ownership'}" selectedKey="{TransactionModel>/Transactions/0/ownership}">
+                                            <core:Item id="_IDGenItem11" key="{TransactionModel>}" text="{TransactionModel>}" />
+                                        </ComboBox>
+                                        <Label id="_IDGenLabel35" text="RFID Number" />
+                                        <Input id="_IDGenInput79" value="{TransactionModel>/Transactions/0/rfidNumber}" />
+                                        <Label id="_IDGenLabel36" text="Asset Type" />
+                                        <ComboBox id="_IDGenComboBox28" items="{path: 'TransactionModel>/Asset_Type'}" selectedKey="{TransactionModel>/Transactions/0/assetType}">
+                                            <core:Item id="_IDGenItem1" key="{TransactionModel>}" text="{TransactionModel>}" />
+                                        </ComboBox>
+                                    </f:SimpleForm>
+                                    <f:SimpleForm id="_IDGenSimpleForm3" editable="true" class="sapUiSmallMarginBottom" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+                                        <Label id="_IDGenLabel37" text="Original PO Cost/Gross Value" />
+                                        <Input id="_IDGenInput80" value="{TransactionModel>/Transactions/0/originalPoCost}" />
+                                        <Label id="_IDGenLabel38" text="Subsidiary Amount" />
+                                        <Input id="_IDGenInput81" value="{TransactionModel>/Transactions/0/subsidiaryAmount}" />
+                                        <Label id="_IDGenLabel39" text="Adjusted Book Value" />
+                                        <Input id="_IDGenInput82" value="{TransactionModel>/Transactions/0/adjustedBookValue}" />
+                                        <Label id="_IDGenLabel40" text="Opening C Act AD" />
+                                        <Input id="_IDGenInput83" value="{TransactionModel>/Transactions/0/openingCActAD}" />
+                                        <Label id="_IDGenLabel41" text="Opening IT Act AD" />
+                                        <Input id="_IDGenInput84" value="{TransactionModel>/Transactions/0/openingITActAD}" />
+                                        <Label id="_IDGenLabel42" text="AD" />
+                                        <Input id="_IDGenInput85" value="{TransactionModel>/Transactions/0/adInput}" />
+                                        <Label id="_IDGenLabel43" text="IT Act AD" />
+                                        <Input id="_IDGenInput86" value="{TransactionModel>/Transactions/0/itActAD}" />
+                                        <Label id="_IDGenLabel44" text="Non Depreciative Value" />
+                                        <Input id="_IDGenInput87" value="{TransactionModel>/Transactions/0/nonDepreciativeValue}" />
+                                        <Label id="_IDGenLabel45" text="IT Act ND Value" />
+                                        <Input id="_IDGenInput88" value="{TransactionModel>/Transactions/0/itActNDValue}" />
+                                        <Label id="_IDGenLabel46" text="Net Value" />
+                                        <Input id="_IDGenInput89" value="{TransactionModel>/Transactions/0/netValue}" />
+                                        <Label id="_IDGenLabel47" text="IT Act Net Value" />
+                                        <Input id="_IDGenInput90" value="{TransactionModel>/Transactions/0/itActNetValue}" />
+                                        <Label id="_IDGenLabel48" text="Remarks" />
+                                        <TextArea id="_IDGenTextArea3" value="{TransactionModel>/Transactions/0/remarks}" growing="true" rows="4" width="100%" />
+                                    </f:SimpleForm>
+                                    <f:SimpleForm id="_IDGenSimpleForm4" editable="true" class="sapUiSmallMarginBottom" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+                                        <core:Title id="_IDGenTitle4" text="Insurance Details" />
+                                        <Label id="_IDGenLabel49" text="Insurance Company" />
+                                        <Input id="_IDGenInput91" value="{TransactionModel>/Transactions/0/insuranceCompany}" />
+                                        <Label id="_IDGenLabel50" text="Policy Number" />
+                                        <Input id="_IDGenInput92" value="{TransactionModel>/Transactions/0/policyNumber}" />
+                                        <Label id="_IDGenLabel51" text="Insurance Date" />
+                                        <DatePicker id="_IDGenDatePicker23" value="{TransactionModel>/Transactions/0/insuranceDate}" valueFormat="yyyy-MM-dd" displayFormat="dd-MM-yyyy" />
+                                        <Label id="_IDGenLabel52" text="Premium Amount" />
+                                        <Input id="_IDGenInput93" type="Number" value="{TransactionModel>/Transactions/0/premiumAmount}" />
+                                        <Label id="_IDGenLabel53" text="Due Date" />
+                                        <DatePicker id="_IDGenDatePicker24" value="{TransactionModel>/Transactions/0/dueDate}" valueFormat="yyyy-MM-dd" displayFormat="dd-MM-yyyy" />
+                                        <Label id="_IDGenLabel54" text="Insured Value" />
+                                        <Input id="_IDGenInput94" type="Number" value="{TransactionModel>/Transactions/0/insuredValue}" />
+                                        <core:Title id="_IDGenTitle5" text="Service Details" />
+                                        <Label id="_IDGenLabel55" text="Service Company" />
+                                        <Input id="_IDGenInput95" value="{TransactionModel>/Transactions/0/serviceCompany}" />
+                                        <Label id="_IDGenLabel56" text="Service No." />
+                                        <Input id="_IDGenInput96" value="{TransactionModel>/Transactions/0/serviceNo}" />
+                                        <Label id="_IDGenLabel57" text="Service Date" />
+                                        <DatePicker id="_IDGenDatePicker25" value="{TransactionModel>/Transactions/0/serviceDate}" valueFormat="yyyy-MM-dd" displayFormat="dd-MM-yyyy" />
+                                        <Label id="_IDGenLabel58" text="Service Amount" />
+                                        <Input id="_IDGenInput97" type="Number" value="{TransactionModel>/Transactions/0/serviceAmount}" />
+                                        <Label id="_IDGenLabel59" text="Next Service Date" />
+                                        <DatePicker id="_IDGenDatePicker26" value="{TransactionModel>/Transactions/0/nextServiceDate}" valueFormat="yyyy-MM-dd" displayFormat="dd-MM-yyyy" />
+                                        <core:Title id="_IDGenTitle6" text="Warranty Details" />
+                                        <Label id="_IDGenLabel60" text="Warranty Company" />
+                                        <Input id="_IDGenInput98" value="{TransactionModel>/Transactions/0/warrantyCompany}" />
+                                        <Label id="_IDGenLabel61" text="Warranty No." />
+                                        <Input id="_IDGenInput99" value="{TransactionModel>/Transactions/0/warrantyNo}" />
+                                        <Label id="_IDGenLabel62" text="Warranty Date" />
+                                        <DatePicker id="_IDGenDatePicker27" value="{TransactionModel>/Transactions/0/warrantyDate}" valueFormat="yyyy-MM-dd" displayFormat="dd-MM-yyyy" />
+                                        <Label id="_IDGenLabel63" text="Warranty Amount" />
+                                        <Input id="_IDGenInput100" type="Number" value="{TransactionModel>/Transactions/0/warrantyAmount}" />
+                                        <Label id="_IDGenLabel64" text="Warranty Due Date" />
+                                        <DatePicker id="_IDGenDatePicker28" value="{TransactionModel>/Transactions/0/warrantyDueDate}" valueFormat="yyyy-MM-dd" displayFormat="dd-MM-yyyy" />
+                                        <Label id="_IDGenLabel65" text="Additional Info" />
+                                        <TextArea id="_IDGenTextArea4" value="{TransactionModel>/Transactions/0/additionalInfo}" growing="true" rows="4" width="100%" />
+                                    </f:SimpleForm>
+                                    <f:SimpleForm id="_IDGenSimpleForm6" editable="true" class="sapUiSmallMarginBottom" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+                                        <core:Title id="_IDGenTitle7" text="Preventive Maintenance" />
+                                        <Label id="_IDGenLabel66" text="Preventive Frequency" />
+                                        <ComboBox id="_IDGenComboBox29" items="{path: 'TransactionModel>/Preventive_Frequency'}" selectedKey="{TransactionModel>/Transactions/0/preventiveFrequency}">
+                                            <core:Item id="_IDGenItem18" key="{TransactionModel>}" text="{TransactionModel>}" />
+                                        </ComboBox>
+                                        <Label id="_IDGenLabel67" text="Preventive Due Date" />
+                                        <DatePicker id="_IDGenDatePicker29" value="{TransactionModel>/Transactions/0/preventiveDueDate}" valueFormat="yyyy-MM-dd" displayFormat="dd-MM-yyyy" />
+                                        <Label id="_IDGenLabel68" text="Preventive Last Date" />
+                                        <DatePicker id="_IDGenDatePicker30" value="{TransactionModel>/Transactions/0/preventiveLastDate}" valueFormat="yyyy-MM-dd" displayFormat="dd-MM-yyyy" />
+                                        <core:Title id="_IDGenTitle8" text="Calibration Maintenance" />
+                                        <Label id="_IDGenLabel69" text="Calibration Frequency" />
+                                        <ComboBox id="_IDGenComboBox30" items="{path: 'TransactionModel>/Calibration_Frequency'}" selectedKey="{TransactionModel>/Transactions/0/calibrationFrequency}">
+                                            <core:Item id="_IDGenItem19" key="{TransactionModel>}" text="{TransactionModel>}" />
+                                        </ComboBox>
+                                        <Label id="_IDGenLabel70" text="Calibration Due Date" />
+                                        <DatePicker id="_IDGenDatePicker31" value="{TransactionModel>/Transactions/0/calibrationDueDate}" valueFormat="yyyy-MM-dd" displayFormat="dd-MM-yyyy" />
+                                        <Label id="_IDGenLabel247" text="Calibration Last Date" />
+                                        <DatePicker id="_IDGenDatePicker32" value="{TransactionModel>/Transactions/0/calibrationLastDate}" valueFormat="yyyy-MM-dd" displayFormat="dd-MM-yyyy" />
+                                    </f:SimpleForm>
+                                    <HBox id="_IDGenHBox1" alignItems="Center" justifyContent="Center" alignContent="SpaceAround">
+                                        <Button id="_IDGenButton2" text="Reset" type="Reject" press=".onAssetReset" class="sapUiLargeMarginEnd" />
+                                        <Button id="_IDGenButton3" text="Save" press=".onAssetSave" type="Accept" />
+                                    </HBox>
+                                </IconTabFilter>
+                                <IconTabFilter id="_IDGenIconTabFilter2" text="Create New Asset" key="attachments">
+                                    <f:SimpleForm id="_IDGenSimpleForm7" class="sapUiSmallMarginBottom" editable="true" layout="ColumnLayout">
+
+                                        <Label id="_IDGenLabel71" text="Asset ID" />
+
+                                        <Input id="_IDGenInput199" />
+
+                                        <Label id="_IDGenLabel72" text="Parent ID" />
+
+                                        <Input id="_IDGenInput1" />
+
+                                    </f:SimpleForm>
+
+                                    <f:SimpleForm id="_IDGenSimpleForm8" editable="true" class="sapUiSmallMarginBottom" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+
+                                        <Label id="_IDGenLabel73" text="Reference Number" />
+
+                                        <Input id="_IDGenInput2" placeholder="Enter number" />
+
+                                        <Label id="_IDGenLabel74" text="Asset Description *" />
+
+                                        <Input id="_IDGenInput3" placeholder="Enter Asset Description" required="true" />
+
+                                        <Label id="_IDGenLabel75" text="Acquisition Date" />
+
+                                        <DatePicker id="_IDGenDatePicker" placeholder="dd-mm-yyyy" />
+
+                                        <Label id="_IDGenLabel76" text="Use Date" />
+
+                                        <DatePicker id="_IDGenDatePicker1" placeholder="dd-mm-yyyy" />
+
+                                        <Label id="_IDGenLabel77" text="Retire Date" />
+
+                                        <DatePicker id="_IDGenDatePicker2" placeholder="dd-mm-yyyy" />
+
+                                        <Label id="_IDGenLabel78" text="Category" />
+
+                                        <ComboBox id="_IDGenComboBox" placeholder="Select Category" required="true" selectedKey="{TransactionModel>/Transactions/0/category}" change=".onComboChange($event,'Category')" items="{path: 'TransactionModel>/Categories'}">
+
+                                            <items>
+
+                                                <core:Item id="_IDGenItem20" key="{TransactionModel>name}" text="{TransactionModel>name}" />
+
+                                            </items>
+
+                                        </ComboBox>
+
+                                        <Label id="_IDGenLabel79" text="Sub-Category" />
+
+                                        <ComboBox id="_IDGenComboBox1" placeholder="Select Category First" selectedKey="{TransactionModel>/Transactions/0/subCategory}" items="{path: 'TransactionModel>/SubCategories'}">
+
+                                            <items>
+
+                                                <core:Item id="_IDGenItem21" key="{TransactionModel>}" text="{TransactionModel>}" />
+
+                                            </items>
+
+                                        </ComboBox>
+
+                                        <Label id="_IDGenLabel80" text="Location *" />
+
+                                        <ComboBox id="_IDGenComboBox2" placeholder="Select Location" required="true" change=".onComboChange($event,'Location')" selectedKey="{TransactionModel>/Transactions/0/location}" items="{path: 'TransactionModel>/Locations'}">
+
+                                            <items>
+
+                                                <core:Item id="_IDGenItem22" key="{TransactionModel>name}" text="{TransactionModel>name}" />
+
+                                            </items>
+
+                                        </ComboBox>
+
+                                        <Label id="_IDGenLabel81" text="Sub Location" />
+
+                                        <ComboBox id="_IDGenComboBox3" placeholder="Select Location First" selectedKey="{TransactionModel>/Transactions/0/subLocation}" items="{path: 'TransactionModel>/Sublocations'}">
+
+                                            <items>
+
+                                                <core:Item id="_IDGenItem23" key="{TransactionModel>}" text="{TransactionModel>}" />
+
+                                            </items>
+
+                                        </ComboBox>
+
+                                        <Label id="_IDGenLabel82" text="Cost Center" />
+
+                                        <ComboBox id="_IDGenComboBox4" placeholder="Select Cost Center" selectedKey="{TransactionModel>/Transactions/0/costCenter}" items="{path: 'TransactionModel>/CostCenters'}">
+
+                                            <items>
+
+                                                <core:Item id="_IDGenItem24" key="{TransactionModel>}" text="{TransactionModel>}" />
+
+                                            </items>
+
+                                        </ComboBox>
+
+                                        <Label id="_IDGenLabel83" text="Group" />
+
+                                        <ComboBox id="_IDGenComboBox5" placeholder="Select Group" selectedKey="{TransactionModel>/Transactions/0/group}" items="{path: 'TransactionModel>/Groups'}">
+
+                                            <items>
+
+                                                <core:Item id="_IDGenItem25" key="{TransactionModel>}" text="{TransactionModel>}" />
+
+                                            </items>
+
+                                        </ComboBox>
+
+                                        <Label id="_IDGenLabel84" text="Physical Status" />
+
+                                        <ComboBox id="_IDGenComboBox6" placeholder="Select Physical Status" selectedKey="{TransactionModel>/Transactions/0/physicalStatus}">
+
+                                            <items>
+
+                                                <core:Item id="_IDGenItem26" key="ps1" text="Damaged" />
+
+                                                <core:Item id="_IDGenItem27" key="ps2" text="Good" />
+
+                                            </items>
+
+                                        </ComboBox>
+
+                                        <Label id="_IDGenLabel85" text="Machine Number" />
+
+                                        <Input id="_IDGenInput4" placeholder="Enter number" />
+
+                                        <Label id="_IDGenLabel86" text="Dep. Rate (IT Act)" />
+
+                                        <Input id="_IDGenInput5" type="Number" placeholder="e.g. 15.00" />
+
+                                        <Label id="_IDGenLabel87" text="Additional Dep. Rate (IT Act)" />
+
+                                        <Input id="_IDGenInput6" placeholder="e.g. 5%" />
+
+                                        <Label id="_IDGenLabel88" text="Dep. Rate (C Act)" />
+
+                                        <Input id="_IDGenInput7" type="Number" placeholder="e.g. 10.00" />
+
+                                        <Label id="_IDGenLabel89" text="Quantity" />
+
+                                        <Input id="_IDGenInput8" type="Number" placeholder="Enter Quantity" />
+
+                                        <Label id="_IDGenLabel90" text="Book Life" />
+
+                                        <Input id="_IDGenInput9" placeholder="In Years" />
+
+                                    </f:SimpleForm>
+
+                                    <f:SimpleForm id="_IDGenSimpleForm9" editable="true" class="sapUiSmallMarginBottom" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+
+                                        <core:Title id="_IDGenTitle10" text="More Details" />
+
+                                        <Label id="_IDGenLabel92" text="Vendor" />
+
+                                        <ComboBox id="_IDGenComboBox7" selectedKey="{TransactionModel>/Transactions/0/vendor}" items="{path: 'TransactionModel>/Vendor'}">
+
+                                            <core:Item id="_IDGenItem28" key="{TransactionModel>}" text="{TransactionModel>}" />
+
+                                        </ComboBox>
+
+                                        <Label id="_IDGenLabel93" text="Make" />
+
+                                        <ComboBox id="_IDGenComboBox8" selectedKey="{TransactionModel>/Transactions/0/make}" items="{path: 'TransactionModel>/Make'}">
+
+                                            <core:Item id="_IDGenItem29" key="{TransactionModel>}" text="{TransactionModel>}" />
+
+                                        </ComboBox>
+
+                                        <Label id="_IDGenLabel94" text="Model" />
+
+                                        <ComboBox id="_IDGenComboBox9" selectedKey="{TransactionModel>/Transactions/0/model}" items="{path: 'TransactionModel>/Model'}">
+
+                                            <core:Item id="_IDGenItem30" key="{TransactionModel>}" text="{TransactionModel>}" />
+
+                                        </ComboBox>
+
+                                        <Label id="_IDGenLabel95" text="Voucher Date" />
+
+                                        <DatePicker id="_IDGenDatePicker3" placeholder="dd-mm-yyyy" />
+
+                                        <Label id="_IDGenLabel96" text="Voucher Number" />
+
+                                        <Input id="_IDGenInput11" placeholder="Enter" />
+
+                                        <Label id="_IDGenLabel97" text="Invoice Date" />
+
+                                        <DatePicker id="_IDGenDatePicker4" placeholder="dd-mm-yyyy" />
+
+                                        <Label id="_IDGenLabel98" text="Invoice Number" />
+
+                                        <Input id="_IDGenInput12" placeholder="Enter" />
+
+                                        <Label id="_IDGenLabel99" text="Serial Number" />
+
+                                        <Input id="_IDGenInput13" placeholder="Enter" />
+
+                                        <Label id="_IDGenLabel100" text="PO Number" />
+
+                                        <Input id="_IDGenInput14" placeholder="Enter" />
+
+                                        <Label id="_IDGenLabel101" text="PO Date" />
+
+                                        <DatePicker id="_IDGenDatePicker5" placeholder="dd-mm-yyyy" />
+
+                                        <Label id="_IDGenLabel102" text="Working in Shift" />
+
+                                        <ComboBox id="_IDGenComboBox10" selectedKey="{TransactionModel>/Transactions/0/workingInShift}" items="{path: 'TransactionModel>/Working_in_Shift'}">
+
+                                            <core:Item id="_IDGenItem31" key="{TransactionModel>}" text="{TransactionModel>}" />
+
+                                        </ComboBox>
+
+                                        <Label id="_IDGenLabel103" text="Shift Rate" />
+
+                                        <Input id="_IDGenInput15" placeholder="Enter" />
+
+                                        <Label id="_IDGenLabel104" text="Ownership" />
+
+                                        <ComboBox id="_IDGenComboBox11" selectedKey="{TransactionModel>/Transactions/0/ownership}" items="{path: 'TransactionModel>/Ownership'}">
+
+                                            <core:Item id="_IDGenItem32" key="{TransactionModel>}" text="{TransactionModel>}" />
+
+                                        </ComboBox>
+
+                                        <Label id="_IDGenLabel105" text="RFID Number" />
+
+                                        <Input id="_IDGenInput16" placeholder="Enter" />
+
+                                        <Label id="_IDGenLabel106" text="Asset Type" />
+
+                                        <ComboBox id="_IDGenComboBox12" selectedKey="{TransactionModel>/Transactions/0/assetType}" items="{path: 'TransactionModel>/Asset_Type'}">
+
+                                            <core:Item id="_IDGenItem33" key="{TransactionModel>}" text="{TransactionModel>}" />
+
+                                        </ComboBox>
+
+                                    </f:SimpleForm>
+
+                                    <f:SimpleForm id="_IDGenSimpleForm10" editable="true" class="sapUiSmallMarginBottom" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+
+                                        <Label id="_IDGenLabel107" text="Original PO Cost/Gross Value" />
+
+                                        <Input id="_IDGenInput17" />
+
+                                        <Label id="_IDGenLabel108" text="Subsidiary Amount" />
+
+                                        <Input id="_IDGenInput18" />
+
+                                        <Label id="_IDGenLabel109" text="Adjusted Book Value" />
+
+                                        <Input id="_IDGenInput19" />
+
+                                        <Label id="_IDGenLabel110" text="Opening C Act AD" />
+
+                                        <Input id="_IDGenInput20" />
+
+                                        <Label id="_IDGenLabel111" text="Opening IT Act AD" />
+
+                                        <Input id="_IDGenInput21" />
+
+                                        <Label id="_IDGenLabel112" text="AD" />
+
+                                        <Input id="_IDGenInput22" />
+
+                                        <Label id="_IDGenLabel113" text="IT Act AD" />
+
+                                        <Input id="_IDGenInput23" />
+
+                                        <Label id="_IDGenLabel114" text="Non Depreciative Value" />
+
+                                        <Input id="_IDGenInput24" />
+
+                                        <Label id="_IDGenLabel115" text="IT Act ND Value" />
+
+                                        <Input id="_IDGenInput25" />
+
+                                        <Label id="_IDGenLabel116" text="Net Value" />
+
+                                        <Input id="_IDGenInput26" />
+
+                                        <Label id="_IDGenLabel117" text="IT Act Net Value" />
+
+                                        <Input id="_IDGenInput27" />
+
+                                        <Label id="_IDGenLabel118" text="Remarks (max. 300 characters)" />
+
+                                        <TextArea id="_IDGenTextArea" maxLength="300" growing="true" rows="4" width="100%" placeholder="Enter remarks..." />
+
+                                    </f:SimpleForm>
+
+                                    <f:SimpleForm id="_IDGenSimpleForm11" editable="true" class="sapUiSmallMarginBottom" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+
+                                        <core:Title id="_IDGenTitle11" text="Insurance Details" />
+
+                                        <Label id="_IDGenLabel119" text="Insurance Company" />
+
+                                        <Input id="_IDGenInput28" placeholder="Enter Insurance Company" />
+
+                                        <Label id="_IDGenLabel120" text="Policy Number" />
+
+                                        <Input id="_IDGenInput29" placeholder="Enter Policy Number" />
+
+                                        <Label id="_IDGenLabel121" text="Insurance Date" />
+
+                                        <DatePicker id="_IDGenDatePicker6" placeholder="dd-mm-yyyy" />
+
+                                        <Label id="_IDGenLabel122" text="Premium Amount" />
+
+                                        <Input id="_IDGenInput30" placeholder="0.00" type="Number" />
+
+                                        <Label id="_IDGenLabel123" text="Due Date" />
+
+                                        <DatePicker id="_IDGenDatePicker7" placeholder="dd-mm-yyyy" />
+
+                                        <Label id="_IDGenLabel124" text="Insured Value" />
+
+                                        <Input id="_IDGenInput31" placeholder="0.00" type="Number" />
+
+                                        <core:Title id="_IDGenTitle12" text="Service Details" />
+
+                                        <Label id="_IDGenLabel125" text="Service Company" />
+
+                                        <Input id="_IDGenInput32" placeholder="Enter Service Company" />
+
+                                        <Label id="_IDGenLabel126" text="Service No." />
+
+                                        <Input id="_IDGenInput33" placeholder="Enter Service Number" />
+
+                                        <Label id="_IDGenLabel127" text="Service Date" />
+
+                                        <DatePicker id="_IDGenDatePicker8" placeholder="dd-mm-yyyy" />
+
+                                        <Label id="_IDGenLabel128" text="Service Amount" />
+
+                                        <Input id="_IDGenInput34" placeholder="0.00" type="Number" />
+
+                                        <Label id="_IDGenLabel129" text="Next Service Date" />
+
+                                        <DatePicker id="_IDGenDatePicker9" placeholder="dd-mm-yyyy" />
+
+                                        <core:Title id="_IDGenTitle13" text="Warranty Details" />
+
+                                        <Label id="_IDGenLabel130" text="Warranty Company" />
+
+                                        <Input id="_IDGenInput35" placeholder="Enter Warranty Company" />
+
+                                        <Label id="_IDGenLabel131" text="Warranty No." />
+
+                                        <Input id="_IDGenInput36" placeholder="Enter Warranty Number" />
+
+                                        <Label id="_IDGenLabel132" text="Warranty Date" />
+
+                                        <DatePicker id="_IDGenDatePicker10" placeholder="dd-mm-yyyy" />
+
+                                        <Label id="_IDGenLabel133" text="Warranty Amount" />
+
+                                        <Input id="_IDGenInput37" placeholder="0.00" type="Number" />
+
+                                        <Label id="_IDGenLabel134" text="Warranty Due Date" />
+
+                                        <DatePicker id="_IDGenDatePicker11" placeholder="dd-mm-yyyy" />
+
+                                        <Label id="_IDGenLabel135" text="Additional Info" class="sapMTitleStyle" />
+
+                                        <TextArea id="_IDGenTextArea1" placeholder="Enter additional information..." growing="true" rows="4" width="100%" />
+
+                                    </f:SimpleForm>
+
+                                    <f:SimpleForm id="_IDGenSimpleForm12" editable="true" class="sapUiSmallMarginBottom" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+
+                                        <core:Title id="_IDGenTitle14" text="Preventive Maintenance" />
+
+                                        <Label id="_IDGenLabel136" text="Preventive Frequency" />
+
+                                        <ComboBox id="_IDGenComboBox13" placeholder="Select" selectedKey="{TransactionModel>/Transactions/0/preventiveFrequency}" items="{path: 'TransactionModel>/Preventive_Frequency'}">
+
+                                            <core:Item id="_IDGenItem34" key="{TransactionModel>}" text="{TransactionModel>}" />
+
+                                        </ComboBox>
+
+                                        <Label id="_IDGenLabel137" text="Preventive Due Date" />
+
+                                        <DatePicker id="_IDGenDatePicker12" placeholder="dd-mm-yyyy" />
+
+                                        <Label id="_IDGenLabel138" text="Preventive Last Date" />
+
+                                        <DatePicker id="_IDGenDatePicker13" placeholder="dd-mm-yyyy" />
+
+                                        <core:Title id="_IDGenTitle15" text="Calibration Maintenance" />
+
+                                        <Label id="_IDGenLabel139" text="Calibration Frequency" />
+
+                                        <ComboBox id="_IDGenComboBox14" placeholder="Select" selectedKey="{TransactionModel>/Transactions/0/calibrationFrequency}" items="{path: 'TransactionModel>/Calibration_Frequency'}">
+
+                                            <core:Item id="_IDGenItem35" key="{TransactionModel>}" text="{TransactionModel>}" />
+
+                                        </ComboBox>
+
+                                        <Label id="_IDGenLabel140" text="Calibration Due Date" />
+
+                                        <DatePicker id="_IDGenDatePicker14" placeholder="dd-mm-yyyy" />
+
+                                        <Label id="_IDGenLabel141" text="Calibration Last Date" />
+
+                                        <DatePicker id="_IDGenDatePicker15" placeholder="dd-mm-yyyy" />
+
+                                    </f:SimpleForm>
+
+                                    <HBox id="_IDGenHBox2" alignItems="Center" justifyContent="Center" alignContent="SpaceAround">
+
+                                        <Button id="_IDGenButton4" text="Reset" type="Reject" press=".onResetPress" class="sapUiLargeMarginEnd" />
+
+                                        <Button id="_IDGenButton5" text="Save" press=".onSavePress" type="Accept" />
+
+                                    </HBox>
+                                </IconTabFilter>
+                            </items>
+                        </IconTabBar>
+                    </Page>
+                    <Page id="_IDGenPage1" title="Asset/Item Allotment">
+                        <f:SimpleForm id="_IDGenSimpleForm5" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+                            <Label id="_IDGenLabel91" text="Asset/Item" />
+                            <ComboBox id="_IDGenComboBox32" change=".onTypeChange">
+                                <core:Item id="_IDGenItem17" key="Item" text="Item" />
+                                <core:Item id="_IDGenItem36" key="Asset" text="Asset" />
+                            </ComboBox>
+                            <Label id="_IDGenLabel142" text="Employee Code" />
+                            <ComboBox id="_IDGenComboBox33" items="{path: 'TransactionModel>/employee_ids'}" change=".onEmployeeSelect">
+                                <core:Item id="_IDGenItem37" key="{TransactionModel>}" text="{TransactionModel>}" />
+                            </ComboBox>
+                            <Label id="_IDGenLabel143" text="Employee Name" />
+                            <Input id="_IDGenInput39" placeholder="Enter employee name" />
+                        </f:SimpleForm>
+                        <t:Table id="AssetTable" selectionMode="MultiToggle" class="sapUiResponsiveMargin sapUiMediumMargin" rows="{TransactionModel>/table_data}">
+                            <t:extension>
+                                <Title id="_IDGenTitle9" text="{TransactionModel>/table_metadata/title}" />
+                            </t:extension>
+                            <t:columns>
+                                <t:Column id="_IDGenColumn1" width="11rem">
+                                    <Label id="_IDGenLabel144" text="{TransactionModel>/table_metadata/code}" />
+                                    <t:template>
+                                        <Text id="_IDGenText" text="{TransactionModel>asset_code}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn2">
+                                    <Label id="_IDGenLabel145" text="{TransactionModel>/table_metadata/description}" />
+                                    <t:template>
+                                        <Text id="_IDGenText1" text="{TransactionModel>asset_description}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn3" width="8rem">
+                                    <Label id="_IDGenLabel146" text="{TransactionModel>/table_metadata/rfid}" />
+                                    <t:template>
+                                        <Text id="_IDGenText2" text="{TransactionModel>rfid_no}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn4" width="6rem">
+                                    <Label id="_IDGenLabel147" text="{TransactionModel>/table_metadata/make}" />
+                                    <t:template>
+                                        <Text id="_IDGenText3" text="{TransactionModel>make}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn5" width="6rem">
+                                    <Label id="_IDGenLabel148" text="{TransactionModel>/table_metadata/model}" />
+                                    <t:template>
+                                        <Text id="_IDGenText4" text="{TransactionModel>model}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn6" width="8rem">
+                                    <Label id="_IDGenLabel149" text="{TransactionModel>/table_metadata/location}" />
+                                    <t:template>
+                                        <Text id="_IDGenText5" text="{TransactionModel>location}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn7" width="8rem">
+                                    <Label id="_IDGenLabel150" text="{TransactionModel>/table_metadata/sublocation}" />
+                                    <t:template>
+                                        <Text id="_IDGenText6" text="{TransactionModel>sub_location}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn100" width="8rem">
+                                    <Label id="_IDGenLabel273" text="{TransactionModel>/table_metadata/serial_number}" />
+                                    <t:template>
+                                        <Text id="_IDGenText108" text="{TransactionModel>serial_number}" />
+                                    </t:template>
+                                </t:Column>
+                            </t:columns>
+                        </t:Table>
+
+                        <HBox id="_IDGenHBox4" alignItems="Center" justifyContent="Center" alignContent="SpaceAround">
+                            <Button id="_IDGenButton6" text="Cancel" type="Reject" class="sapUiLargeMarginEnd" />
+                            <Button id="_IDGenButton7" text="Allot" type="Accept" />
+                        </HBox>
+                        <t:Table id="AssetHistoryTable" rows="{TransactionModel>/history_data}" selectionMode="None" class="sapUiResponsiveMargin sapUiMediumMargin" visibleRowCount="5" visible="{TransactionModel>/history_metadata/visible}">
+                            <t:extension>
+                                <Title id="_IDGenTitle27" text="{TransactionModel>/history_metadata/title}" />
+                            </t:extension>
+                            <t:columns>
+                                <t:Column id="_IDGenColumn94" width="15rem">
+                                    <Label id="_IDGenLabel" text="Employee Code" />
+                                    <t:template>
+                                        <Text id="_IDGenText104" text="{TransactionModel>employeeCode}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn95">
+                                    <Label id="_IDGenLabel269" text="Employee Name" />
+                                    <t:template>
+                                        <Text id="_IDGenText105" text="{TransactionModel>employeeName}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn96" width="10rem">
+                                    <Label id="_IDGenLabel270" text="Date" />
+                                    <t:template>
+                                        <Text id="_IDGenText106" text="{TransactionModel>date}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn97" width="8rem">
+                                    <Label id="_IDGenLabel271" text="Time" />
+                                    <t:template>
+                                        <Text id="_IDGenText107" text="{TransactionModel>time}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn98" width="8rem" hAlign="Center">
+                                    <Label id="_IDGenLabel272" text="Actions" />
+                                    <t:template>
+                                        <HBox id="_IDGenHBox9" justifyContent="Center" alignItems="Center">
+                                            <core:Icon id="_IDGenIcon1" src="sap-icon://edit" tooltip="Edit" press="onEditPress" class="sapUiSmallMarginEnd" color="#0064d9" />
+                                            <core:Icon id="_IDGenIcon2" src="sap-icon://delete" tooltip="Delete" press="onDeletePress" color="#e74c3c" />
+                                        </HBox>
+                                    </t:template>
+                                </t:Column>
+                            </t:columns>
+                        </t:Table>
+                    </Page>
+                    <Page id="_IDGenPage" title="Asset/Item Return">
+                        <f:SimpleForm id="_IDGenSmpleForm6" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+                            <Label id="_IDGenLabel275" text="Employee Code" />
+                            <ComboBox id="_IDGenComboBox31" items="{path: 'TransactionModel>/employee_ids'}" change=".onEmployeeSelect">
+                                <core:Item id="_IDGenItem38" key="{TransactionModel>}" text="{TransactionModel>}" />
+                            </ComboBox>
+                            <Label id="_IDGenLabel152" text="Employee Name" />
+                            <Input id="_IDGenInput42" placeholder="Enter employee name" />
+                            <Label id="_IDGenLabel153" text="Date" />
+                            <DatePicker id="_IDGenDatePicker16" displayFormat="dd-mm-yyyy" />
+                            <Label id="_IDGenLabel154" text="Remarks" />
+                            <Input id="_IDGenInput43" placeholder="Enter remarks" />
+                            <Label id="_IDGenLabel163" text="Asset/Item" />
+                            <ComboBox id="_IDGenComboBox35" change=".onTypeChange">
+                                <core:Item id="_IDGenItem39" key="Item" text="Item" />
+                                <core:Item id="_IDGenItem40" key="Asset" text="Asset" />
+                            </ComboBox>
+                        </f:SimpleForm>
+                        <t:Table id="_IDGenTable" selectionMode="MultiToggle" class="sapUiResponsiveMargin sapUiMediumMargin" rows="{TransactionModel>/table_data}">
+                            <t:extension>
+                                <Title id="_IDGenTitle16" text="{TransactionModel>/table_metadata/title}" />
+                            </t:extension>
+                            <t:columns>
+                                <t:Column id="_IDGenColumn9" width="11rem">
+                                    <Label id="_IDGenLabel151" text="{TransactionModel>/table_metadata/code}" />
+                                    <t:template>
+                                        <Text id="_IDGenText7" text="{TransactionModel>asset_code}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn10">
+                                    <Label id="_IDGenLabel156" text="{TransactionModel>/table_metadata/description}" />
+                                    <t:template>
+                                        <Text id="_IDGenText8" text="{TransactionModel>asset_description}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn11" width="8rem">
+                                    <Label id="_IDGenLabel157" text="{TransactionModel>/table_metadata/rfid}" />
+                                    <t:template>
+                                        <Text id="_IDGenText9" text="{TransactionModel>rfid_no}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn12" width="6rem">
+                                    <Label id="_IDGenLabel158" text="{TransactionModel>/table_metadata/make}" />
+                                    <t:template>
+                                        <Text id="_IDGenText10" text="{TransactionModel>make}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn13" width="6rem">
+                                    <Label id="_IDGenLabel159" text="{TransactionModel>/table_metadata/model}" />
+                                    <t:template>
+                                        <Text id="_IDGenText11" text="{TransactionModel>model}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn14" width="8rem">
+                                    <Label id="_IDGenLabel160" text="{TransactionModel>/table_metadata/location}" />
+                                    <t:template>
+                                        <Text id="_IDGenText12" text="{TransactionModel>location}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn15" width="8rem">
+                                    <Label id="_IDGenLabel161" text="{TransactionModel>/table_metadata/sublocation}" />
+                                    <t:template>
+                                        <Text id="_IDGenText13" text="{TransactionModel>sub_location}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn16" width="8rem">
+                                    <Label id="_IDGenLabel162" text="{TransactionModel>/table_metadata/serial_number}" />
+                                    <t:template>
+                                        <Text id="_IDGenText14" text="{TransactionModel>serial_number}" />
+                                    </t:template>
+                                </t:Column>
+                            </t:columns>
+                        </t:Table>
+
+                        <HBox id="_IDGenHBox5" alignItems="Center" justifyContent="Center" alignContent="SpaceAround">
+                            <Button id="_IDGenButton8" text="Cancel" type="Reject" class="sapUiLargeMarginEnd" />
+                            <Button id="_IDGenButton9" text="Return" type="Accept" />
+                        </HBox>
+                        <t:Table id="_IDGenTable1" rows="{TransactionModel>/history_data}" selectionMode="None" class="sapUiResponsiveMargin sapUiMediumMargin" visible="{TransactionModel>/history_metadata/visible}" visibleRowCount="5">
+                            <t:extension>
+                                <Title id="_IDGenTitle28" text="{TransactionModel>/history_metadata/title}" />
+                            </t:extension>
+                            <t:columns>
+                                <t:Column id="_IDGenColumn99" width="15rem">
+                                    <Label id="_IDGenLabel155" text="Employee Code" />
+                                    <t:template>
+                                        <Text id="_IDGenText15" text="{TransactionModel>employeeCode}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn101">
+                                    <Label id="_IDGenLabel164" text="Employee Name" />
+                                    <t:template>
+                                        <Text id="_IDGenText109" text="{TransactionModel>employeeName}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn102" width="10rem">
+                                    <Label id="_IDGenLabel274" text="Date" />
+                                    <t:template>
+                                        <Text id="_IDGenText110" text="{TransactionModel>date}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn104" width="8rem" hAlign="Center">
+                                    <Label id="_IDGenLabel277" text="Actions" />
+                                    <t:template>
+                                        <HBox id="_IDGenHBox11" justifyContent="Center" alignItems="Center">
+                                            <core:Icon id="_IDGenIcon" src="sap-icon://edit" tooltip="Edit" press="onEditPress" class="sapUiSmallMarginEnd" color="#0064d9" />
+                                            <core:Icon id="_IDGenIcon3" src="sap-icon://delete" tooltip="Delete" press="onDeletePress" color="#e74c3c" />
+                                        </HBox>
+                                    </t:template>
+                                </t:Column>
+                            </t:columns>
+                        </t:Table>
+                    </Page>
+                    <Page id="_IDGenPage2" title="Movement Tracking after Approval">
+                        <f:SimpleForm id="_IDGenSmpleForm7" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+                            <Label id="_IDGenLabel166" text="Location" />
+                            <ComboBox id="_IDGenComboBox38" items="{path:'TransactionModel>/Locations'}">
+                                <core:Item id="_IDGenItem51" key="{TransactionModel>name}" text="{TransactionModel>name}" />
+                            </ComboBox>
+                            <Label id="_IDGenLabel167" text="Asset/Item" />
+                            <ComboBox id="_IDGenComboBox39" change=".onTypeChange">
+                                <core:Item id="_IDGenItem49" key="Item" text="Item" />
+                                <core:Item id="_IDGenItem50" key="Asset" text="Asset" />
+                            </ComboBox>
+                        </f:SimpleForm>
+                        <t:Table id="MovementTable" rows="{TransactionModel>/table_data}" selectionMode="None" class="sapUiResponsiveMargin sapUiMediumMargin">
+                            <t:columns>
+                                <t:Column id="_IDGenColumn" width="8rem">
+                                    <Label id="_IDGenLabel168" text="RFID Number" />
+                                    <t:template>
+                                        <Text id="_IDGenText16" text="{TransactionModel>rfid_no}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn17" width="8rem">
+                                    <Label id="_IDGenLabel169" text="{TransactionModel>/table_metadata/code}" />
+                                    <t:template>
+                                        <Text id="_IDGenText17" text="{TransactionModel>asset_code}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn18" width="11rem">
+                                    <Label id="_IDGenLabel170" text="{TransactionModel>/table_metadata/description}" />
+                                    <t:template>
+                                        <Text id="_IDGenText18" text="{TransactionModel>asset_description}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn19" width="8rem">
+                                    <Label id="_IDGenLabel171" text="Serial No." />
+                                    <t:template>
+                                        <Text id="_IDGenText19" text="{TransactionModel>serial_number}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn20" width="6rem">
+                                    <Label id="_IDGenLabel172" text="Make" />
+                                    <t:template>
+                                        <Text id="_IDGenText20" text="{TransactionModel>make}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn21" width="6rem">
+                                    <Label id="_IDGenLabel173" text="Model No." />
+                                    <t:template>
+                                        <Text id="_IDGenText21" text="{TransactionModel>model}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn22" width="9rem">
+                                    <Label id="_IDGenLabel174" text="From Location" />
+                                    <t:template>
+                                        <Text id="_IDGenText22" text="{TransactionModel>from_location}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn23" width="9rem">
+                                    <Label id="_IDGenLabel175" text="To Location" />
+                                    <t:template>
+                                        <Text id="_IDGenText23" text="{TransactionModel>to_location}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn24" width="7rem">
+                                    <Label id="_IDGenLabel176" text="Date" />
+                                    <t:template>
+                                        <Text id="_IDGenText24" text="{TransactionModel>date}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn25" width="6rem">
+                                    <Label id="_IDGenLabel177" text="Time" />
+                                    <t:template>
+                                        <Text id="_IDGenText25" text="{TransactionModel>time}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn26" width="6rem">
+                                    <Label id="_IDGenLabel178" text="Status" />
+                                    <t:template>
+                                        <Text id="_IDGenText26" text="{TransactionModel>status}" />
+                                    </t:template>
+                                </t:Column>
+                            </t:columns>
+                        </t:Table>
+                    </Page>
+                    <Page id="_IDGenPage3" title="Movement Tracking of Asset/Item">
+                        <f:SimpleForm id="_IDGenSmpleForm8" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+                            <Label id="_IDGenLabel165" text="Employee Code" />
+                            <ComboBox id="_IDGenComboBox40" items="{TransactionModel>/employee_ids}" change=".onEmployeeSelect">
+                                <core:Item id="_IDGenItem52" key="{TransactionModel>}" text="{TransactionModel>}" />
+                            </ComboBox>
+                            <Label id="_IDGenLabel179" text="Employee Name" />
+                            <Input id="_IDGenInput48" />
+                            <Label id="_IDGenLabel180" text="Location" />
+                            <ComboBox id="_IDGenComboBox41" items="{TransactionModel>/Locations}" change=".onEmployeeSelect">
+                                <core:Item id="_IDGenItem53" key="{TransactionModel>name}" text="{TransactionModel>name}" />
+                            </ComboBox>
+                            <Label id="_IDGenLabel181" text="Asset/Item" />
+                            <ComboBox id="_IDGenComboBox42" change=".onTypeChange">
+                                <core:Item id="_IDGenItem54" key="Item" text="Item" />
+                                <core:Item id="_IDGenItem55" key="Asset" text="Asset" />
+                            </ComboBox>
+                        </f:SimpleForm>
+                        <t:Table id="allottedItemsTable" class="sapUiResponsiveMargin sapUiMediumMargin" rows="{/allottedItems}" selectionMode="None">
+                            <t:extension>
+                                <Title id="_IDGenTitle17" text="Allotted Item List" />
+                            </t:extension>
+                            <t:columns>
+                                <t:Column id="_IDGenColumn27" width="8rem">
+                                    <Label id="_IDGenLabel183" text="Item Code" />
+                                    <t:template>
+                                        <Text id="_IDGenText27" text="{itemCode}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn28">
+                                    <Label id="_IDGenLabel184" text="Item Description" />
+                                    <t:template>
+                                        <Text id="_IDGenText28" text="{itemDescription}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn29" width="8rem">
+                                    <Label id="_IDGenLabel185" text="RFID No" />
+                                    <t:template>
+                                        <Text id="_IDGenText29" text="{rfidNo}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn30" width="6rem">
+                                    <Label id="_IDGenLabel186" text="Quantity" />
+                                    <t:template>
+                                        <Text id="_IDGenText30" text="{quantity}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn31" width="8rem">
+                                    <Label id="_IDGenLabel187" text="Serial No." />
+                                    <t:template>
+                                        <Text id="_IDGenText31" text="{serialNo}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn32" width="6rem">
+                                    <Label id="_IDGenLabel188" text="Make" />
+                                    <t:template>
+                                        <Text id="_IDGenText32" text="{make}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn33" width="6rem">
+                                    <Label id="_IDGenLabel189" text="Model" />
+                                    <t:template>
+                                        <Text id="_IDGenText33" text="{model}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn34" width="8rem">
+                                    <Label id="_IDGenLabel190" text="Location" />
+                                    <t:template>
+                                        <Text id="_IDGenText34" text="{location}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn35" width="8rem">
+                                    <Label id="_IDGenLabel191" text="Sub-Location" />
+                                    <t:template>
+                                        <Text id="_IDGenText35" text="{subLocation}" />
+                                    </t:template>
+                                </t:Column>
+                            </t:columns>
+                        </t:Table>
+                        <t:Table id="scannedItemsTable" class="sapUiResponsiveMargin sapUiMediumMargin" rows="{/scannedItems}" selectionMode="None">
+                            <t:extension>
+                                <Title id="_IDGenTitle18" text="Scanned Item List" />
+                            </t:extension>
+                            <t:columns>
+                                <t:Column id="_IDGenColumn36" width="8rem">
+                                    <Label id="_IDGenLabel192" text="Item Code" />
+                                    <t:template>
+                                        <Text id="_IDGenText36" text="{itemCode}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn37">
+                                    <Label id="_IDGenLabel193" text="Item Description" />
+                                    <t:template>
+                                        <Text id="_IDGenText37" text="{itemDescription}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn38" width="8rem">
+                                    <Label id="_IDGenLabel194" text="RFID No" />
+                                    <t:template>
+                                        <Text id="_IDGenText38" text="{rfidNo}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn39" width="6rem">
+                                    <Label id="_IDGenLabel195" text="Make" />
+                                    <t:template>
+                                        <Text id="_IDGenText39" text="{make}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn40" width="6rem">
+                                    <Label id="_IDGenLabel196" text="Model" />
+                                    <t:template>
+                                        <Text id="_IDGenText40" text="{model}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn41" width="8rem">
+                                    <Label id="_IDGenLabel197" text="Location" />
+                                    <t:template>
+                                        <Text id="_IDGenText41" text="{location}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn42" width="6rem">
+                                    <Label id="_IDGenLabel198" text="Quantity" />
+                                    <t:template>
+                                        <Text id="_IDGenText42" text="{quantity}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn43" width="8rem">
+                                    <Label id="_IDGenLabel199" text="Serial No." />
+                                    <t:template>
+                                        <Text id="_IDGenText43" text="{serialNo}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn44" width="6rem">
+                                    <Label id="_IDGenLabel200" text="Zone" />
+                                    <t:template>
+                                        <Text id="_IDGenText44" text="{zone}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn45" width="6rem">
+                                    <Label id="_IDGenLabel201" text="Time" />
+                                    <t:template>
+                                        <Text id="_IDGenText45" text="{time}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn46" width="6rem">
+                                    <Label id="_IDGenLabel202" text="Date" />
+                                    <t:template>
+                                        <Text id="_IDGenText46" text="{date}" />
+                                    </t:template>
+                                </t:Column>
+                            </t:columns>
+                        </t:Table>
+                    </Page>
+                    <Page id="_IDGenPage4" title="Asset/Item Transfer Request">
+                        <f:SimpleForm id="_IDGenSmpleForm9" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+                            <Label id="_IDGenLabel203" text="Asset/Item" />
+                            <ComboBox id="assetComboBox" width="100%" placeholder="Select" change=".onTypeChange">
+                                <items>
+                                    <core:Item id="_IDGenItem42" key="Item" text="Item" />
+                                    <core:Item id="_IDGenItem41" key="Asset" text="Asset" />
+                                </items>
+                            </ComboBox>
+
+                            <Label id="_IDGenLabel204" text="Request ID" />
+                            <Input id="requestIdInput" value="RE01758652327610" editable="false" />
+
+                            <Label id="_IDGenLabel205" text="From Location" />
+                            <ComboBox id="_IDGenComboBox34" items="{path:'TransactionModel>/Locations'}" width="100%" placeholder="Select">
+                                <core:Item id="_IDGenItem43" key="{TransactionModel>name}" text="{TransactionModel>name}" />
+                            </ComboBox>
+
+                            <Label id="_IDGenLabel206" text="To Location" />
+                            <ComboBox id="_IDGenComboBox36" items="{path:'TransactionModel>/Locations'}" width="100%" placeholder="Select">
+                                <core:Item id="_IDGenItem44" key="{TransactionModel>name}" text="{TransactionModel>name}" />
+                            </ComboBox>
+
+                            <Label id="_IDGenLabel207" text="Employee" />
+                            <ComboBox id="employeeComboBox" width="100%" items="{path:'TransactionModel>/employee_ids'}" placeholder="Select Employee">
+                                <core:Item id="_IDGenItem45" key="{TransactionModel>}" text="{TransactionModel>}" />
+                            </ComboBox>
+
+                            <Label id="_IDGenLabel276" text="Approvers" visible="{TransactionModel>/formFeilds}" />
+                            <MultiComboBox id="employeeMultiComboBox" visible="{TransactionModel>/formFeilds}" items="{TransactionModel>/employeeNames}" width="100%" placeholder="Select Employees">
+                                <core:Item id="_IDGenItem46" key="{TransactionModel>key}" text="{TransactionModel>name}" />
+                            </MultiComboBox>
+
+                            <Label id="_IDGenLabel278" text="From Sub-Location" visible="{TransactionModel>/formFeilds}" />
+                            <Input id="fromSubLocationInput" visible="{TransactionModel>/formFeilds}" />
+
+                            <Label id="_IDGenLabel279" text="To Sub-Location" visible="{TransactionModel>/formFeilds}" />
+                            <Input id="toSubLocationInput" visible="{TransactionModel>/formFeilds}" />
+
+                            <Label id="_IDGenLabel280" text="From CostCenter" visible="{TransactionModel>/formFeilds}" />
+                            <ComboBox id="fromCostCenterComboBox" items="{path:'TransactionModel>/CostCenters'}" visible="{TransactionModel>/formFeilds}" width="100%" placeholder="Select CostCenter">
+                                <core:Item id="_IDGenItem47" key="{TransactionModel>}" text="{TransactionModel>}" />
+                            </ComboBox>
+
+                            <Label id="_IDGenLabel281" text="To CostCenter" visible="{TransactionModel>/formFeilds}" />
+                            <ComboBox id="toCostCenterComboBox" width="100%" items="{path:'TransactionModel>/CostCenters'}" visible="{TransactionModel>/formFeilds}" placeholder="Select CostCenter">
+                                <core:Item id="_IDGenItem48" key="{TransactionModel>}" text="{TransactionModel>}" />
+                            </ComboBox>
+
+                            <Label id="_IDGenLabel282" text="Remarks" />
+                            <Input id="_IDGenInput10" placeholder="Enter Remarks" />
+                        </f:SimpleForm>
+                        <t:Table id="_IDGenTable2" selectionMode="MultiToggle" class="sapUiResponsiveMargin sapUiMediumMargin" rows="{TransactionModel>/table_data}">
+                            <t:extension>
+                                <Title id="_IDGenTitle19" text="{TransactionModel>/table_metadata/title}" />
+                            </t:extension>
+                            <t:columns>
+                                <t:Column id="_IDGenColumn48" width="11rem">
+                                    <Label id="_IDGenLabel182" text="{TransactionModel>/table_metadata/code}" />
+                                    <t:template>
+                                        <Text id="_IDGenText47" text="{TransactionModel>asset_code}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn49">
+                                    <Label id="_IDGenLabel208" text="{TransactionModel>/table_metadata/description}" />
+                                    <t:template>
+                                        <Text id="_IDGenText48" text="{TransactionModel>asset_description}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn50" width="8rem">
+                                    <Label id="_IDGenLabel209" text="{TransactionModel>/table_metadata/rfid}" />
+                                    <t:template>
+                                        <Text id="_IDGenText49" text="{TransactionModel>rfid_no}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn51" width="6rem">
+                                    <Label id="_IDGenLabel210" text="{TransactionModel>/table_metadata/make}" />
+                                    <t:template>
+                                        <Text id="_IDGenText50" text="{TransactionModel>make}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn52" width="6rem">
+                                    <Label id="_IDGenLabel211" text="{TransactionModel>/table_metadata/model}" />
+                                    <t:template>
+                                        <Text id="_IDGenText51" text="{TransactionModel>model}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn53" width="8rem">
+                                    <Label id="_IDGenLabel212" text="{TransactionModel>/table_metadata/location}" />
+                                    <t:template>
+                                        <Text id="_IDGenText52" text="{TransactionModel>location}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn54" width="8rem">
+                                    <Label id="_IDGenLabel213" text="{TransactionModel>/table_metadata/sublocation}" />
+                                    <t:template>
+                                        <Text id="_IDGenText53" text="{TransactionModel>sub_location}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn55" width="8rem">
+                                    <Label id="_IDGenLabel214" text="{TransactionModel>/table_metadata/serial_number}" />
+                                    <t:template>
+                                        <Text id="_IDGenText54" text="{TransactionModel>serial_number}" />
+                                    </t:template>
+                                </t:Column>
+                            </t:columns>
+                        </t:Table>
+
+                        <HBox id="_IDGenHBox6" alignItems="Center" justifyContent="Center" alignContent="SpaceAround">
+                            <Button id="_IDGenButton10" text="Cancel" type="Reject" class="sapUiLargeMarginEnd" />
+                            <Button id="_IDGenButton11" text="Save" type="Accept" />
+                        </HBox>
+                        <t:Table id="_IDGenTable3" rows="{TransactionModel>/history_data}" selectionMode="None" class="sapUiResponsiveMargin sapUiMediumMargin" visibleRowCount="5" visible="{TransactionModel>/history_metadata/visible}">
+                            <t:extension>
+                                <Title id="_IDGenTitle29" text="{TransactionModel>/history_metadata/title}" />
+                            </t:extension>
+
+                            <t:columns>
+                                <t:Column id="_IDGenColumn8" width="15rem">
+                                    <Label id="_IDGenLabel215" text="Employee Code" />
+                                    <t:template>
+                                        <Text id="_IDGenText55" text="{TransactionModel>employeeCode}" />
+                                    </t:template>
+                                </t:Column>
+
+                                <t:Column id="_IDGenColumn56">
+                                    <Label id="_IDGenLabel216" text="Employee Name" />
+                                    <t:template>
+                                        <Text id="_IDGenText111" text="{TransactionModel>employeeName}" />
+                                    </t:template>
+                                </t:Column>
+
+                                <t:Column id="_IDGenColumn103" width="10rem">
+                                    <Label id="_IDGenLabel283" text="Date" />
+                                    <t:template>
+                                        <Text id="_IDGenText112" text="{TransactionModel>date}" />
+                                    </t:template>
+                                </t:Column>
+
+                                <t:Column id="_IDGenColumn105" width="8rem">
+                                    <Label id="_IDGenLabel284" text="Time" />
+                                    <t:template>
+                                        <Text id="_IDGenText113" text="{TransactionModel>time}" />
+                                    </t:template>
+                                </t:Column>
+
+                                <t:Column id="_IDGenColumn106" width="8rem" hAlign="Center">
+                                    <Label id="_IDGenLabel285" text="Actions" />
+                                    <t:template>
+                                        <HBox id="_IDGenHBox12" justifyContent="Center" alignItems="Center">
+                                            <core:Icon id="_IDGenIcon4" src="sap-icon://edit" tooltip="Edit" press="onEditPress" class="sapUiSmallMarginEnd" color="#0064d9" />
+                                            <core:Icon id="_IDGenIcon5" src="sap-icon://delete" tooltip="Delete" press="onDeletePress" color="#e74c3c" />
+                                        </HBox>
+                                    </t:template>
+                                </t:Column>
+                            </t:columns>
+                        </t:Table>
+                    </Page>
+                    <Page id="_IDGenPage5" title="Asset/Item Approval">
+                        <f:SimpleForm id="_IDGenSmpleForm10" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+                            <Label id="_IDGenLabel218" text="Asset/Item" />
+                            <Input id="_IDGenInput46" placeholder="Select Type" />
+                            <Label id="_IDGenLabel219" text="Request ID" />
+                            <Input id="_IDGenInput56" placeholder="Select Request" />
+                            <Label id="_IDGenLabel220" text="From Location" />
+                            <Input id="_IDGenInput57" placeholder="Enter location" />
+                            <Label id="_IDGenLabel221" text="To Location" />
+                            <Input id="_IDGenInput58" placeholder="Enter location" />
+                            <Label id="_IDGenLabel222" text="User" />
+                            <Input id="_IDGenInput59" />
+                            <Label id="_IDGenLabel223" text="Employee" />
+                            <Input id="_IDGenInput60" placeholder="Enter Employee" />
+                            <Label id="_IDGenLabel224" text="Employee Type" />
+                            <Input id="_IDGenInput61" placeholder="Enter Employee Type" />
+                            <Label id="_IDGenLabel225" text="Remarks" />
+                            <Input id="_IDGenInput62" placeholder="Enter Remarks" />
+                        </f:SimpleForm>
+                        <HBox id="_IDGenHBox7" alignItems="Center" class="sapUiResponsiveMargin sapUiMediumMargin" justifyContent="Center" alignContent="SpaceAround">
+                            <Button id="_IDGenButton12" text="Find" type="Accept" class="sapUiLargeMarginEnd" />
+                            <Button id="_IDGenButton13" text="Save" type="Reject" />
+                        </HBox>
+                        <t:Table id="requestSelectionTable" class="sapUiResponsiveMargin sapUiMediumMargin" rows="{/requests}" selectionMode="MultiToggle">
+                            <t:extension>
+                                <Title id="_IDGenTitle20" text="Request Selection" />
+                            </t:extension>
+                            <t:columns>
+                                <t:Column id="_IDGenColumn47" width="8rem">
+                                    <Label id="_IDGenLabel226" text="Request ID" />
+                                    <t:template>
+                                        <Text id="_IDGenText56" text="{requestId}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn57" width="8rem">
+                                    <Label id="_IDGenLabel227" text="From Location" />
+                                    <t:template>
+                                        <Text id="_IDGenText57" text="{fromLocation}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn58" width="8rem">
+                                    <Label id="_IDGenLabel228" text="To Location" />
+                                    <t:template>
+                                        <Text id="_IDGenText58" text="{toLocation}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn59" width="6rem">
+                                    <Label id="_IDGenLabel229" text="No. of Items" />
+                                    <t:template>
+                                        <Text id="_IDGenText59" text="{noOfItems}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn60">
+                                    <Label id="_IDGenLabel230" text="Remarks" />
+                                    <t:template>
+                                        <Text id="_IDGenText60" text="{remarks}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn61" width="6rem">
+                                    <Label id="_IDGenLabel231" text="View" />
+                                    <t:template>
+                                        <Button id="_IDGenButton14" text="View" type="Transparent" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn62" width="6rem">
+                                    <Label id="_IDGenLabel232" text="Action" />
+                                    <t:template>
+                                        <HBox id="_IDGenHBox3" justifyContent="SpaceBetween">
+                                            <Button id="_IDGenButton15" icon="sap-icon://accept" type="Accept" tooltip="Approve" />
+                                            <Button id="_IDGenButton16" icon="sap-icon://decline" type="Reject" tooltip="Decline" />
+                                        </HBox>
+                                    </t:template>
+                                </t:Column>
+                            </t:columns>
+                        </t:Table>
+                        <t:Table id="approvedListTable" class="sapUiResponsiveMargin sapUiMediumMargin" rows="{/approvedRequests}" selectionMode="None">
+                            <t:extension>
+                                <Title id="_IDGenTitle21" text="Approved/Unapproved List" />
+                            </t:extension>
+                            <t:columns>
+                                <t:Column id="_IDGenColumn63" width="8rem">
+                                    <Label id="_IDGenLabel233" text="Request ID" />
+                                    <t:template>
+                                        <Text id="_IDGenText61" text="{requestId}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn64" width="8rem">
+                                    <Label id="_IDGenLabel234" text="From Location" />
+                                    <t:template>
+                                        <Text id="_IDGenText62" text="{fromLocation}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn65" width="8rem">
+                                    <Label id="_IDGenLabel235" text="To Location" />
+                                    <t:template>
+                                        <Text id="_IDGenText63" text="{toLocation}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn66">
+                                    <Label id="_IDGenLabel236" text="Employee" />
+                                    <t:template>
+                                        <Text id="_IDGenText64" text="{employee}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn67" width="6rem">
+                                    <Label id="_IDGenLabel237" text="Items" />
+                                    <t:template>
+                                        <Text id="_IDGenText65" text="{items}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn68" width="6rem">
+                                    <Label id="_IDGenLabel238" text="Status" />
+                                    <t:template>
+                                        <Text id="_IDGenText66" text="{status}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn69" width="6rem">
+                                    <Label id="_IDGenLabel239" text="Actions" />
+                                    <t:template>
+                                        <Button id="_IDGenButton17" icon="sap-icon://history" type="Transparent" tooltip="History" />
+                                    </t:template>
+                                </t:Column>
+                            </t:columns>
+                        </t:Table>
+                    </Page>
+                    <Page id="_IDGenPage6" title="Uploads">
+                        <crd:Card id="_IDGenCard1" class="sapUiMediumMargin" headerPosition="Top" height="15rem" width="15rem">
+                            <crd:header>
+                                <card:Header id="_IDGenHeader" title="Color Master Upload" />
+                            </crd:header>
+                            <crd:content>
+                                <VBox id="_IDGenVBox" justifyContent="Center" alignContent="Center" alignItems="Center">
+                                    <u:FileUploader id="fileUploader" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete" icon="sap-icon://upload" iconOnly="true" maximumFileSize="5" fileType="xlsx" class="sapUiSmallMargin" />
+                                    <Button id="_IDGenButton18" text="Upload File" type="Emphasized" press="handleUploadPress" />
+                                    <Button id="_IDGenButton19" text="Download" icon="sap-icon://download" press=".onDownloadExcel" />
+                                </VBox>
+                            </crd:content>
+                        </crd:Card>
+                        <crd:Card id="_IDGenCard2" class="sapUiMediumMargin" headerPosition="Top" height="15rem" width="15rem">
+                            <crd:header>
+                                <card:Header id="_IDGenHeader1" title="Brand Master Upload" />
+                            </crd:header>
+                            <crd:content>
+                                <VBox id="_IDGenVBox1" justifyContent="Center" alignContent="Center" alignItems="Center">
+                                    <u:FileUploader id="_IDGenFileUploader" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete" icon="sap-icon://upload" iconOnly="true" maximumFileSize="5" fileType="xlsx" class="sapUiSmallMargin" />
+                                    <Button id="_IDGenButton21" text="Upload File" type="Emphasized" press="handleUploadPress" />
+                                    <Button id="_IDGenButton22" text="Download" icon="sap-icon://download" press=".onDownloadExcel" />
+                                </VBox>
+                            </crd:content>
+                        </crd:Card>
+                        <crd:Card id="_IDGenCard3" class="sapUiMediumMargin" headerPosition="Top" height="15rem" width="15rem">
+                            <crd:header>
+                                <card:Header id="_IDGenHeader2" title="Model Master Upload" />
+                            </crd:header>
+                            <crd:content>
+                                <VBox id="_IDGenVBox2" justifyContent="Center" alignContent="Center" alignItems="Center">
+                                    <u:FileUploader id="_IDGenFileUploader1" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete" icon="sap-icon://upload" iconOnly="true" maximumFileSize="5" fileType="xlsx" class="sapUiSmallMargin" />
+                                    <Button id="_IDGenButton23" text="Upload File" type="Emphasized" press="handleUploadPress" />
+                                    <Button id="_IDGenButton24" text="Download" icon="sap-icon://download" press=".onDownloadExcel" />
+                                </VBox>
+                            </crd:content>
+                        </crd:Card>
+                        <crd:Card id="_IDGenCard4" class="sapUiMediumMargin" headerPosition="Top" height="15rem" width="15rem">
+                            <crd:header>
+                                <card:Header id="_IDGenHeader3" title="Item Master Upload" />
+                            </crd:header>
+                            <crd:content>
+                                <VBox id="_IDGenVBox3" justifyContent="Center" alignContent="Center" alignItems="Center">
+                                    <u:FileUploader id="_IDGenFileUploader2" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete" icon="sap-icon://upload" iconOnly="true" maximumFileSize="5" fileType="xlsx" class="sapUiSmallMargin" />
+                                    <Button id="_IDGenButton25" text="Upload File" type="Emphasized" press="handleUploadPress" />
+                                    <Button id="_IDGenButton26" text="Download" icon="sap-icon://download" press=".onDownloadExcel" />
+                                </VBox>
+                            </crd:content>
+                        </crd:Card>
+                        <crd:Card id="_IDGenCard5" class="sapUiMediumMargin" headerPosition="Top" height="15rem" width="15rem">
+                            <crd:header>
+                                <card:Header id="_IDGenHeader4" title="Picking List Upload" />
+                            </crd:header>
+                            <crd:content>
+                                <VBox id="_IDGenVBox4" justifyContent="Center" alignContent="Center" alignItems="Center">
+                                    <u:FileUploader id="_IDGenFileUploader3" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete" icon="sap-icon://upload" iconOnly="true" maximumFileSize="5" fileType="xlsx" class="sapUiSmallMargin" />
+                                    <Button id="_IDGenButton27" text="Upload File" type="Emphasized" press="handleUploadPress" />
+                                    <Button id="_IDGenButton28" text="Download" icon="sap-icon://download" press=".onDownloadExcel" />
+                                </VBox>
+                            </crd:content>
+                        </crd:Card>
+                        <crd:Card id="_IDGenCard" class="sapUiMediumMargin" headerPosition="Top" height="15rem" width="15rem">
+                            <crd:header>
+                                <card:Header id="_IDGenHeader5" title="PO Upload" />
+                            </crd:header>
+                            <crd:content>
+                                <VBox id="_IDGenVBox5" justifyContent="Center" alignContent="Center" alignItems="Center">
+                                    <u:FileUploader id="_IDGenFileUploader5" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete" icon="sap-icon://upload" iconOnly="true" maximumFileSize="5" fileType="xlsx" class="sapUiSmallMargin" />
+                                    <Button id="_IDGenButton20" text="Upload File" type="Emphasized" press="handleUploadPress" />
+                                    <Button id="_IDGenButton29" text="Download" icon="sap-icon://download" press=".onDownloadExcel" />
+                                </VBox>
+                            </crd:content>
+                        </crd:Card>
+                    </Page>
+                    <Page id="_IDGenPage7" title="PO Items">
+                        <t:Table id="poItemsTable" class="sapUiResponsiveMargin sapUiMediumMargin" rows="{/poItems}" selectionMode="None">
+                            <t:extension>
+                                <FlexBox id="_IDGenFlexBox" justifyContent="SpaceBetween" alignItems="Center">
+                                    <Title id="_IDGenTitle22" text="PO Items" />
+                                    <Button id="_IDGenButton30" text="Create PO" press=".onOpenDialog" type="Accept" />
+                                </FlexBox>
+                            </t:extension>
+                            <t:columns>
+                                <t:Column id="_IDGenColumn71" width="8rem">
+                                    <Label id="_IDGenLabel217" text="PO Number" />
+                                    <t:template>
+                                        <Text id="_IDGenText67" text="{poNumber}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn72" width="11rem">
+                                    <Label id="_IDGenLabel240" text="Item Name" />
+                                    <t:template>
+                                        <Text id="_IDGenText68" text="{itemName}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn73" width="9rem">
+                                    <Label id="_IDGenLabel241" text="Expected Quantity" />
+                                    <t:template>
+                                        <Text id="_IDGenText69" text="{expectedQuantity}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn74" width="9rem">
+                                    <Label id="_IDGenLabel242" text="Received Quantity" />
+                                    <t:template>
+                                        <Text id="_IDGenText70" text="{receivedQuantity}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn75" width="10rem">
+                                    <Label id="_IDGenLabel243" text="Creation Date" />
+                                    <t:template>
+                                        <Text id="_IDGenText71" text="{creationDate}" />
+                                    </t:template>
+                                </t:Column>
+                            </t:columns>
+                        </t:Table>
+                    </Page>
+                    <Page id="_IDGenPage8" title="Sales Disposal Bulk Upload">
+                        <VBox id="_IDGenVBox8" alignItems="Center" justifyContent="Center" width="100%" height="100%">
+                            <crd:Card id="_IDGenCard7" class="sapUiMediumMargin" headerPosition="Top" height="15rem" width="15rem">
+                                <crd:header>
+                                    <card:Header id="_IDGenHeader6" title="Sales Disposal Bulk Upload" />
+                                </crd:header>
+                                <crd:content>
+                                    <VBox id="_IDGenVBox6" justifyContent="Center" alignContent="Center" alignItems="Center">
+                                        <u:FileUploader id="_IDGenFileUploader4" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete" icon="sap-icon://upload" iconOnly="true" maximumFileSize="5" fileType="xlsx" class="sapUiSmallMargin" />
+                                        <Button id="_IDGenButton33" text="Upload File" type="Emphasized" press="handleUploadPress" />
+                                        <Button id="_IDGenButton34" text="Download" icon="sap-icon://download" press=".onDownloadExcel" />
+                                    </VBox>
+                                </crd:content>
+                            </crd:Card>
+                        </VBox>
+                    </Page>
+                    <Page id="_IDGenPage9" class="" title="Bulk Asset Upload">
+                        <VBox id="_IDGenVBox9" alignItems="Center" width="95%" height="90%">
+                            <crd:Card id="_IDGenCard6" class="sapUiMediumMargin" headerPosition="Top" height="15rem" width="15rem">
+                                <crd:header>
+                                    <card:Header id="_IDGenHeader7" title="Bulk Asset Upload" />
+                                </crd:header>
+                                <crd:content>
+                                    <VBox id="_IDGenVBox10" justifyContent="Center" alignContent="Center" alignItems="Center">
+                                        <u:FileUploader id="_IDGenFileUploader6" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete" icon="sap-icon://upload" iconOnly="true" maximumFileSize="5" fileType="xlsx" class="sapUiSmallMargin" />
+                                        <Button id="_IDGenButton36" text="Upload File" type="Emphasized" press="handleUploadPress" />
+                                        <Button id="_IDGenButton37" text="Download" icon="sap-icon://download" press=".onDownloadExcel" />
+                                    </VBox>
+                                </crd:content>
+                            </crd:Card>
+                            <Title id="_IDGenTitle25" text="Guide Line :" />
+                            <Text id="_IDGenText72" textAlign="Begin" text="1. Enter Asset code like AST001." />
+                            <Text id="_IDGenText73" textAlign="Begin" text="2. Date format will be MM/DD/YYYY." />
+                            <Text id="_IDGenText74" textAlign="Begin" text="3. Category must be created before uploading excel." />
+                            <Text id="_IDGenText75" textAlign="Begin" text="4. Default value for status is normal." />
+                            <t:Table id="idUploadHistoryTable" rows="{/uploads}" class="sapUiResponsiveMargin sapUiMediumMargin" selectionMode="None" width="100%">
+                                <t:extension>
+                                    <FlexBox id="_IDGenFlexBox2" justifyContent="SpaceBetween" alignItems="Center">
+                                        <Title id="_IDGenTitle24" text="Upload History" />
+                                        <Button id="_IDGenButton38" text="Refresh" icon="sap-icon://refresh" type="Accept" />
+                                    </FlexBox>
+                                </t:extension>
+                                <t:columns>
+                                    <t:Column id="_IDGenColumn76">
+                                        <t:label>
+                                            <Text id="_IDGenText76" text="File Name" />
+                                        </t:label>
+                                        <t:template>
+                                            <Text id="_IDGenText77" text="{FileName}" />
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column id="_IDGenColumn77">
+                                        <t:label>
+                                            <Text id="_IDGenText78" text="Status" />
+                                        </t:label>
+                                        <t:template>
+                                            <Text id="_IDGenText79" text="{Status}" />
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column id="_IDGenColumn78">
+                                        <t:label>
+                                            <Text id="_IDGenText80" text="Total Records" />
+                                        </t:label>
+                                        <t:template>
+                                            <Text id="_IDGenText81" text="{TotalRecords}" />
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column id="_IDGenColumn79">
+                                        <t:label>
+                                            <Text id="_IDGenText82" text="Success Records" />
+                                        </t:label>
+                                        <t:template>
+                                            <Text id="_IDGenText83" text="{SuccessRecords}" />
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column id="_IDGenColumn80">
+                                        <t:label>
+                                            <Text id="_IDGenText84" text="Failed Records" />
+                                        </t:label>
+                                        <t:template>
+                                            <Text id="_IDGenText85" text="{FailedRecords}" />
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column id="_IDGenColumn81">
+                                        <t:label>
+                                            <Text id="_IDGenText86" text="Progress (%)" />
+                                        </t:label>
+                                        <t:template>
+                                            <Text id="_IDGenText87" text="{Progress}" />
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column id="_IDGenColumn82">
+                                        <t:label>
+                                            <Text id="_IDGenText88" text="Created At" />
+                                        </t:label>
+                                        <t:template>
+                                            <Text id="_IDGenText89" text="{CreatedAt}" />
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column id="_IDGenColumn83">
+                                        <t:label>
+                                            <Text id="_IDGenText90" text="Completed At" />
+                                        </t:label>
+                                        <t:template>
+                                            <Text id="_IDGenText91" text="{CompletedAt}" />
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column id="_IDGenColumn84">
+                                        <t:label>
+                                            <Text id="_IDGenText92" text="Has Errors" />
+                                        </t:label>
+                                        <t:template>
+                                            <Text id="_IDGenText93" text="{HasErrors}" />
+                                        </t:template>
+                                    </t:Column>
+                                    <t:Column id="_IDGenColumn85">
+                                        <t:label>
+                                            <Text id="_IDGenText94" text="Action" />
+                                        </t:label>
+                                        <t:template>
+                                            <Button id="_IDGenButton35" text="View" type="Emphasized" press=".onViewPress" />
+                                        </t:template>
+                                    </t:Column>
+                                </t:columns>
+                            </t:Table>
+                        </VBox>
+                    </Page>
+                    <Page id="_IDGenPage10" title="Barcode / QR Code Tag Generation">
+                        <RadioButtonGroup class="sapUiMediumMargin" id="generationType" columns="2">
+                            <buttons>
+                                <RadioButton id="barcodeRadio" text="Barcode" selected="true" />
+                                <RadioButton id="qrCodeRadio" text="QR Code" />
+                            </buttons>
+                        </RadioButtonGroup>
+                        <VBox id="_IDGenVBox11" justifyContent="Center" height="60%" width="95%" alignItems="Center">
+                            <f:SimpleForm id="_IDGenSimpleForm14" editable="true" class="sapUiResponsiveMargin sapUiMediumMargin" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+                                <Label id="_IDGenLabel248" text="Asset ID (From)" />
+                                <Input id="assetIdFrom" placeholder="Enter Asset ID" showValueHelp="true" valueHelpRequest="onValueHelpRequest" />
+                                <Label id="_IDGenLabel249" text="Asset ID (To)" />
+                                <Input id="assetIdTo" placeholder="Enter Asset ID (Optional)" showValueHelp="true" valueHelpRequest="onValueHelpRequest" />
+                                <Label id="_IDGenLabel250" text="Size" />
+                                <Select id="sizeSelect" selectedKey="102x152">
+                                    <core:Item id="_IDGenItem14" key="102x152" text="102x152 mm" />
+                                    <core:Item id="_IDGenItem15" key="50x75" text="50x75 mm" />
+                                    <core:Item id="_IDGenItem16" key="custom" text="Custom" />
+                                </Select>
+                            </f:SimpleForm>
+                        </VBox>
+                        <HBox id="_IDGenHBox8" class="sapUiSmallMarginTop" justifyContent="Center">
+                            <Button id="_IDGenButton40" text="Generate code" class="sapUiSmallMarginEnd" type="Accept" />
+                            <Button id="_IDGenButton41" text="Refresh" type="Default" />
+                        </HBox>
+                    </Page>
+                    <Page id="_IDGenPage11" title="Sales Disposal">
+                        <f:SimpleForm id="_IDGenSimpleForm16" editable="true" layout="ColumnLayout" columnsM="2" columnsL="3" columnsXL="4">
+                            <Label id="_IDGenLabel251" text="Asset" />
+                            <Input id="assetInput" placeholder="Select Asset" showValueHelp="true" valueHelpRequest="onValueHelpRequest" />
+                            <Label id="_IDGenLabel252" text="Original Sale/Disposal Cost" />
+                            <Input id="originalCostInput" placeholder="Enter Cost" />
+                            <Label id="_IDGenLabel253" text="Original Quantity" />
+                            <Input id="originalQuantityInput" placeholder="Enter Quantity" />
+                            <Label id="_IDGenLabel254" text="Sale/Disposal Quantity" />
+                            <Input id="disposalQuantityInput" placeholder="Enter Quantity" />
+                            <Label id="_IDGenLabel255" text="Sale/Disposal Proceeds Amt" />
+                            <Input id="proceedsAmountInput" placeholder="Enter Amount" />
+                            <Label id="_IDGenLabel256" text="Sale Date" />
+                            <DatePicker id="saleDate" displayFormat="dd-MM-yyyy" />
+                            <Label id="_IDGenLabel257" text="Vendor" />
+                            <Input id="vendorInput" placeholder="Select Vendor" showValueHelp="true" valueHelpRequest="onValueHelpRequest" />
+                            <Label id="_IDGenLabel258" text="File (Image)" />
+                            <u:FileUploader id="_IDGenFileUploader7" fileAllowed="jpg" buttonText="Upload File" />
+                            <Label id="_IDGenLabel259" text="Remarks" />
+                            <Input id="remarksInput" placeholder="Enter Remarks" />
+                        </f:SimpleForm>
+                        <HBox id="_IDGenHBox10" class="sapUiSmallMarginTop" justifyContent="Center">
+                            <Button id="_IDGenButton39" text="Cancel" press="onCancel" class="sapUiSmallMarginEnd" type="Reject" />
+                            <Button id="_IDGenButton42" text="Submit" press="onSubmit" type="Accept" />
+                        </HBox>
+                        <t:Table id="disposalTable" rows="{/disposalData}" selectionMode="None" class="sapUiResponsiveMargin sapUiMediumMargin ">
+                            <t:extension>
+                                <Title id="_IDGenTitle26" text="Disposal History" />
+                            </t:extension>
+                            <t:columns>
+                                <t:Column id="_IDGenColumn70" width="11rem">
+                                    <Label id="_IDGenLabel260" text="Asset" />
+                                    <t:template>
+                                        <Text id="_IDGenText95" text="{Asset}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn86" width="11rem">
+                                    <Label id="_IDGenLabel261" text="Original Sale/Disposal Cost" />
+                                    <t:template>
+                                        <Text id="_IDGenText96" text="{OriginalCost}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn87" width="11rem">
+                                    <Label id="_IDGenLabel262" text="Original Quantity" />
+                                    <t:template>
+                                        <Text id="_IDGenText97" text="{OriginalQuantity}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn88" width="11rem">
+                                    <Label id="_IDGenLabel263" text="Sale/Disposal Quantity" />
+                                    <t:template>
+                                        <Text id="_IDGenText98" text="{DisposalQuantity}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn89" width="11rem">
+                                    <Label id="_IDGenLabel264" text="Sale/Disposal Proceeds Amt" />
+                                    <t:template>
+                                        <Text id="_IDGenText99" text="{ProceedsAmount}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn90" width="11rem">
+                                    <Label id="_IDGenLabel265" text="Sale Date" />
+                                    <t:template>
+                                        <Text id="_IDGenText100" text="{SaleDate}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn91" width="11rem">
+                                    <Label id="_IDGenLabel266" text="Vendor" />
+                                    <t:template>
+                                        <Text id="_IDGenText101" text="{Vendor}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn92" width="11rem">
+                                    <Label id="_IDGenLabel267" text="File (Image)" />
+                                    <t:template>
+                                        <Text id="_IDGenText102" text="{FileImage}" />
+                                    </t:template>
+                                </t:Column>
+                                <t:Column id="_IDGenColumn93" width="11rem">
+                                    <Label id="_IDGenLabel268" text="Remarks" />
+                                    <t:template>
+                                        <Text id="_IDGenText103" text="{Remarks}" />
+                                    </t:template>
+                                </t:Column>
+                            </t:columns>
+                        </t:Table>
+                    </Page>
                 </pages>
             </NavContainer>
         </tnt:mainContents>
     </tnt:ToolPage>
+    <Dialog id="createPODialog" title="Create PO" stretch="false" afterClose="onDialogClose">
+        <customHeader>
+            <Bar id="_IDGenBar1">
+                <contentMiddle>
+                    <Title id="_IDGenTitle23" text="Create PO" />
+                </contentMiddle>
+                <contentRight>
+                    <Button id="_IDGenButton31" icon="sap-icon://decline" press=".onDialogClosePress" />
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <VBox id="_IDGenVBox7" class="sapUiMediumPadding">
+            <f:SimpleForm id="_IDGenSimpleForm13" editable="true" layout="ResponsiveGridLayout">
+                <f:content>
+                    <Label id="_IDGenLabel244" text="Enter PO No." />
+                    <Input id="_IDGenInput63" placeholder="PO No." />
+                    <Label id="_IDGenLabel245" text="Items*" required="true" />
+                    <ComboBox id="_IDGenComboBox15" />
+                    <Label id="_IDGenLabel246" text="Expected Quantity" />
+                    <Input id="_IDGenInput65" placeholder="Quantity" />
+                </f:content>
+            </f:SimpleForm>
+        </VBox>
+        <endButton>
+            <Button id="_IDGenButton32" text="Create PO" type="Accept" press=".onCreatePO" />
+        </endButton>
+    </Dialog>
 </mvc:View>

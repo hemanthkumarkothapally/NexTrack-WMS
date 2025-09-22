@@ -60,6 +60,10 @@
         "type": "sap.ui.model.json.JSONModel",
         "uri": "model/masterModel.json"
       },
+      "TransactionModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/TransactionModel.json"
+      },
       "ReportingModel": {
         "type": "sap.ui.model.json.JSONModel",
         "uri": "model/reportingModel.json"

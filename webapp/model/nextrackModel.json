@@ -45,7 +45,7 @@
     },
     {
       "text": "Reporting",
-      "icon": "sap-icon://analytics",
+      "icon": "sap-icon://manager-insight",
       "key": "reporting",
       "expanded": false,
       "children": [
@@ -74,13 +74,87 @@
   "groupMaster": "idCategoryMasterPage",
 
   "asset": "idAssetCreationPage",
+  "assetItemAllotment": "_IDGenPage1",
+  "assetItemReturn": "_IDGenPage",
+  "movementTrackingAfterApproval": "_IDGenPage2",
+  "movementTrackingAsset": "_IDGenPage3",
+  "assetItemTransferRequest": "_IDGenPage4",
+  "assetItemApproval": "_IDGenPage5",
+  "uploads": "_IDGenPage6",
+  "poItems": "_IDGenPage7",
+  "barcode": "_IDGenPage10",
+  "bulkAssetUpload": "_IDGenPage9",
+  "salesDisposal": "_IDGenPage11",
+  "salesDisposalUpload": "_IDGenPage8",
 
-  "itemPhysicalVerification": "idAssetCreationPage",
+  "itemPhysicalVerification": "idItemVerificationPage",
   "grnList": "idGrnListPage",
   "assetItemHistory": "idAssetHistoryPage",
   "assetItemList": "idAssetHistoryPage",
-  "assetPhysicalVerification": "idAssetCreationPage"
+  "assetPhysicalVerification": "idAssetVerificationPage"
   },
+  "DashbordtableRows": [
+      {
+        "RFIDNo": "a2701202211233445501425",
+        "AssetID": "SGP-1012",
+        "AssetDescription": "Herbal extract for liver health and detox.",
+        "EmployeeName": "-",
+        "FromZone": "-",
+        "ToZone": "Production Zone",
+        "LastScannedLocation": "Mumbai",
+        "LastUpdated": "19/09/2025, 17:51:34"
+      },
+      {
+        "RFIDNo": "a2701202211233445501458",
+        "AssetID": "ITM-1003",
+        "AssetDescription": "Body Lotion - 200ml",
+        "EmployeeName": "-",
+        "FromZone": "-",
+        "ToZone": "Production Zone",
+        "LastScannedLocation": "Mumbai",
+        "LastUpdated": "19/09/2025, 17:51:34"
+      },
+      {
+        "RFIDNo": "a2701202211233445501453",
+        "AssetID": "OFF-1270",
+        "AssetDescription": "Heavy bulk item",
+        "EmployeeName": "EMP001",
+        "FromZone": "-",
+        "ToZone": "Production Zone",
+        "LastScannedLocation": "Mumbai",
+        "LastUpdated": "19/09/2025, 17:51:34"
+      },
+      {
+        "RFIDNo": "a2701202211233445501464",
+        "AssetID": "STL-1003",
+        "AssetDescription": "High performance oil filter for petrol engines",
+        "EmployeeName": "-",
+        "FromZone": "-",
+        "ToZone": "Production Zone",
+        "LastScannedLocation": "Mumbai",
+        "LastUpdated": "19/09/2025, 17:51:34"
+      },
+      {
+        "RFIDNo": "a2701202211233445501448",
+        "AssetID": "BPC-2207",
+        "AssetDescription": "Store in cool environment",
+        "EmployeeName": "-",
+        "FromZone": "-",
+        "ToZone": "Production Zone",
+        "LastScannedLocation": "Mumbai",
+        "LastUpdated": "19/09/2025, 17:51:35"
+      },
+      {
+        "RFIDNo": "a2701202211233445501461",
+        "AssetID": "ITM-1006",
+        "AssetDescription": "Windshield Wiper 16'",
+        "EmployeeName": "-",
+        "FromZone": "Storage",
+        "ToZone": "Production Zone",
+        "LastScannedLocation": "Mumbai",
+        "LastUpdated": "19/09/2025, 17:51:35"
+      }
+    ],
   "formData":{}
 
 

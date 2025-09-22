@@ -4,3 +4,88 @@
     min-width: 12rem !important;
     max-width: 12rem !important;
 } */
+.masterPageBackground{
+    background-color: #fff !important;
+}
+/* Style for the Toolbar in the header */
+.sapMPageHeader {
+    background-color: #bbece2 !important; /* Light gray background */
+    
+}
+
+/* Style for the first four columns' headers */
+.dashboard-table-style .sapMListTblHeaderCell:nth-child(-n+5) {
+    background-color: #b9e49b; /* Green color */
+    color: #fff;
+    border-right: 1px solid #fff;
+}
+
+/* Style for the last four columns' headers */
+.dashboard-table-style .sapMListTblHeaderCell:nth-child(n+6) {
+    background-color: #a4acdf; /* Blue color */
+    color: #fff;
+    border-right: 1px solid #fff;
+}
+
+/* Style for all table column headers */
+.sapMListTblHeaderCell {
+    background-color: #c7d3bf; /* Green color */
+    color: #fff;
+    border-right: 1px solid #fff;
+}
+
+.sapUiTableColHdr .sapMLabel {
+    color: #d9534f;
+}
+
+/* General styling for the title */
+.sapMTitle {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+    padding-left: 1rem;
+}
+
+.assetTaggedCard {
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.assetTaggedCard .sapFCardHeader {
+    background-color: #81aca3;
+    color: #fff !important;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.assetTaggedCard .sapFCardContent {
+    background-color: #f6faff;
+    
+}
+
+.assetTaggedCard .card-item-container {
+  
+    border-bottom: 1px solid #e5e5e5;
+}
+.assetTaggedCard .card-item-container:last-child {
+    border-bottom: none;
+}
+
+.assetTaggedCard .card-item-label {
+    color: #2c3e50;
+    font-size: 0.9rem;
+}
+
+.assetTaggedCard .card-item-value {
+    color: #00796b;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.vendor-master-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
