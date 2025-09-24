@@ -13,13 +13,13 @@
         { "text": "Employee Master",      "icon": "sap-icon://employee",         "key": "employeeMaster" },
         { "text": "Schedule Master",      "icon": "sap-icon://appointment",      "key": "scheduleMaster" },
         { "text": "Vendor Master",        "icon": "sap-icon://supplier",         "key": "vendorMaster" },
-        { "text": "Zone Master",          "icon": "sap-icon://shipping-status",  "key": "zoneMaster" },
-        { "text": "Reader Master",        "icon": "sap-icon://wifi",             "key": "readerMaster" },
-        { "text": "Antenna Master",       "icon": "sap-icon://antenna",          "key": "antennaMaster" },
-        { "text": "Zone Reader Mapping",  "icon": "sap-icon://link",             "key": "zoneReaderMapping" },
-        { "text": "Item Master",          "icon": "sap-icon://product",          "key": "itemMaster" },
-        { "text": "Cost Center Master",   "icon": "sap-icon://accounting-document","key": "costCenterMaster" },
-        { "text": "Group Master",         "icon": "sap-icon://group",            "key": "groupMaster" }
+        { "text": "Zone Master",          "icon": "sap-icon://functional-location",  "key": "zoneMaster" },
+        { "text": "Reader Master",        "icon": "sap-icon://activities",             "key": "readerMaster" },
+        { "text": "Antenna Master",       "icon": "sap-icon://activities",          "key": "antennaMaster" },
+        { "text": "Zone Reader Mapping",  "icon": "sap-icon://flag-2",             "key": "zoneReaderMapping" },
+        { "text": "Item Master",          "icon": "sap-icon://business-objects-mobile",          "key": "itemMaster" },
+        { "text": "Cost Center Master",   "icon": "sap-icon://business-objects-mobile","key": "costCenterMaster" },
+        { "text": "Group Master",         "icon": "sap-icon://business-objects-mobile",            "key": "groupMaster" }
       ]
     },
     {
@@ -28,20 +28,21 @@
       "key": "transaction",
       "expanded": false,
       "children": [
-        { "text": "Asset",                        "icon": "sap-icon://antenna", "key": "asset" },
-        { "text": "Assets/Item Allotment",        "icon": "sap-icon://antenna", "key": "assetItemAllotment" },
-        { "text": "Asset/Item Return",            "icon": "sap-icon://antenna", "key": "assetItemReturn" },
-        { "text": "Movement Tracking after Approval","icon": "sap-icon://antenna","key": "movementTrackingAfterApproval" },
-        { "text": "Movement Tracking of Asset",   "icon": "sap-icon://antenna", "key": "movementTrackingAsset" },
-        { "text": "Asset/Item Transfer request",  "icon": "sap-icon://antenna", "key": "assetItemTransferRequest" },
-        { "text": "Asset/Item Approval",          "icon": "sap-icon://antenna", "key": "assetItemApproval" },
-        { "text": "Uploads",                      "icon": "sap-icon://upload",  "key": "uploads" },
-        { "text": "PO Items",                     "icon": "sap-icon://document-text", "key": "poItems" },
-        { "text": "BarCode",                      "icon": "sap-icon://barcode", "key": "barcode" },
-        { "text": "Bulk-Asset-Upload",            "icon": "sap-icon://upload",  "key": "bulkAssetUpload" },
-        { "text": "Sales-Disposal",               "icon": "sap-icon://sales-order", "key": "salesDisposal" },
-        { "text": "Sales-Disposal-Upload",        "icon": "sap-icon://upload",  "key": "salesDisposalUpload" }
-      ]
+            { "text": "Asset",                        "icon": "sap-icon://inspect", "key": "asset" },
+            { "text": "Assets/Item Allotment",        "icon": "sap-icon://add-equipment", "key": "assetItemAllotment" },
+            { "text": "Asset/Item Return",            "icon": "sap-icon://undo", "key": "assetItemReturn" },
+            { "text": "Movement Tracking after Approval","icon": "sap-icon://journey-change", "key": "movementTrackingAfterApproval" },
+            { "text": "Movement Tracking of Asset",   "icon": "sap-icon://map-2", "key": "movementTrackingAsset" },
+            { "text": "Asset/Item Transfer request",  "icon": "sap-icon://shipping-status", "key": "assetItemTransferRequest" },
+            { "text": "Asset/Item Approval",          "icon": "sap-icon://accept", "key": "assetItemApproval" },
+            { "text": "Uploads",                      "icon": "sap-icon://upload",  "key": "uploads" },
+            { "text": "PO Items",                     "icon": "sap-icon://sales-order-item", "key": "poItems" },
+            { "text": "BarCode",                      "icon": "sap-icon://bar-code", "key": "barcode" },
+            { "text": "Bulk-Asset-Upload",            "icon": "sap-icon://upload-to-cloud",  "key": "bulkAssetUpload" },
+            { "text": "Sales-Disposal",               "icon": "sap-icon://activity-items", "key": "salesDisposal" },
+            { "text": "Sales-Disposal-Upload",        "icon": "sap-icon://upload",  "key": "salesDisposalUpload" }
+          ]
+
     },
     {
       "text": "Reporting",

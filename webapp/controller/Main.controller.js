@@ -1,8 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
-    "sap/m/MessageToast"
-], (Controller, JSONModel, MessageToast) => {
+    "sap/m/MessageToast",
+    "sap/m/MessageBox"
+], (Controller, JSONModel, MessageToast, MessageBox) => {
     "use strict";
 
     return Controller.extend("nextrackwms.nextrackwms.controller.Main", {
@@ -33,15 +34,15 @@ sap.ui.define([
         },
         onItemSelect: function (oEvent) {
             let keyPages = this.getOwnerComponent().getModel("NexTrackModel").getProperty("/KeyPages");
-            if(this.oItem){
+            if (this.oItem) {
                 if (keyPages[this.oItem] === "idCategoryMasterPage") {
-                    let oConfigDta=this.getView().getModel("config").getData();
-                    this.getOwnerComponent().getModel("MasterModel").setProperty(oConfigDta.sPath,oConfigDta)
+                    let oConfigDta = this.getView().getModel("config").getData();
+                    this.getOwnerComponent().getModel("MasterModel").setProperty(oConfigDta.sPath, oConfigDta)
                 }
             }
             this.oItem = oEvent.getParameter("item").getKey();
             let oNavContainer = this.byId("maincontainer");
-            
+
             if (keyPages[this.oItem] === "idCategoryMasterPage") {
                 this.loadConfiguration("MasterModel", this.oItem);
                 this._buildTable("idCategoryTable");
@@ -54,6 +55,9 @@ sap.ui.define([
             }
             oNavContainer.to(this.byId(keyPages[this.oItem]));
             this.getView().getModel("TransactionModel").refresh();
+            this.onResetPress();
+            this.resetAssetItem();
+
         },
         loadConfiguration: function (sModel, sScreenName) {
             let sPath = "/" + sScreenName;
@@ -65,8 +69,7 @@ sap.ui.define([
         },
         _buildForm: function (sFormId) {
             const oForm = this.byId(sFormId);
-            oForm.destroyContent();
-
+            oForm.removeAllContent();
             const aFields = this.getView().getModel("config").getProperty("/formFields");
 
             aFields.forEach(f => {
@@ -115,12 +118,12 @@ sap.ui.define([
                     header: new sap.m.Text({ text: oCol.header })
                 }));
             });
-            if(sTableId === "idCategoryTable"){
-            oTable.addColumn(new sap.m.Column({
-                header: new sap.m.Text({ text: "Actions" }),
-                hAlign: "Center"
-            }));
-        }
+            if (sTableId === "idCategoryTable") {
+                oTable.addColumn(new sap.m.Column({
+                    header: new sap.m.Text({ text: "Actions" }),
+                    hAlign: "Center"
+                }));
+            }
             const oTemplate = new sap.m.ColumnListItem({
                 cells: [
                     ...aColumns.map(col => new sap.m.Text({ text: "{config>" + col.path + "}" })),
@@ -218,6 +221,8 @@ sap.ui.define([
         onCancelPress: function () {
             this.getView().getModel("NexTrackModel").setProperty("/formData", {})
         },
+
+        //REPORTING Section
         onItemorAssetPress: function (oEvent) {
             let sSelectedKey = oEvent.getParameter("newValue");
             if (sSelectedKey === "Asset") {
@@ -229,46 +234,55 @@ sap.ui.define([
                 this.byId("idAssetTable").setVisible(false);
             }
         },
-
+        onItemVerificationSearch: function () {
+            let sNumber = this.byId("idItemVerificationCombobox").getSelectedKey();
+            if (sNumber) {
+                this.byId("_IDGenTable4").setVisible(true)
+            }
+            else {
+                MessageBox.warning("Please Enter Schedule number")
+            }
+        },
+        onItemVerificationReset: function () {
+            this.byId("_IDGenComboBox37").setSelectedKey(null);
+            this.byId("_IDGenDatePicker33").setValue(null);
+            this.byId("_IDGenDatePicker34").setValue(null);
+            this.byId("_IDGenTable4").setVisible(false)
+        },
+        onAssetVerificationSearch: function () {
+            let sNumber = this.byId("idAssetVerificationCombobox").getSelectedKey();
+            let oData = {
+                Matched: "4",
+                NotMatched: "2",
+                NotFound: "1",
+                Audit: "1"
+            }
+            if (sNumber) {
+                this.byId("idAssetVerificationTable").bindRows({
+                    path: "ReportingModel>/AssetVerification"
+                })
+                this.getOwnerComponent().getModel("ReportingModel").setProperty("/tiles",oData)
+            }
+            else {
+                MessageBox.warning("Please Enter Schedule number")
+            }
+        },
+        onAssetVerificationReset: function () {
+            let oData = {
+                Matched: "0",
+                NotMatched: "0",
+                NotFound: "0",
+                Audit: "0"
+            }
+             this.getOwnerComponent().getModel("ReportingModel").setProperty("/tiles",oData)
+            this.byId("idAssetVerificationCombobox").setSelectedKey(null);
+            this.byId("idAssetVerificationFromDate").setValue(null);
+            this.byId("idAssetVerificationToDate").setValue(null);
+            this.byId("idAssetVerificationTable").unbindRows()
+        },
         ///// TRANSACTION SCREEN
 
-         onDownloadExcel: function () {
-            var aData = this.getView().getModel("myModel").getProperty("/items");
-
-            var aCols = [
-                {
-                    label: "ID",
-                    property: "ID",
-                    type: "string"
-                },
-                {
-                    label: "Name",
-                    property: "Name",
-                    type: "string"
-                },
-                {
-                    label: "Age",
-                    property: "Age",
-                    type: "number"
-                }
-            ];
-
-            var oSettings = {
-                workbook: { columns: aCols },
-                dataSource: aData,
-                fileName: "Export.xlsx",
-                worker: false
-            };
-            var oSpreadsheet = new sap.ui.export.Spreadsheet(oSettings);
-            oSpreadsheet.build()
-                .then(function () {
-                    sap.m.MessageToast.show("Excel file downloaded successfully!");
-                })
-                .finally(function () {
-                    oSpreadsheet.destroy();
-                });
-        },
-        onOpenDialog: function () {
+         onOpenDialog: function () {
             var oDialog = this.byId("createPODialog");
             oDialog.open();
         },
@@ -436,12 +450,29 @@ sap.ui.define([
 
             // Get all the SimpleForm controls by their IDs
             const formIds = [
+                "idDynForm",
+                "idAssetCreationPage",
+                "_IDGenSimpleForm",
+                "_IDGenSimpleForm1",
+                "_IDGenSimpleForm2",
+                "_IDGenSimpleForm3",
+                "_IDGenSimpleForm4",
+                "_IDGenSimpleForm6",
                 "_IDGenSimpleForm7",
                 "_IDGenSimpleForm8",
                 "_IDGenSimpleForm9",
                 "_IDGenSimpleForm10",
                 "_IDGenSimpleForm11",
-                "_IDGenSimpleForm12"
+                "_IDGenSimpleForm12",
+                "_IDGenSimpleForm5",
+                "_IDGenSmpleForm6",
+                "_IDGenSmpleForm7",
+                "_IDGenSmpleForm8",
+                "_IDGenSmpleForm9",
+                "_IDGenSmpleForm10",
+                "_IDGenSimpleForm14",
+                "_IDGenSimpleForm16",
+                "_IDGenSimpleForm13"
             ];
 
             formIds.forEach(formId => {
@@ -471,10 +502,10 @@ sap.ui.define([
             this.byId("_IDGenInput39").setValue(name)
             this.byId("_IDGenInput42").setValue(name)
             this.byId("_IDGenInput48").setValue(name)
-            
+
         },
-        onTypeChange: function (oEvent) {
-            let selectedKey = oEvent.getParameter("newValue");
+        onTypeChange: function (oEvent, oType) {
+            let selectedKey = oEvent.getParameter("newValue") || " ";
             let oModel = this.getView().getModel("TransactionModel")
             if (selectedKey === "Item") {
                 let metadata = {
@@ -487,10 +518,13 @@ sap.ui.define([
                     "location": "Location",
                     "quantity": "Quantity",
                     "serial_number": "Serial Number",
-                    "sublocation": "Sub-Location"
+                    "sublocation": "Sub-Location",
+                    "movement_title": "Allotted Item List",
+                    "Scanned_tilte": "Scanned Item List"
                 }
                 oModel.setProperty("/table_metadata", metadata)
                 oModel.setProperty("/formFeilds", false);
+                oModel.setProperty("/coloumnVisible", false);
                 oModel.setProperty("/history_metadata", {
                     "title": "Item Allotment History",
                     "visible": true
@@ -507,34 +541,168 @@ sap.ui.define([
                     "location": "Location",
                     "quantity": "Quantity",
                     "serial_number": "Serial Number",
-                    "sublocation": "Sub-Location"
+                    "sublocation": "Sub-Location",
+                    "movement_title": "Allotted Asset List",
+                    "Scanned_tilte": "Scanned Asset List"
                 }
                 oModel.setProperty("/table_metadata", metadata);
-                 oModel.setProperty("/formFeilds", true);
+                oModel.setProperty("/formFeilds", true);
+                oModel.setProperty("/coloumnVisible", true);
                 oModel.setProperty("/history_metadata", {
                     "title": "Asset Allotment History",
                     "visible": true
                 })
             } else {
-                let metadata = {
-                    "title": "Asset Selection",
-                    "code": "Asset Code",
-                    "description": "Asset Description",
-                    "rfid": "RFID No",
-                    "make": "Make",
-                    "model": "Model",
-                    "location": "Location",
-                    "quantity": "Quantity",
-                    "serial_number": "Serial Number",
-                    "sublocation": "Sub-Location"
-                }
-                oModel.setProperty("/formFeilds", false);
-                oModel.setProperty("/table_metadata", metadata)
-                oModel.setProperty("/history_metadata", {
-                    "title": "Asset Allotment History",
-                    "visible": false
-                })
+
+                this.resetAssetItem();
             }
+        },
+        resetAssetItem: function () {
+            let oModel = this.getView().getModel("TransactionModel");
+            let metadata = {
+                "title": "Asset/Item Selection",
+                "code": "Item Code",
+                "description": "Item Description",
+                "rfid": "RFID No",
+                "make": "Make",
+                "model": "Model",
+                "location": "Location",
+                "quantity": "Quantity",
+                "serial_number": "Serial Number",
+                "sublocation": "Sub-Location",
+                "movement_title": "Allotted Item List",
+                "Scanned_tilte": "Scanned Item List"
+            }
+            oModel.setProperty("/formFeilds", false);
+            oModel.setProperty("/table_metadata", metadata)
+            oModel.setProperty("/coloumnVisible", false);
+            oModel.setProperty("/history_metadata", {
+                "title": "Item Allotment History",
+                "visible": false
+            })
+        },
+        onCreatePO: function (oEvent) {
+            let oView = this.getView();
+            let oDialog = oView.byId("createPODialog");
+            let sPONo = oView.byId("_IDGenInput63").getValue();
+            let sItem = oView.byId("_IDGenComboBox15").getSelectedKey();
+            let sQuantity = oView.byId("_IDGenInput65").getValue();
+            let oModel = oView.getModel("TransactionModel");
+            let oData = oModel.getData();
+
+            if (!oData.poItems) {
+                oData.poItems = [];
+            }
+            let oNewPO = {
+                PO_Number: sPONo,
+                Item_Name: sItem,
+                Expected_Quantity: parseInt(sQuantity, 10) || 0,
+                Received_Quantity: 0,
+                Creation_Date: new Date().toISOString().slice(0, 10)
+            };
+            oData.poItems.push(oNewPO);
+            oModel.refresh(true);
+            oDialog.close();
+        },
+        onAssetIdFromSelect: function (oEvent) {
+            let oSelectedItem = oEvent.getParameter("selectedItem");
+            if (oSelectedItem) {
+                this.byId("assetIdFrom").setValue(oSelectedItem.getText());
+            }
+        },
+
+        onAssetIdToSelect: function (oEvent) {
+            let oSelectedItem = oEvent.getParameter("selectedItem");
+            if (oSelectedItem) {
+                this.byId("assetIdTo").setValue(oSelectedItem.getText());
+            }
+        },
+        generateQr: function () {
+            // Combine asset IDs
+            let text = this.byId("assetIdFrom").getValue() + "-" + this.byId("assetIdTo").getValue();
+
+            // Get selected type (QR or Barcode)
+            let selectedRadioButton = this.byId("generationType").getSelectedButton().getProperty("text");
+
+            // Get size from Select (e.g., "50x50" in mm)
+            const oSelect = this.byId("sizeSelect");
+            const sKey = oSelect.getSelectedKey();
+            const size = sKey.split("x");
+
+            // Clear previous code
+            const oBox = this.byId("qrcodeDisplay");
+            oBox.destroyItems();
+
+            if (selectedRadioButton === "Barcode") {
+                // Barcode
+                const oHtmlComp = new sap.ui.core.HTML({
+                    content: "<svg id='barcode'></svg>"
+                });
+                oBox.addItem(oHtmlComp);
+
+                setTimeout(function () {
+                    if (typeof JsBarcode !== "undefined") {
+                        JsBarcode("#barcode", text, {
+                            format: "CODE128",
+                            lineColor: "#000000",
+                            width: 2,
+                            height: size[1],
+                            displayValue: true
+                        });
+                    } else {
+                        sap.m.MessageToast.show("JsBarcode library not loaded!");
+                    }
+                }, 100);
+
+            } else {
+                // QR Code
+                const oHtmlComp = new sap.ui.core.HTML({
+                    content: "<div id='qrcode'></div>"
+                });
+                oBox.addItem(oHtmlComp);
+
+                setTimeout(function () {
+                    if (typeof QRCode !== "undefined") {
+                        new QRCode(document.getElementById("qrcode"), {
+                            text: text,
+                            width: size[0],
+                            height: size[1]
+                        });
+                    } else {
+                        sap.m.MessageToast.show("QRCode library not loaded!");
+                    }
+                }, 100);
+            }
+        },
+        onRefresh: function () {
+            // Clear input fields
+            this.byId("assetIdFrom").setValue("");
+            this.byId("assetIdTo").setValue("");
+            this.byId("sizeSelect").setSelectedKey("50x50");
+            this.byId("generationType").getButtons()[0].setSelected(true);
+            const oBox = this.byId("qrcodeDisplay");
+            oBox.destroyItems();
+        },
+        onSubmit: function () {
+            var oView = this.getView();
+            var payload = {
+                Asset: oView.byId("_IDGenInput40").getValue(),                       // Asset
+                OriginalCost: oView.byId("originalCostInput").getValue(),            // Original Cost
+                OriginalQuantity: oView.byId("originalQuantityInput").getValue(),    // Original Quantity
+                DisposalQuantity: oView.byId("disposalQuantityInput").getValue(),    // Disposal Quantity
+                ProceedsAmount: oView.byId("proceedsAmountInput").getValue(),        // Proceeds Amount
+                SaleDate: oView.byId("saleDate").getDateValue()
+                    ? oView.byId("saleDate").getDateValue().toISOString().split("T")[0] // yyyy-MM-dd
+                    : null,                                                 // Sale Date
+                Vendor: oView.byId("_IDGenInput41").getValue(),                      // Vendor
+                FileImage: oView.byId("_IDGenFileUploader7").getValue(),             // File Name
+                Remarks: oView.byId("remarksInput").getValue()                       // Remarks
+            };
+            let oModel = this.getView().getModel("TransactionModel");
+            let disposalData = oModel.getData().disposalData.push(payload);
+            oModel.refresh(true);
+            this.onResetPress();
         }
+
     });
 });

@@ -34,8 +34,9 @@
     border-right: 1px solid #fff;
 }
 
-.sapUiTableColHdr .sapMLabel {
-    color: #d9534f;
+.sapUiTableColHdr {
+    background-color: #347796 !important; /* Light blue background */
+  
 }
 
 /* General styling for the title */
@@ -88,4 +89,21 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.myCustomTile1Color {
+    background-color: #abf583 !important; 
+    color: white !important;
+}
+
+.myCustomTile2Color {
+    background-color: #f9a760 !important; 
+}
+
+.myCustomTile3Color {
+    background-color: #fa7760 !important; 
+}
+
+.myCustomTile4Color {
+    background-color: #7fcfdc !important; 
 }

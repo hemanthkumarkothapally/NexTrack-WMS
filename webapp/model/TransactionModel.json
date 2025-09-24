@@ -1009,7 +1009,9 @@
     "location": "Location",
     "quantity": "Quantity",
     "serial_number": "Serial Number",
-    "sublocation": "Sub-Location"
+    "sublocation": "Sub-Location",
+    "movement_title": "Allotted Item List",
+    "Scanned_tilte": "Scanned Item List"
   },
   "history_metadata": {
     "title": "Item Allotment History",
@@ -1077,5 +1079,782 @@
       "name": "Rahul Verma"
     }
   ],
-  "formFeilds": false
+  "poItems": [
+    {
+      "PO_Number": "456789",
+      "Item_Name": "Jackfruit Extract",
+      "Expected_Quantity": 6789,
+      "Received_Quantity": 0,
+      "Creation_Date": "2025-09-19"
+    },
+    {
+      "PO_Number": "456789",
+      "Item_Name": "Timing Belt",
+      "Expected_Quantity": 6789,
+      "Received_Quantity": 0,
+      "Creation_Date": "2025-09-19"
+    },
+    {
+      "PO_Number": "po123",
+      "Item_Name": "Shock Absorber",
+      "Expected_Quantity": 100,
+      "Received_Quantity": 0,
+      "Creation_Date": "2025-09-08"
+    },
+    {
+      "PO_Number": "po90",
+      "Item_Name": "Battery",
+      "Expected_Quantity": -5,
+      "Received_Quantity": 0,
+      "Creation_Date": "2025-09-01"
+    },
+    {
+      "PO_Number": "po90",
+      "Item_Name": "Shock Absorber",
+      "Expected_Quantity": -5,
+      "Received_Quantity": 0,
+      "Creation_Date": "2025-09-01"
+    },
+    {
+      "PO_Number": "po90",
+      "Item_Name": "Alternator",
+      "Expected_Quantity": -5,
+      "Received_Quantity": 0,
+      "Creation_Date": "2025-09-01"
+    },
+    {
+      "PO_Number": "po90",
+      "Item_Name": "Timing Belt",
+      "Expected_Quantity": -5,
+      "Received_Quantity": 0,
+      "Creation_Date": "2025-09-01"
+    },
+    {
+      "PO_Number": "po90",
+      "Item_Name": "Fuel Pump",
+      "Expected_Quantity": -5,
+      "Received_Quantity": 0,
+      "Creation_Date": "2025-09-01"
+    },
+    {
+      "PO_Number": "po90",
+      "Item_Name": "Air Filter",
+      "Expected_Quantity": -5,
+      "Received_Quantity": 0,
+      "Creation_Date": "2025-09-01"
+    },
+    {
+      "PO_Number": "po90",
+      "Item_Name": "Oil Filter",
+      "Expected_Quantity": -5,
+      "Received_Quantity": 0,
+      "Creation_Date": "2025-09-01"
+    },
+    {
+      "PO_Number": "po124",
+      "Item_Name": "Brake Pads",
+      "Expected_Quantity": 20,
+      "Received_Quantity": 20,
+      "Creation_Date": "2025-09-15"
+    },
+    {
+      "PO_Number": "po124",
+      "Item_Name": "Brake Rotors",
+      "Expected_Quantity": 20,
+      "Received_Quantity": 18,
+      "Creation_Date": "2025-09-15"
+    },
+    {
+      "PO_Number": "po125",
+      "Item_Name": "Thermostat",
+      "Expected_Quantity": 50,
+      "Received_Quantity": 0,
+      "Creation_Date": "2025-09-10"
+    },
+    {
+      "PO_Number": "po91",
+      "Item_Name": "Headlight Bulb",
+      "Expected_Quantity": -10,
+      "Received_Quantity": 0,
+      "Creation_Date": "2025-09-05"
+    },
+    {
+      "PO_Number": "po91",
+      "Item_Name": "Tail Light Bulb",
+      "Expected_Quantity": -10,
+      "Received_Quantity": 0,
+      "Creation_Date": "2025-09-05"
+    },
+    {
+      "PO_Number": "po126",
+      "Item_Name": "Spark Plugs",
+      "Expected_Quantity": 100,
+      "Received_Quantity": 100,
+      "Creation_Date": "2025-08-30"
+    },
+    {
+      "PO_Number": "po127",
+      "Item_Name": "Radiator",
+      "Expected_Quantity": 5,
+      "Received_Quantity": 5,
+      "Creation_Date": "2025-09-20"
+    },
+    {
+      "PO_Number": "po128",
+      "Item_Name": "Wiper Blade",
+      "Expected_Quantity": 25,
+      "Received_Quantity": 0,
+      "Creation_Date": "2025-09-18"
+    },
+    {
+      "PO_Number": "po129",
+      "Item_Name": "Cabin Filter",
+      "Expected_Quantity": 50,
+      "Received_Quantity": 45,
+      "Creation_Date": "2025-09-12"
+    },
+    {
+      "PO_Number": "po130",
+      "Item_Name": "Engine Mount",
+      "Expected_Quantity": 15,
+      "Received_Quantity": 15,
+      "Creation_Date": "2025-09-07"
+    }
+  ],
+  "poItemNames": [
+    "Jackfruit Extract",
+    "Timing Belt",
+    "Shock Absorber",
+    "Battery",
+    "Alternator",
+    "Fuel Pump",
+    "Air Filter",
+    "Oil Filter",
+    "Brake Pads",
+    "Brake Rotors",
+    "Thermostat",
+    "Headlight Bulb",
+    "Tail Light Bulb",
+    "Spark Plugs",
+    "Radiator",
+    "Wiper Blade",
+    "Cabin Filter",
+    "Engine Mount"
+  ],
+  "AssetIDs": [
+    {
+      "ID": "AST-A001"
+    },
+    {
+      "ID": "AST-B002"
+    },
+    {
+      "ID": "AST-C003"
+    },
+    {
+      "ID": "AST-D004"
+    },
+    {
+      "ID": "AST-E005"
+    },
+    {
+      "ID": "AST-F006"
+    },
+    {
+      "ID": "AST-G007"
+    },
+    {
+      "ID": "AST-H008"
+    },
+    {
+      "ID": "AST-I009"
+    },
+    {
+      "ID": "AST-J010"
+    },
+    {
+      "ID": "AST-K011"
+    },
+    {
+      "ID": "AST-L012"
+    },
+    {
+      "ID": "AST-M013"
+    },
+    {
+      "ID": "AST-N014"
+    },
+    {
+      "ID": "AST-O015"
+    },
+    {
+      "ID": "AST-P016"
+    },
+    {
+      "ID": "AST-Q017"
+    },
+    {
+      "ID": "AST-R018"
+    },
+    {
+      "ID": "AST-S019"
+    },
+    {
+      "ID": "AST-T020"
+    },
+    {
+      "ID": "AST-U021"
+    },
+    {
+      "ID": "AST-V022"
+    },
+    {
+      "ID": "AST-W023"
+    },
+    {
+      "ID": "AST-X024"
+    },
+    {
+      "ID": "AST-Y025"
+    },
+    {
+      "ID": "AST-Z026"
+    },
+    {
+      "ID": "AST-A027"
+    },
+    {
+      "ID": "AST-B028"
+    },
+    {
+      "ID": "AST-C029"
+    },
+    {
+      "ID": "AST-D030"
+    }
+  ],
+  "requestsTable": [
+    {
+      "requestId": "REQ-001",
+      "fromLocation": "Mumbai Warehouse",
+      "toLocation": "Delhi Store",
+      "noOfItems": 10,
+      "noOfApprovers": 2,
+      "remarks": "Urgent delivery",
+      "viewEnabled": true
+    },
+    {
+      "requestId": "REQ-002",
+      "fromLocation": "Chennai Warehouse",
+      "toLocation": "Bangalore Store",
+      "noOfItems": 5,
+      "noOfApprovers": 1,
+      "remarks": "Standard priority",
+      "viewEnabled": true
+    },
+    {
+      "requestId": "REQ-003",
+      "fromLocation": "Hyderabad Warehouse",
+      "toLocation": "Pune Store",
+      "noOfItems": 8,
+      "noOfApprovers": 3,
+      "remarks": "High priority",
+      "viewEnabled": true
+    },
+    {
+      "requestId": "REQ-004",
+      "fromLocation": "Kolkata Warehouse",
+      "toLocation": "Delhi Store",
+      "noOfItems": 12,
+      "noOfApprovers": 2,
+      "remarks": "Normal delivery",
+      "viewEnabled": true
+    },
+    {
+      "requestId": "REQ-005",
+      "fromLocation": "Pune Warehouse",
+      "toLocation": "Mumbai Store",
+      "noOfItems": 7,
+      "noOfApprovers": 1,
+      "remarks": "Standard priority",
+      "viewEnabled": true
+    },
+    {
+      "requestId": "REQ-006",
+      "fromLocation": "Bangalore Warehouse",
+      "toLocation": "Chennai Store",
+      "noOfItems": 9,
+      "noOfApprovers": 2,
+      "remarks": "Urgent delivery",
+      "viewEnabled": true
+    },
+    {
+      "requestId": "REQ-007",
+      "fromLocation": "Delhi Warehouse",
+      "toLocation": "Noida Store",
+      "noOfItems": 6,
+      "noOfApprovers": 1,
+      "remarks": "Normal delivery",
+      "viewEnabled": true
+    },
+    {
+      "requestId": "REQ-008",
+      "fromLocation": "Hyderabad Warehouse",
+      "toLocation": "Secunderabad Store",
+      "noOfItems": 4,
+      "noOfApprovers": 1,
+      "remarks": "High priority",
+      "viewEnabled": true
+    },
+    {
+      "requestId": "REQ-009",
+      "fromLocation": "Mumbai Warehouse",
+      "toLocation": "Pune Store",
+      "noOfItems": 11,
+      "noOfApprovers": 3,
+      "remarks": "Urgent delivery",
+      "viewEnabled": true
+    },
+    {
+      "requestId": "REQ-010",
+      "fromLocation": "Chennai Warehouse",
+      "toLocation": "Bangalore Store",
+      "noOfItems": 5,
+      "noOfApprovers": 2,
+      "remarks": "Standard priority",
+      "viewEnabled": true
+    },
+    {
+      "requestId": "REQ-011",
+      "fromLocation": "Kolkata Warehouse",
+      "toLocation": "Hyderabad Store",
+      "noOfItems": 7,
+      "noOfApprovers": 2,
+      "remarks": "High priority",
+      "viewEnabled": true
+    },
+    {
+      "requestId": "REQ-012",
+      "fromLocation": "Pune Warehouse",
+      "toLocation": "Mumbai Store",
+      "noOfItems": 6,
+      "noOfApprovers": 1,
+      "remarks": "Normal delivery",
+      "viewEnabled": true
+    },
+    {
+      "requestId": "REQ-013",
+      "fromLocation": "Bangalore Warehouse",
+      "toLocation": "Chennai Store",
+      "noOfItems": 9,
+      "noOfApprovers": 2,
+      "remarks": "Urgent delivery",
+      "viewEnabled": true
+    },
+    {
+      "requestId": "REQ-014",
+      "fromLocation": "Delhi Warehouse",
+      "toLocation": "Noida Store",
+      "noOfItems": 8,
+      "noOfApprovers": 1,
+      "remarks": "Standard priority",
+      "viewEnabled": true
+    },
+    {
+      "requestId": "REQ-015",
+      "fromLocation": "Hyderabad Warehouse",
+      "toLocation": "Secunderabad Store",
+      "noOfItems": 10,
+      "noOfApprovers": 3,
+      "remarks": "High priority",
+      "viewEnabled": true
+    },
+    {
+      "requestId": "REQ-016",
+      "fromLocation": "Mumbai Warehouse",
+      "toLocation": "Pune Store",
+      "noOfItems": 5,
+      "noOfApprovers": 1,
+      "remarks": "Normal delivery",
+      "viewEnabled": true
+    },
+    {
+      "requestId": "REQ-017",
+      "fromLocation": "Chennai Warehouse",
+      "toLocation": "Bangalore Store",
+      "noOfItems": 12,
+      "noOfApprovers": 2,
+      "remarks": "Urgent delivery",
+      "viewEnabled": true
+    },
+    {
+      "requestId": "REQ-018",
+      "fromLocation": "Kolkata Warehouse",
+      "toLocation": "Delhi Store",
+      "noOfItems": 6,
+      "noOfApprovers": 1,
+      "remarks": "Standard priority",
+      "viewEnabled": true
+    },
+    {
+      "requestId": "REQ-019",
+      "fromLocation": "Pune Warehouse",
+      "toLocation": "Mumbai Store",
+      "noOfItems": 9,
+      "noOfApprovers": 2,
+      "remarks": "High priority",
+      "viewEnabled": true
+    },
+    {
+      "requestId": "REQ-020",
+      "fromLocation": "Bangalore Warehouse",
+      "toLocation": "Chennai Store",
+      "noOfItems": 7,
+      "noOfApprovers": 1,
+      "remarks": "Normal delivery",
+      "viewEnabled": true
+    }
+  ],
+  "approvedRequests": [
+    {
+      "requestId": "REQ-001",
+      "fromLocation": "Mumbai Warehouse",
+      "toLocation": "Delhi Store",
+      "employee": "Ravi Kumar",
+      "items": 5,
+      "status": "Approved"
+    },
+    {
+      "requestId": "REQ-002",
+      "fromLocation": "Chennai Warehouse",
+      "toLocation": "Bangalore Store",
+      "employee": "Sita Sharma",
+      "items": 3,
+      "status": "Unapproved"
+    },
+    {
+      "requestId": "REQ-003",
+      "fromLocation": "Hyderabad Warehouse",
+      "toLocation": "Pune Store",
+      "employee": "Ajay Reddy",
+      "items": 7,
+      "status": "Approved"
+    },
+    {
+      "requestId": "REQ-004",
+      "fromLocation": "Kolkata Warehouse",
+      "toLocation": "Delhi Store",
+      "employee": "Priya Singh",
+      "items": 4,
+      "status": "Unapproved"
+    },
+    {
+      "requestId": "REQ-005",
+      "fromLocation": "Pune Warehouse",
+      "toLocation": "Mumbai Store",
+      "employee": "Rahul Desai",
+      "items": 6,
+      "status": "Approved"
+    },
+    {
+      "requestId": "REQ-006",
+      "fromLocation": "Bangalore Warehouse",
+      "toLocation": "Chennai Store",
+      "employee": "Neha Patel",
+      "items": 2,
+      "status": "Approved"
+    },
+    {
+      "requestId": "REQ-007",
+      "fromLocation": "Delhi Warehouse",
+      "toLocation": "Noida Store",
+      "employee": "Vikram Singh",
+      "items": 5,
+      "status": "Unapproved"
+    },
+    {
+      "requestId": "REQ-008",
+      "fromLocation": "Hyderabad Warehouse",
+      "toLocation": "Secunderabad Store",
+      "employee": "Anita Rao",
+      "items": 3,
+      "status": "Approved"
+    },
+    {
+      "requestId": "REQ-009",
+      "fromLocation": "Mumbai Warehouse",
+      "toLocation": "Pune Store",
+      "employee": "Karan Mehta",
+      "items": 8,
+      "status": "Approved"
+    },
+    {
+      "requestId": "REQ-010",
+      "fromLocation": "Chennai Warehouse",
+      "toLocation": "Bangalore Store",
+      "employee": "Sunita Joshi",
+      "items": 4,
+      "status": "Unapproved"
+    }
+  ],
+  "empTypes": [
+    "Full-Time",
+    "Part-Time",
+    "Contract / Temporary",
+    "Intern / Trainee",
+    "Executive / Management",
+    "Professional / Specialist",
+    "Administrative / Clerical",
+    "Operational / Skilled Labor",
+    "Service / Support Staff",
+    "Freelancer / Consultant"
+  ],
+  "reqIds": [
+    "REQ-001",
+    "REQ-002",
+    "REQ-003",
+    "REQ-004",
+    "REQ-005",
+    "REQ-006",
+    "REQ-007",
+    "REQ-008",
+    "REQ-009",
+    "REQ-010",
+    "REQ-011",
+    "REQ-012",
+    "REQ-013",
+    "REQ-014",
+    "REQ-015",
+    "REQ-016",
+    "REQ-017",
+    "REQ-018",
+    "REQ-019",
+    "REQ-020"
+  ],
+  "uploads": [
+    {
+      "FileName": "Employee_Data.csv",
+      "Status": "Completed",
+      "TotalRecords": 120,
+      "SuccessRecords": 115,
+      "FailedRecords": 5,
+      "Progress": "100%",
+      "CreatedAt": "2025-09-23 10:30",
+      "CompletedAt": "2025-09-23 10:35",
+      "HasErrors": "Yes"
+    },
+    {
+      "FileName": "Product_List.xlsx",
+      "Status": "In Progress",
+      "TotalRecords": 200,
+      "SuccessRecords": 120,
+      "FailedRecords": 0,
+      "Progress": "60%",
+      "CreatedAt": "2025-09-23 11:00",
+      "CompletedAt": "",
+      "HasErrors": "No"
+    },
+    {
+      "FileName": "Sales_Data_Q1.csv",
+      "Status": "Completed",
+      "TotalRecords": 300,
+      "SuccessRecords": 300,
+      "FailedRecords": 0,
+      "Progress": "100%",
+      "CreatedAt": "2025-09-22 09:15",
+      "CompletedAt": "2025-09-22 09:20",
+      "HasErrors": "No"
+    },
+    {
+      "FileName": "Inventory_Sept.json",
+      "Status": "Failed",
+      "TotalRecords": 150,
+      "SuccessRecords": 0,
+      "FailedRecords": 150,
+      "Progress": "0%",
+      "CreatedAt": "2025-09-21 14:00",
+      "CompletedAt": "2025-09-21 14:05",
+      "HasErrors": "Yes"
+    },
+    {
+      "FileName": "Orders_Backup.zip",
+      "Status": "Completed",
+      "TotalRecords": 500,
+      "SuccessRecords": 495,
+      "FailedRecords": 5,
+      "Progress": "100%",
+      "CreatedAt": "2025-09-20 18:40",
+      "CompletedAt": "2025-09-20 18:55",
+      "HasErrors": "Yes"
+    },
+    {
+      "FileName": "Customer_Info.xml",
+      "Status": "Completed",
+      "TotalRecords": 250,
+      "SuccessRecords": 250,
+      "FailedRecords": 0,
+      "Progress": "100%",
+      "CreatedAt": "2025-09-19 08:00",
+      "CompletedAt": "2025-09-19 08:07",
+      "HasErrors": "No"
+    },
+    {
+      "FileName": "Leads_Data.csv",
+      "Status": "In Progress",
+      "TotalRecords": 400,
+      "SuccessRecords": 200,
+      "FailedRecords": 0,
+      "Progress": "50%",
+      "CreatedAt": "2025-09-23 13:20",
+      "CompletedAt": "",
+      "HasErrors": "No"
+    },
+    {
+      "FileName": "Project_Tasks.docx",
+      "Status": "Completed",
+      "TotalRecords": 80,
+      "SuccessRecords": 80,
+      "FailedRecords": 0,
+      "Progress": "100%",
+      "CreatedAt": "2025-09-18 17:10",
+      "CompletedAt": "2025-09-18 17:15",
+      "HasErrors": "No"
+    },
+    {
+      "FileName": "Payroll_August.pdf",
+      "Status": "Failed",
+      "TotalRecords": 90,
+      "SuccessRecords": 60,
+      "FailedRecords": 30,
+      "Progress": "67%",
+      "CreatedAt": "2025-09-17 12:00",
+      "CompletedAt": "2025-09-17 12:05",
+      "HasErrors": "Yes"
+    },
+    {
+      "FileName": "Vendors_List.csv",
+      "Status": "Completed",
+      "TotalRecords": 100,
+      "SuccessRecords": 100,
+      "FailedRecords": 0,
+      "Progress": "100%",
+      "CreatedAt": "2025-09-16 15:30",
+      "CompletedAt": "2025-09-16 15:35",
+      "HasErrors": "No"
+    }
+  ],
+  "disposalData": [
+    {
+      "Asset": "Laptop Dell XPS 13",
+      "OriginalCost": 75000,
+      "OriginalQuantity": 10,
+      "DisposalQuantity": 2,
+      "ProceedsAmount": 30000,
+      "SaleDate": "2025-09-20",
+      "Vendor": "ABC Traders",
+      "FileImage": "laptop_xps.jpg",
+      "Remarks": "Disposed due to upgrade"
+    },
+    {
+      "Asset": "Office Chairs",
+      "OriginalCost": 15000,
+      "OriginalQuantity": 50,
+      "DisposalQuantity": 10,
+      "ProceedsAmount": 7000,
+      "SaleDate": "2025-09-18",
+      "Vendor": "Furniture Mart",
+      "FileImage": "chairs.png",
+      "Remarks": "Old stock clearance"
+    },
+    {
+      "Asset": "Server Rack",
+      "OriginalCost": 60000,
+      "OriginalQuantity": 5,
+      "DisposalQuantity": 1,
+      "ProceedsAmount": 10000,
+      "SaleDate": "2025-09-15",
+      "Vendor": "IT Scrap Ltd",
+      "FileImage": "server_rack.jpg",
+      "Remarks": "Obsolete equipment"
+    },
+    {
+      "Asset": "Printer HP LaserJet",
+      "OriginalCost": 20000,
+      "OriginalQuantity": 8,
+      "DisposalQuantity": 3,
+      "ProceedsAmount": 5000,
+      "SaleDate": "2025-09-10",
+      "Vendor": "Tech Supplies",
+      "FileImage": "printer.png",
+      "Remarks": "Replaced with new models"
+    },
+    {
+      "Asset": "Air Conditioner (LG 1.5T)",
+      "OriginalCost": 40000,
+      "OriginalQuantity": 4,
+      "DisposalQuantity": 2,
+      "ProceedsAmount": 12000,
+      "SaleDate": "2025-09-05",
+      "Vendor": "CoolAir Solutions",
+      "FileImage": "ac_unit.jpg",
+      "Remarks": "Energy inefficient"
+    },
+    {
+      "Asset": "Projector Epson X200",
+      "OriginalCost": 30000,
+      "OriginalQuantity": 6,
+      "DisposalQuantity": 2,
+      "ProceedsAmount": 8000,
+      "SaleDate": "2025-09-02",
+      "Vendor": "AV Tech Store",
+      "FileImage": "projector.jpg",
+      "Remarks": "Not working properly"
+    },
+    {
+      "Asset": "Desktop HP EliteDesk",
+      "OriginalCost": 45000,
+      "OriginalQuantity": 15,
+      "DisposalQuantity": 5,
+      "ProceedsAmount": 20000,
+      "SaleDate": "2025-08-28",
+      "Vendor": "Computer Bazaar",
+      "FileImage": "desktop.png",
+      "Remarks": "Cleared for refresh cycle"
+    },
+    {
+      "Asset": "Conference Table",
+      "OriginalCost": 25000,
+      "OriginalQuantity": 3,
+      "DisposalQuantity": 1,
+      "ProceedsAmount": 7000,
+      "SaleDate": "2025-08-22",
+      "Vendor": "Office Decor Ltd",
+      "FileImage": "conference_table.jpg",
+      "Remarks": "Damaged during relocation"
+    },
+    {
+      "Asset": "Refrigerator Samsung 300L",
+      "OriginalCost": 28000,
+      "OriginalQuantity": 2,
+      "DisposalQuantity": 1,
+      "ProceedsAmount": 9000,
+      "SaleDate": "2025-08-18",
+      "Vendor": "Appliance World",
+      "FileImage": "fridge.jpg",
+      "Remarks": "Cooling issues"
+    },
+    {
+      "Asset": "Networking Switch Cisco 48-port",
+      "OriginalCost": 95000,
+      "OriginalQuantity": 5,
+      "DisposalQuantity": 2,
+      "ProceedsAmount": 25000,
+      "SaleDate": "2025-08-10",
+      "Vendor": "TechNet Solutions",
+      "FileImage": "switch.jpg",
+      "Remarks": "End of service life"
+    }
+  ],
+  "formFeilds": false,
+  "coloumnVisible": false
 }
